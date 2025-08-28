@@ -1,7 +1,7 @@
 from abc import ABC,abstractmethod
 from pathlib import Path
-from typing import Union,List, Dict
-from loguru import logger
+from typing import Union,List, Dict,Any
+from src.utils.logger_file import logger
 import json
 
 class FileLoader(ABC):
@@ -41,8 +41,8 @@ class JSONLoader(FileLoader):
                 return json.load(json_file)
         
         except FileNotFoundError as e:
-            logger.error(f"Raised {e}. Could not find file at {file_path}")
+            logger.error(f"{e} : {file_path}")
 
-    def supported_formats(self) -> List(str):
+    def supported_formats(self) -> List[str]:
 
         return ['.json']
