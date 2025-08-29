@@ -1,3 +1,5 @@
-from src.utils.input import JSONLoader
+import mlflow
 
-JSONLoader().load_file('file.json')
+with mlflow.start_run():
+    n_estimators = 100
+    mlflow.log_param("n_estimators",n_estimators)
