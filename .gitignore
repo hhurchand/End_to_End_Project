@@ -208,3 +208,7 @@ __marimo__/
 
 # data
 data/
+
+#ignor mlrins
+mlruns/
+mlflow_env/

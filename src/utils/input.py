@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Union,List, Dict,Any
 from src.utils.logger_file import logger
 import json
+import pandas as pd
 
 class FileLoader(ABC):
     @abstractmethod
@@ -46,3 +47,21 @@ class JSONLoader(FileLoader):
     def supported_formats(self) -> List[str]:
 
         return ['.json']
+    
+
+        """Loads a csv file. Read supported_formats method to get supported formats
+
+        Returns:
+            Dataframe: A pandas dataframe including the information on the CSV file
+        """
+class csvLoader(FileLoader):
+    def load_file(self, file_path) -> pd.DataFrame:
+        try:
+            return pd.read_csv(file_path)
+        
+        except FileNotFoundError as e:
+            logger.error(f"{e} : {file_path}")
+
+    def supported_formats(self) -> List[str]:
+
+        return ['.csv']
