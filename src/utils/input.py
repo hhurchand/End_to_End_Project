@@ -2,6 +2,7 @@ from abc import ABC,abstractmethod
 from pathlib import Path
 from typing import Union,List, Dict,Any
 from src.utils.logger_file import logger
+import pandas as pd
 import json
 
 class FileLoader(ABC):
@@ -29,6 +30,7 @@ class FileLoader(ABC):
         
         Returns:
             List of supported file extensions (e.g., ['.txt', '.csv'])
+            
         """
         pass
 
@@ -46,3 +48,29 @@ class JSONLoader(FileLoader):
     def supported_formats(self) -> List[str]:
 
         return ['.json']
+    
+
+class CSVLoader(FileLoader):
+    """
+    Load a csv file.  Read supported formats to get supported formats.
+
+        Returns:
+            Any: The loaded file content as a DataFrame
+
+        Raises:
+            FileNotFoundError: If the file doesn't exist
+       
+    """
+
+    def load_file(self, file_path) -> pd.DataFrame:
+        try:
+            with open (file_path) as csv_file:
+                return pd.read_csv(csv_file)
+            
+        except FileNotFoundError as e:
+            logger.error(f"{e} : {file_path}")
+ 
+    def supported_formats(self) -> List[str]:
+
+        return ['.csv']
+    
