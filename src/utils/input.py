@@ -4,6 +4,7 @@ from typing import Union,List, Dict,Any
 from src.utils.logger_file import logger
 import json
 import pandas as pd
+from yaml import safe_load
 
 class FileLoader(ABC):
     @abstractmethod
@@ -65,3 +66,18 @@ class csvLoader(FileLoader):
     def supported_formats(self) -> List[str]:
 
         return ['.csv']
+    
+
+class yamlLoader(FileLoader):
+    def load_file(self, file_path) -> Dict:
+        with open(file_path) as f:
+            file_path = Path(file_path)
+            try:
+                with open(file_path) as yaml_file:
+                    return safe_load(file_path)
+            except FileNotFoundError as e:
+                logger.error(f"{e} : {file_path}")
+
+    def supported_formats(self) -> List[str]:
+
+        return ['.yaml']
