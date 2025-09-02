@@ -1,3 +1,13 @@
-from src.utils.input import JSONLoader
+from src.utils.input import CSVLoader
 
-JSONLoader().load_file('file.json')
+
+class MyCSVLoader(CSVLoader):
+    def supported_formats(self):
+        return ["csv"]
+
+
+df = MyCSVLoader().load_file("/Users/gregspunt/Downloads/airlines_flights_data.csv")
+
+# safer preview
+print(df.head())
+print(f"\nShape: {df.shape}")

@@ -1,48 +1,29 @@
-from abc import ABC,abstractmethod
-from pathlib import Path
-from typing import Union,List, Dict,Any
-from src.utils.logger_file import logger
-import json
+import pandas as pd
+import os
 
-class FileLoader(ABC):
-    @abstractmethod
-    def load_file(self,file_path:Union[str,Path])->Any:
-        """Load a file and return its contents.
 
-        Args:
-            file_path (Union[str,Path]): Path to the file. 
-
-        Returns:
-            Any: The loaded file content
-
-        Raises:
-            FileNotFoundError: If the file doesn't exist
-            ValueError: If the file format is not supported
-        
-        """
+class CSVLoader:
+    def __init__(self):
         pass
 
-    @abstractmethod
-    def supported_formats(self) -> List[str]:
-        """
-        Return list of file formats supported by this loader.
-        
-        Returns:
-            List of supported file extensions (e.g., ['.txt', '.csv'])
-        """
-        pass
+    def supported_formats(self):
+        """Override this in subclasses if you want more formats."""
+        return ["csv"]
 
-class JSONLoader(FileLoader):
-    """Loads json file"""
-    def load_file(self, file_path: Union[str,Path]) -> Dict:
-        file_path = Path(file_path)
-        try:
-            with open(file_path,'r') as json_file:
-                return json.load(json_file)
-        
-        except FileNotFoundError as e:
-            logger.error(f"{e} : {file_path}")
+    def load_file(self, path: str):
+        """Loads a CSV file into a Pandas DataFrame."""
 
-    def supported_formats(self) -> List[str]:
+        # check extension
+        ext = os.path.splitext(path)[1].lower().replace(".", "")
+        if ext not in self.supported_formats():
+            raise ValueError(f"Unsupported file format: {ext}. Supported: {self.supported_formats()}")
 
-        return ['.json']
+        # check file existence
+        if not os.path.exists(path):
+            raise FileNotFoundError(f"File not found: {path}")
+
+        # load CSV with pandas
+        df = pd.read_csv(path)
+
+        # always return DataFrame
+        return df
