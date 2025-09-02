@@ -2,4 +2,4 @@ data:
   raw_data: "C:/Users/Owner/OneDrive/Desktop/GitProject/End_to_End_Project/data/raw/airlines_flights_data.csv"
 
 model: 
-  n_estimtors: 100
+  n_estimators: 100
