@@ -1,2 +1,5 @@
 data:
   raw_data: "data/raw/airlines_flights_data.csv"
+
+model:
+n_estimators: 100
