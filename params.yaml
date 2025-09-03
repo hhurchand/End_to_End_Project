@@ -10,4 +10,4 @@ model:
 features:
   non_categorical_features: ['flight','duration','days_left','price','stops']
   numerical_features: ['duration','days_left','stops']
-  
+  drop_column: ["flight","index"]
