@@ -1,10 +1,21 @@
-from src.utils.input import CSVLoader
+from src.utils.input import CSVLoader, YAMLLoader
 import mlflow
 
+config = YAMLLoader().load_file("params.yaml")
+
+n_estimate = config["model"]["n_estimators"]
+
 with mlflow.start_run():
-    n_estimators = 100
-    mlflow.log_param("n_estimators",n_estimators)
+    mlflow.log_param("n_estimators",n_estimate)
 
 
-df = CSVLoader().load_file("data/raw/airlines_flights_data.csv")
-print("df",df)
+input_path = config["data"]["raw_data"]
+df = CSVLoader().load_file(input_path)
+
+
+
+ # -------------------Testing -------------------------------------------------------- #
+# print("n_estimators = ",n_estimate)
+# print("path = ",input_path)
+# print("df",df)
+
