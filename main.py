@@ -1,4 +1,3 @@
-import mlflow
 from src.utils.input import CSVLoader, YAMLLoader
 from src.transform import DataTransformation
 
@@ -7,7 +6,15 @@ if __name__ == "__main__":
     input_filepath = config["data"]["raw_data"]
     df = CSVLoader().load_file(csv_file=input_filepath)
     data_transform_obj = DataTransformation(df,config)
-    data_transform_obj.check_input()
+    transform_data = data_transform_obj.ohencoder()
+    transform_data = data_transform_obj.fit_transform_obj()
+    df_encoded = data_transform_obj.features_cleaning()
+    df_encoded = data_transform_obj.mapping()
+    X = df_encoded.drop(config=["model"]["target"],axis=1)
+    y = df_encoded(config=["model"]["target"])
+
+
+print(df_encoded)
 
 # n_estimators = config["model"]["n_estimators"]
 
