@@ -1,9 +1,21 @@
-from src.utils.input import CSVLoader
+from src.utils.input import CSVLoader,YAMLLoader
+
 import mlflow
 
+config = YAMLLoader().load_file("params.yaml")
+
+n_estomators = config['model']['n_estimators']
+input_filepath = config['data']['raw_data']
+
+
+
 with mlflow.start_run():
-    n_estimators = 100
+    
     mlflow.log_param("n_estimators",n_estimators)
     
-df = CSVLoader().load_file("C:\Users\Owner\Desktop\DataScience\end to end project\End_to_End_Project\data\raw\airlines_flights_data.csv")
-print("df",df)                           
+    
+    
+df = CSVLoader().load_file(file_path=input_filepath)
+
+
+                          
