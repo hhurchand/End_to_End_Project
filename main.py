@@ -10,8 +10,6 @@ if __name__ == "__main__":
     transform_data = data_transform_obj.fit_transform_obj()
     df_encoded = data_transform_obj.features_cleaning()
     df_encoded = data_transform_obj.mapping()
-    X = df_encoded.drop(config=["model"]["target"],axis=1)
-    y = df_encoded(config=["model"]["target"])
 
 
 print(df_encoded)
