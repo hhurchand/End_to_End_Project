@@ -77,7 +77,7 @@ class CSVLoader(FileLoader):
     
 
 class YAMLLoader(FileLoader):
-    @abstractmethod
+ 
     def load_file(self,file_path:Union[str,Path])-> Dict:
         """Load a file and return its contents.
 
@@ -92,13 +92,13 @@ class YAMLLoader(FileLoader):
             ValueError: If the file format is not supported
         
         """
-        with open(file_path) as f:
+
+        try:
             file_path = Path(file_path)
-            try:
-                with open(file_path) as yaml_file:
-                    return safe_load(file_path)
-            except FileNotFoundError as e:
-                logger.error(f"{e} : {file_path}")
+            with open(file_path) as yaml_file:
+                return safe_load(yaml_file)
+        except FileNotFoundError as e:
+            logger.error(f"{e} : {file_path}")
 
 
     def supported_formats(self) -> List[str]:
