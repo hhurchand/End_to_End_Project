@@ -75,7 +75,6 @@ class CSVLoader(FileLoader):
         return ['.csv']
 
 class YAMLLoader(FileLoader):
-    @abstractmethod
     def load_file(self, file_path: Union[str, Path]) -> Dict:
         """Load a file and return its contents.
 
@@ -98,5 +97,3 @@ class YAMLLoader(FileLoader):
 
     def supported_formats(self) -> List[str]:
         return ['.yaml', '.yml']
-
-commit -m "add yamal file"""
