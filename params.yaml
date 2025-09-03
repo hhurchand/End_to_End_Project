@@ -1,5 +1,10 @@
 data:
-  raw_data: "C:/Users/Owner/OneDrive/Desktop/GitProject/End_to_End_Project/data/raw/airlines_flights_data.csv"
+  raw_data: "data/raw/airlines_flights_data.csv"
 
-model: 
+model:
   n_estimators: 100
+
+features:
+  non_categorical_features: ['flight']                # one-hot
+  numerical_features: ['duration', 'days_left', 'stops']
+  target: 'price'
