@@ -1,5 +1,5 @@
 import mlflow
-from src.utils.input import csvLoader
+from src.utils.input import csvLoader, yamlLoader
 
 with mlflow.start_run():
     n_estimators = 100
@@ -8,3 +8,6 @@ with mlflow.start_run():
 csvLoader = csvLoader()
 df = csvLoader.load_file("data/raw/airlines_flights_data.csv")
 print(df)
+
+config = yamlLoader().load_file("params.yaml")
+print(config)
