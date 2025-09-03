@@ -2,4 +2,10 @@ data:
   raw_data: "data/raw/airlines_flights_data.csv"
 
 model:
-n_estimators: 100
+  n_estimators: 100
+
+target: "price"
+
+features:
+  non_categorical_features: ["flight", "duration", "days_left", "price", "stops"]
+  numerical_features: ["duration", "days_left", "stops"]
