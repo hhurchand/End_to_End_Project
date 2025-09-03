@@ -89,9 +89,8 @@ class YAMLLoader(FileLoader):
             FileNotFoundError: If the file doesn't exist
             ValueError: If the file format is not supported
         """
-        with open(file_path) as f:
-        file_path = Path(file_path)
         try:
+            file_path = Path(file_path)
             with open(file_path) as yaml_file:
                 return safe_load(yaml_file)
         except FileNotFoundError as e:
@@ -100,3 +99,4 @@ class YAMLLoader(FileLoader):
     def supported_formats(self) -> List[str]:
         return ['.yaml', '.yml']
 
+commit -m "add yamal file"""
