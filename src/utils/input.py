@@ -1,106 +1,62 @@
-from abc import ABC,abstractmethod
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Union,List, Dict,Any
-from src.utils.logger_file import logger
-import pandas as pd
+from typing import Any, Dict, List, Union
+
 import json
-from yaml import safe_load
- 
+import pandas as pd
+import yaml
+
+
 class FileLoader(ABC):
     @abstractmethod
-    def load_file(self,file_path:Union[str,Path])->Any:
-        """Load a file and return its contents.
- 
-        Args:
-            file_path (Union[str,Path]): Path to the file.
- 
-        Returns:
-            Any: The loaded file content
- 
-        Raises:
-            FileNotFoundError: If the file doesn't exist
-            ValueError: If the file format is not supported
-       
-        """
-        pass
- 
+    def load_file(self, file_path: Union[str, Path]) -> Any:
+        """Read a file and return its content."""
+        raise NotImplementedError
+
     @abstractmethod
     def supported_formats(self) -> List[str]:
-        """
-        Return list of file formats supported by this loader.
-       
-        Returns:
-            List of supported file extensions (e.g., ['.txt', '.csv'])
-        """
-        pass
- 
-class JSONLoader(FileLoader):
-    """Loads json file"""
-    def load_file(self, file_path: Union[str,Path]) -> Dict:
-        file_path = Path(file_path)
-        try:
-            with open(file_path,'r') as json_file:
-                return json.load(json_file)
-       
-        except FileNotFoundError as e:
-            logger.error(f"{e} : {file_path}")
- 
-    def supported_formats(self) -> List[str]:
- 
-        return ['.json']
-   
- 
+        """List of supported extensions (e.g., ['.csv'])."""
+        raise NotImplementedError
+
+
 class CSVLoader(FileLoader):
-    """Loads a csv file. Read supported_formats method to get supported formats.
- 
-    Returns:
-        Any: The loaded file content as a dataframe
- 
-    Raises:
-        FileNotFoundError: If the file doesn't exist
- 
- 
-    """
- 
-    def load_file(self, file_path) -> pd.DataFrame:
-        file_path = Path(file_path)
-        try:
-            with open(file_path) as csv_file:
-                return pd.read_csv(csv_file)
-        except FileNotFoundError as e:
-            logger.error(f"{e} : {file_path}")
-       
-   
+    """Read CSV into a pandas DataFrame."""
+
+    def load_file(self, file_path: Union[str, Path]) -> pd.DataFrame:
+        p = Path(file_path)
+        if not p.exists():
+            raise FileNotFoundError(f"CSV not found: {p}")
+        return pd.read_csv(p)
+
     def supported_formats(self) -> List[str]:
- 
-        return ['.csv']
-   
- 
+        return [".csv"]
+
+
+class JSONLoader(FileLoader):
+    """Read JSON into a dict."""
+
+    def load_file(self, file_path: Union[str, Path]) -> Dict:
+        p = Path(file_path)
+        if not p.exists():
+            raise FileNotFoundError(f"JSON not found: {p}")
+        with open(p, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    def supported_formats(self) -> List[str]:
+        return [".json"]
+
+
 class YAMLLoader(FileLoader):
- 
-    def load_file(self,file_path:Union[str,Path])-> Dict:
-        """Load a file and return its contents.
- 
-        Args:
-            file_path (Union[str,Path]): Path to the file.
- 
-        Returns:
-            Any: The loaded file content
- 
-        Raises:
-            FileNotFoundError: If the file doesn't exist
-            ValueError: If the file format is not supported
-       
-        """
- 
-        try:
-            file_path = Path(file_path)
-            with open(file_path) as yaml_file:
-                return safe_load(yaml_file)
-        except FileNotFoundError as e:
-            logger.error(f"{e} : {file_path}")
- 
- 
+    """Read YAML into a dict."""
+
+    def load_file(self, file_path: Union[str, Path]) -> Dict:
+        p = Path(file_path)
+        if not p.exists():
+            raise FileNotFoundError(f"YAML not found: {p}")
+        with open(p, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f)
+
     def supported_formats(self) -> List[str]:
- 
-        return ['.yaml','.yml']
+        return [".yaml", ".yml"]
