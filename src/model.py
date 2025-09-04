@@ -8,10 +8,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
 
-import pandas as pd
-from typing import Dict
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
 
 class Model:
 
@@ -39,7 +35,7 @@ class Model:
 
 
     def train_model(self):
-        
+
         n = self.config["model"]["n_estimators"]
         self.model = RandomForestRegressor(n_estimators=n, random_state=42)
         self.model.fit(self.X_train, self.y_train)
