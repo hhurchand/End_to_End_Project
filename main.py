@@ -1,7 +1,7 @@
 import mlflow
 from src.utils.input import csvLoader, yamlLoader
 from src.transform import DataTransformation
-from src.modeltraining import ModelTraining
+from src.model import Model
 
 # n_estimators = config["model"]["n_estimators"]
 # with mlflow.start_run():
@@ -18,6 +18,7 @@ if __name__ == "__main__":
     dataTransformObject = DataTransformation(df,config)
     dataTransformObject.transform_data_pipeline()
 
-    modelTrainingObject = ModelTraining(dataTransformObject.df_encoded,config)
-    modelTrainingObject.TrainModel()
+    modelTrainingObject = Model(dataTransformObject.df_encoded,config)
+    modelTrainingObject.train_test_split()
+    modelTrainingObject.train_model()
     modelTrainingObject.PredictPrice()
