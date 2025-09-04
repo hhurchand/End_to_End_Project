@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/6dd018ebb8a94c3b8d519c7ca18705a0/artifacts
+end_time: 1756862144360
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 6dd018ebb8a94c3b8d519c7ca18705a0
+run_name: trusting-panda-656
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756862144348
+status: 3
+tags: []
+user_id: gregspunt

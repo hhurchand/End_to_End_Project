@@ -1,2 +1,13 @@
-data
-  raw data: /Users/gregspunt/Downloads/airlines_flights_data.csv
+data:
+  raw_data: "data/raw/airlines_flights_data.csv"
+ 
+model:
+  n_estimators: 100
+
+target:
+  target_column: ['price']
+
+features:
+  non_categorical_features: ['duration','days_left','price','stops']
+  numerical_features: ['duration','days_left','stops']
+  drop_features: ['flight','index']

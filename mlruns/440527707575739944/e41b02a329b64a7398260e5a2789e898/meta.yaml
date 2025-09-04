@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/e41b02a329b64a7398260e5a2789e898/artifacts
+end_time: 1756862079349
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: e41b02a329b64a7398260e5a2789e898
+run_name: traveling-bird-576
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756862079338
+status: 3
+tags: []
+user_id: gregspunt

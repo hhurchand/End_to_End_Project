@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/34c2fed8d4cf4f669c8a1c1b909df842/artifacts
+end_time: 1756862181217
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 34c2fed8d4cf4f669c8a1c1b909df842
+run_name: bemused-elk-424
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756862181203
+status: 3
+tags: []
+user_id: gregspunt

@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/3a116058513e454f915aef92166cdeb4/artifacts
+end_time: 1756862299765
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 3a116058513e454f915aef92166cdeb4
+run_name: resilient-toad-161
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756862299749
+status: 3
+tags: []
+user_id: gregspunt

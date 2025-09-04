@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/8b2cd2cd20844ecfa0c250c1f02b77f6/artifacts
+end_time: 1756949004326
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 8b2cd2cd20844ecfa0c250c1f02b77f6
+run_name: enthused-hog-948
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756948999520
+status: 3
+tags: []
+user_id: gregspunt

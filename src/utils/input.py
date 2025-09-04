@@ -1,29 +1,53 @@
+from abc import ABC, abstractmethod
+from pathlib import Path
+from typing import Union, List, Dict, Any
+from src.utils.logger_file import logger
 import pandas as pd
-import os
+import json
+from yaml import safe_load
 
-
-class CSVLoader:
-    def __init__(self):
+class FileLoader(ABC):
+    @abstractmethod
+    def load_file(self, file_path: Union[str, Path]) -> Any:
+        """Load a file and return its contents."""
         pass
 
-    def supported_formats(self):
-        """Override this in subclasses if you want more formats."""
-        return ["csv"]
+    @abstractmethod
+    def supported_formats(self) -> List[str]:
+        """Return list of file formats supported by this loader."""
+        pass
 
-    def load_file(self, path: str):
-        """Loads a CSV file into a Pandas DataFrame."""
+    def _resolve_path(self, file_path: Union[str, Path]) -> Path:
+        """Resolve the path and check if it exists."""
+        path = Path(file_path).resolve()
+        if not path.exists():
+            msg = f"File not found: {path}"
+            logger.error(msg)
+            raise FileNotFoundError(msg)
+        return path
 
-        # check extension
-        ext = os.path.splitext(path)[1].lower().replace(".", "")
-        if ext not in self.supported_formats():
-            raise ValueError(f"Unsupported file format: {ext}. Supported: {self.supported_formats()}")
+class JSONLoader(FileLoader):
+    def load_file(self, file_path: Union[str, Path]) -> Dict:
+        path = self._resolve_path(file_path)
+        with open(path, 'r') as f:
+            return json.load(f)
 
-        # check file existence
-        if not os.path.exists(path):
-            raise FileNotFoundError(f"File not found: {path}")
+    def supported_formats(self) -> List[str]:
+        return ['.json']
 
-        # load CSV with pandas
-        df = pd.read_csv(path)
+class CSVLoader(FileLoader):
+    def load_file(self, file_path: Union[str, Path]) -> pd.DataFrame:
+        path = self._resolve_path(file_path)
+        return pd.read_csv(path)
 
-        # always return DataFrame
-        return df
+    def supported_formats(self) -> List[str]:
+        return ['.csv']
+
+class YAMLLoader(FileLoader):
+    def load_file(self, file_path: Union[str, Path]) -> Dict:
+        path = self._resolve_path(file_path)
+        with open(path) as f:
+            return safe_load(f)
+
+    def supported_formats(self) -> List[str]:
+        return ['.yaml', '.yml']

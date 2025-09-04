@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/c5efd7a3f70e4f6e99f53754fd34485e/artifacts
+end_time: 1756947161431
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: c5efd7a3f70e4f6e99f53754fd34485e
+run_name: adorable-panda-948
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756947161426
+status: 4
+tags: []
+user_id: gregspunt

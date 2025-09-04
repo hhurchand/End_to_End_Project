@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/c3c9b5bc253d4e719d0e31ebdd725c41/artifacts
+end_time: 1756949047410
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: c3c9b5bc253d4e719d0e31ebdd725c41
+run_name: skillful-zebra-354
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756949042850
+status: 3
+tags: []
+user_id: gregspunt

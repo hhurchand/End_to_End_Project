@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/85e8154b96f849bd868d02729f49e1d8/artifacts
+end_time: 1756863903572
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 85e8154b96f849bd868d02729f49e1d8
+run_name: agreeable-midge-447
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756863903553
+status: 3
+tags: []
+user_id: gregspunt

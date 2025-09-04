@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/cab162d246104203918c45e6a75798aa/artifacts
+end_time: 1756948958800
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: cab162d246104203918c45e6a75798aa
+run_name: luxuriant-calf-892
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756948956722
+status: 4
+tags: []
+user_id: gregspunt

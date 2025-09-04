@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/3c926871d7e141f2bb7dc8f26a0d9fc7/artifacts
+end_time: 1756947012172
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 3c926871d7e141f2bb7dc8f26a0d9fc7
+run_name: unequaled-frog-490
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756947012167
+status: 3
+tags: []
+user_id: gregspunt

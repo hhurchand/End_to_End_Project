@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/9442f03310b540ff9ae0e045cd3dc256/artifacts
+end_time: 1756946986185
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: 9442f03310b540ff9ae0e045cd3dc256
+run_name: crawling-hawk-493
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756946986180
+status: 3
+tags: []
+user_id: gregspunt

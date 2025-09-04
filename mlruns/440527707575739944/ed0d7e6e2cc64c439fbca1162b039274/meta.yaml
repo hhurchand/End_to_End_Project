@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/gregspunt/Downloads/End_to_End_Project-main/End_to_End_Project/mlruns/440527707575739944/ed0d7e6e2cc64c439fbca1162b039274/artifacts
+end_time: 1756862112267
+entry_point_name: ''
+experiment_id: '440527707575739944'
+lifecycle_stage: active
+run_id: ed0d7e6e2cc64c439fbca1162b039274
+run_name: beautiful-mouse-425
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1756862112252
+status: 3
+tags: []
+user_id: gregspunt
