@@ -8,7 +8,7 @@ class Model():
         
     def __init__(self,df:pd.DataFrame):
         self.df = df.copy()
-
+        
     def train_test_split(self) -> Tuple:
         X = self.df.drop(["price"],axis=1)
         y = self.df["price"]

@@ -3,8 +3,15 @@ data:
 
 
 model:
-  n_estimators: 100
-  target: ["price"]
+  n_estimators: 100 
+  target: ["price"] 
+
+  RandomForestRegressor:
+    n_estimators: 100
+    max_depth: 10
+
+  LinearRegression:
+    normalize: False
 
 
 features:
@@ -12,6 +19,13 @@ features:
   numerical_features: ['duration','days_left','stops']
   drop_column: ["flight","index"]
 
+prep:
+  test_size: 0.3
+  random_state: 42
+  target_col: "price"
 
-test_size: 0.3
-random_state: 42
+  ml_models_1: RandomForestRegressor
+
+  
+
+
