@@ -1,24 +1,18 @@
 from src.utils.input import CSVLoader, YAMLLoader
-from src.transform import DataTransformation
+from src.transform_data import DataTransformation  # <-- make sure this file exists
 
-import mlflow
+if __name__ == "__main__":
+    # 1) Load config
+    config = YAMLLoader().load_file("params.yaml")
 
-config = YAMLLoader().load_file("params.yaml")
+    # 2) Load CSV
+    input_filepath = config["data"]["raw_data"]
+    df = CSVLoader().load_file(file_path=input_filepath)
 
-n_estimators = config["model"]["n_estimators"]
-input_filepath = config["data"]["raw_data"]
+    # 3) Run transformation pipeline
+    transformer = DataTransformation(df, config)
+    X, y, pipeline = transformer.transformation_pipeline()
 
-with mlflow.start_run():
-    mlflow.log_param("n_estimators", n_estimators)
-
-# Load raw data
-df = CSVLoader().load_file(file_path=input_filepath)
-
-# Initialize transformation
-data_transform_obj = DataTransformation(config)
-
-# Apply transformation
-X, y = data_transform_obj.fit_transform(df)
-
-print("Transformed features shape:", X.shape)
-print("Target shape:", y.shape)
+    print("X shape:", X.shape)
+    print("y shape:", y.shape if y is not None else None)
+    print("Done.")
