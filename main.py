@@ -1,11 +1,15 @@
 from src.utils.input import CSVLoader, YAMLLoader
 from src.transform import DataTransformation
+
+from train import train_model
+from typing import Dict, Tuple
+
 import mlflow
 import pandas as pd
 
 
 if __name__ == "__main__":
-
+    
     # LOAD CONFIG
     the_config = YAMLLoader().load_file("params.yaml")
     the_input_path = the_config["data"]["raw_data"]
@@ -24,6 +28,22 @@ if __name__ == "__main__":
     # THE RESULTS
     print(the_encoded_dataframe.head(10))
     print(the_encoded_dataframe.shape)
+
+
+    # TRAIN THE MODEL
+   # train_model(the_encoded_dataframe, the_config)
+
+
+
+
+
+    # QUIZ
+    from src.model import Model
+    
+    the_model = Model(the_encoded_dataframe, the_config)
+    the_model.train_test_split()
+    the_model.train_model()
+
 
 
     # n_estimators = the_config["model"]["n_estimators"]
