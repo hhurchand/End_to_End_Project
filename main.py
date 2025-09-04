@@ -3,14 +3,9 @@ from src.utils.input import CSVLoader, YAMLLoader
 from src.transform import DataTransformation
 from src.model import Model
 
-BASE_DIR = Path(__file__).parent
-
-csv_path = BASE_DIR / "data" /  "airlines_flights_data.csv"
-yaml_path = BASE_DIR / "params.yaml"
-
 def main():
-    config = YAMLLoader().load_file(yaml_path)
-    df = CSVLoader().load_file(csv_path)
+    config = YAMLLoader().load_file("params.yaml")
+    df = CSVLoader().load_file("data/airlines_flights_data.csv")
     transformer = DataTransformation(df, config)
     df_transformed = transformer.transformation_pipeline()
     target_column = config['target']['target_column'][0]
