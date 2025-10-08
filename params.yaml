@@ -1,0 +1,9 @@
+data:
+  raw_data: "data/raw/enron_spam_data.csv"
+
+  cleaned_y: "data/cleaned/cleaned_y.csv"
+  vectorizer: "data/cleaned/vectorizer.joblib"
+  X_sparse: "data/cleaned/X_sparse.npz"
+
+settings:
+  clean_data: False
