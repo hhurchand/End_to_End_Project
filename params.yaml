@@ -5,5 +5,11 @@ data:
   vectorizer: "data/cleaned/vectorizer.joblib"
   X_sparse: "data/cleaned/X_sparse.npz"
 
+  pickle_file: "data/model/model.pkl"
+
 settings:
   clean_data: False
+  train_logistic_regression: True
+  train_random_forest: False
+  train_naive_bayes: False
+  save_pickle_file: True

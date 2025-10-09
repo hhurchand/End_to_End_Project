@@ -24,12 +24,37 @@ if __name__ == "__main__":
 
         X, y = cleanedLoader.load_cleaned_data()
 
+
+
+    train_logistic_regression = config["settings"]["train_logistic_regression"]
+    train_random_forest = config["settings"]["train_random_forest"]
+    train_naive_bayes = config["settings"]["train_naive_bayes"]
+
+    save_pickle_file = config["settings"]["save_pickle_file"]
+
     model = Model(config, X, y)
     model.train_test_split()
-    model.train_logistic_regression()
-    model.predict()
-    model.evaluate()
 
+    if train_logistic_regression:
+        model.train_logistic_regression()
+        model.predict()
+        model.evaluate()
+
+
+    if train_random_forest:
+        model.train_random_forest()
+        model.predict()
+        model.evaluate()
+
+
+    if train_naive_bayes:
+        model.train_naive_bayes()
+        model.predict()
+        model.evaluate()
+    
+
+    if save_pickle_file:
+        model.save_pickle_file()
 
     
 
