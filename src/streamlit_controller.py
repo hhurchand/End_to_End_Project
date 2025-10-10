@@ -1,19 +1,23 @@
 import pickle
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
+from src.utils.input import csvLoader, yamlLoader
 
 import joblib
 
 class StreamlitController:
 
     def __init__(self):
-          pass  
-     
+          self.get_config()  
+    
+    def get_config(self):
+        self.config = yamlLoader().load_file("params.yaml")
+
     def SetEmailContent(self, emailContent):
         self.emailContent = emailContent
 
     def load_model(self):
-        model_location = 'data/model/model.pkl'
+        model_location = self.config["data"]["pickle_file"]
         with open(model_location, 'rb') as file:
             self.model = pickle.load(file)
 
@@ -34,12 +38,11 @@ class StreamlitController:
 
     def tokenize_text(self):
         print("Tokenize")
-        vectorizer_filepath = "data/cleaned/vectorizer.joblib"
+        vectorizer_filepath = self.config["data"]["vectorizer"]
         self.vectorizer = joblib.load(vectorizer_filepath)
         # Convert the text to a bag-of-words representation
         corpus = [self.transformed_content]
         self.transformed_content = self.vectorizer.transform(corpus)
-        print(self.transformed_content)
 
 
     def transform_email_content(self):
