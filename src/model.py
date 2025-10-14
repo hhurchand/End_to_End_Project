@@ -12,14 +12,29 @@ import pickle
 
 class Model:
 
+    """
+    Initializes Model Object
+
+    Parameters
+    -----------
+    config: A dictionary of modifiable variables to be referenced
+    X: The stemmed, tokenized email contents
+    y: The Spam/Ham field converted to a boolean value (1/0)
+    """
     def __init__(self, config, X, y):
             self.config = config
             self.X = X
             self.y = y
 
+    """
+    Split the X and y values to be used as training and testing data for the model
+    """
     def train_test_split(self):
             self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.3, random_state=42)
 
+    """
+    Use the training and testing data to train a logistic regression model
+    """
     def train_logistic_regression(self):
         print("Train logistic regression")
         # Start an MLflow run
@@ -34,6 +49,9 @@ class Model:
                 registered_model_name="spam-ham-logistic-regression-model", # Name for the Model Registry
             )
 
+    """
+    Use the training and testing data to train a Random Forest model
+    """
     def train_random_forest(self):
         print("Train random forest")
         with mlflow.start_run():
@@ -46,6 +64,9 @@ class Model:
                 registered_model_name="spam-ham-random-forest-model", # Name for the Model Registry
             )
 
+    """
+    Use the training and testing data to train a Naive Bayes model
+    """
     def train_naive_bayes(self):
         print("Train Naive Bayes")
         with mlflow.start_run():
@@ -58,9 +79,15 @@ class Model:
                 registered_model_name="spam-ham-naive-bayes-model", # Name for the Model Registry
             )
 
+    """
+    Test the trained model against the X_test testing data and store the result in y_pred
+    """
     def predict(self):
         self.y_pred = self.classifier.predict(self.X_test)
 
+    """
+    Evaluate the results of the y_pred predictions against the actual y_test data
+    """
     def evaluate(self):
         with mlflow.start_run():
             
@@ -79,6 +106,9 @@ class Model:
             conf_matrix = confusion_matrix(self.y_test, self.y_pred)
             print(conf_matrix)
 
+    """
+    Save the trained model to a pickle file to be used in the streamlit application
+    """
     def save_pickle_file(self):
         print("Save model to pickle file")
 
