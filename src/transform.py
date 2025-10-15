@@ -6,6 +6,9 @@ import pandas as pd
 
 from scipy import sparse
 import joblib
+
+from nltk.corpus import stopwords
+import nltk
 class DataTransformation:
     """
     Initializes DataTransformation Object
@@ -57,6 +60,9 @@ class DataTransformation:
         print("Take Words Stem")
         stemmer = PorterStemmer()
 
+        # Get English stop words
+        stop_words = set(stopwords.words('english'))
+
         wordsLibrary = []
         for i in range(len(self.X)):
             text = self.X["Message"].iloc[i].replace("\n"," ")
@@ -67,7 +73,7 @@ class DataTransformation:
             wordsInTextCleaned = []
             for j in range(len(wordsInText)):
                 word = wordsInText[j]
-                if word.isalpha():
+                if word.isalpha() and word not in stop_words:
                     wordsInTextCleaned.append(word)
             text = [stemmer.stem(word) for word in wordsInTextCleaned]
             text = " ".join(text)

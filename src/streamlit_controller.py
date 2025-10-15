@@ -1,18 +1,25 @@
 import pickle
 from nltk.stem.porter import PorterStemmer
+from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import CountVectorizer
 from src.utils.input import csvLoader, yamlLoader
 
 import joblib
+import nltk
+
+
 
 class StreamlitController:
+
+    
 
     """
     Initialize the StreamlitController object
     Load in the external parameters
     """
     def __init__(self):
-          self.get_config()  
+        self.get_config()  
+        
     
     """
     Use the yamlLoader utility to fetch the external parameters stored in the params.yaml file
@@ -45,14 +52,23 @@ class StreamlitController:
     text: The unedited text found in the email
     """
     def take_words_stem(self, text):
+
+        # Download NLTK stop words if not already downloaded
+        try:
+            stopwords.words('english')
+        except LookupError:
+            nltk.download('stopwords')
+            
         stemmer = PorterStemmer()
+        stop_words = set(stopwords.words('english'))
+
         text = text.lower()
 
         wordsInText = text.split(" ")
         wordsInTextCleaned = []
         for j in range(len(wordsInText)):
             word = wordsInText[j]
-            if word.isalpha():
+            if word.isalpha() and word not in stop_words:
                 wordsInTextCleaned.append(word)
         text = [stemmer.stem(word) for word in wordsInTextCleaned]
         text = " ".join(text)
