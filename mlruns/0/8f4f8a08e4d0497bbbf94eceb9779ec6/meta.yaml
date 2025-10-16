@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Users/desk/Documents/Artificial%20Intelligence%20Specialist%20-%20LEA.E3/420-PIA-1D%20-%20Integration%20project/integrated_project_spam/mlruns/0/8f4f8a08e4d0497bbbf94eceb9779ec6/artifacts
+end_time: 1760474200986
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8f4f8a08e4d0497bbbf94eceb9779ec6
+run_name: MultinomialNB_evaluation
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760474200835
+status: 3
+tags: []
+user_id: desk

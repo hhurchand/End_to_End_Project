@@ -1,0 +1,22 @@
+artifact_path: file:///D:/Users/desk/Documents/Artificial%20Intelligence%20Specialist%20-%20LEA.E3/420-PIA-1D%20-%20Integration%20project/integrated_project_spam/mlruns/0/models/m-34b86a622d4a498e9660683d4e6223c3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.10
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.4.0
+model_id: m-34b86a622d4a498e9660683d4e6223c3
+model_size_bytes: 9830318
+model_uuid: m-34b86a622d4a498e9660683d4e6223c3
+prompts: null
+run_id: 5ff7fe737be94c399e0634bc2716db7c
+utc_time_created: '2025-10-14 20:36:22.255168'

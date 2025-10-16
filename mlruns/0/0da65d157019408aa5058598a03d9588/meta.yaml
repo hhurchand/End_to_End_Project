@@ -1,0 +1,14 @@
+artifact_uri: file:///D:/Users/desk/Documents/Artificial%20Intelligence%20Specialist%20-%20LEA.E3/420-PIA-1D%20-%20Integration%20project/integrated_project_spam/mlruns/0/0da65d157019408aa5058598a03d9588/artifacts
+end_time: 1760568667672
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0da65d157019408aa5058598a03d9588
+run_name: RandomForestClassifier_training
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760549651183
+status: 4
+tags: []
+user_id: desk

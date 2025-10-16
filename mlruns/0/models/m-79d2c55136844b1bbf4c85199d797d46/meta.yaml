@@ -1,0 +1,10 @@
+artifact_location: file:///D:/Users/desk/Documents/Artificial%20Intelligence%20Specialist%20-%20LEA.E3/420-PIA-1D%20-%20Integration%20project/integrated_project_spam/mlruns/0/models/m-79d2c55136844b1bbf4c85199d797d46/artifacts
+creation_timestamp: 1760640539650
+experiment_id: '0'
+last_updated_timestamp: 1760640545321
+model_id: m-79d2c55136844b1bbf4c85199d797d46
+model_type: null
+name: MultinomialNB
+source_run_id: 135ba1fe5c5d4cd88319e27bbc8d96a1
+status: 2
+status_message: null

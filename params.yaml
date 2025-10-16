@@ -1,0 +1,27 @@
+data:
+  Spam_dataset:  data/raw/Spam_1.xlsx
+
+transform:
+  features:  "Message"
+  encode:  "label"
+  max_feature:  9000
+
+model:
+  test_size:  0.2
+  random_state:  42
+  models:  [RandomForestClassifier,  MultinomialNB,  LogisticRegression]
+  save_path:  integrated_project_spam/models
+
+param_grids:
+  RandomForestClassifier:
+    n_estimators: [100, 200]
+    max_depth: [null, 10, 20]
+    min_samples_split: [2, 5]
+
+  MultinomialNB:
+    alpha: [0.5, 1.0, 1.5]
+
+  LogisticRegression:
+    C: [0.1, 1.0, 10.0]
+    solver: ["lbfgs", "liblinear"]
+
