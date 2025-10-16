@@ -26,16 +26,18 @@ class Model:
             self.X = X
             self.y = y
 
-    """
-    Split the X and y values to be used as training and testing data for the model
-    """
+    
     def train_test_split(self):
-            self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.3, random_state=42)
+        """
+        Split the X and y values to be used as training and testing data for the model
+        """
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.3, random_state=42)
 
-    """
-    Use the training and testing data to train a logistic regression model
-    """
+    
     def train_logistic_regression(self):
+        """
+        Use the training and testing data to train a logistic regression model
+        """
         print("Train logistic regression")
         # Start an MLflow run
         with mlflow.start_run():
@@ -49,10 +51,11 @@ class Model:
                 registered_model_name="spam-ham-logistic-regression-model", # Name for the Model Registry
             )
 
-    """
-    Use the training and testing data to train a Random Forest model
-    """
+    
     def train_random_forest(self):
+        """
+        Use the training and testing data to train a Random Forest model
+        """
         print("Train random forest")
         with mlflow.start_run():
             self.classifier = RandomForestClassifier(n_estimators=100, random_state=42)
@@ -64,10 +67,11 @@ class Model:
                 registered_model_name="spam-ham-random-forest-model", # Name for the Model Registry
             )
 
-    """
-    Use the training and testing data to train a Naive Bayes model
-    """
+    
     def train_naive_bayes(self):
+        """
+        Use the training and testing data to train a Naive Bayes model
+        """
         print("Train Naive Bayes")
         with mlflow.start_run():
             self.classifier = MultinomialNB()
@@ -79,16 +83,18 @@ class Model:
                 registered_model_name="spam-ham-naive-bayes-model", # Name for the Model Registry
             )
 
-    """
-    Test the trained model against the X_test testing data and store the result in y_pred
-    """
+    
     def predict(self):
+        """
+        Test the trained model against the X_test testing data and store the result in y_pred
+        """
         self.y_pred = self.classifier.predict(self.X_test)
 
-    """
-    Evaluate the results of the y_pred predictions against the actual y_test data
-    """
+    
     def evaluate(self):
+        """
+        Evaluate the results of the y_pred predictions against the actual y_test data
+        """
         with mlflow.start_run():
             
             # Evaluate the accuracy of the classifier
@@ -106,10 +112,11 @@ class Model:
             conf_matrix = confusion_matrix(self.y_test, self.y_pred)
             print(conf_matrix)
 
-    """
-    Save the trained model to a pickle file to be used in the streamlit application
-    """
+    
     def save_pickle_file(self):
+        """
+        Save the trained model to a pickle file to be used in the streamlit application
+        """
         print("Save model to pickle file")
 
         filename = self.config["data"]["pickle_file"]
