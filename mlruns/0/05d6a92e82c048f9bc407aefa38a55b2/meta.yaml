@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/05d6a92e82c048f9bc407aefa38a55b2/artifacts
+end_time: 1759967827070
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 05d6a92e82c048f9bc407aefa38a55b2
+run_name: NaiveBayes
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759967822140
+status: 3
+tags: []
+user_id: Owner

@@ -1,0 +1,8 @@
+
+MODEL PERFORMANCE SUMMARY
+
+Model       Accuracy  Precision   Recall   F1-Score
+-------------------------------------------------------
+LOGREG        92.72%     92.86%   92.56%     92.71%
+NB            92.72%     92.86%   92.56%     92.71%
+RF            92.70%     92.88%   92.50%     92.69%

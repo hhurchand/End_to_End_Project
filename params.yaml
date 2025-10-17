@@ -1,0 +1,30 @@
+# Configuration for the Email Spam Classifier project
+dataset:
+  path: data/spam.csv
+  text_columns: ["text", "message", "email", "content", "body", "EmailText", "Email", "sms_text"]
+  label_columns: ["label", "spam", "target", "class", "Category"]
+  positive_labels: ["spam", 1, "1", "Spam", "SPAM"]
+  negative_labels: ["ham", 0, "0", "Ham", "HAM"]
+  test_size: 0.2
+  random_state: 42
+
+preprocess:
+  lowercase: true
+  remove_urls: true
+  remove_emails: true
+  remove_numbers: true
+  remove_punctuation: true
+  strip_whitespace: true
+  min_df: 2
+  max_df: 0.95
+  ngram_range: [1, 2]   # use unigrams + bigrams
+
+semi_supervised:
+  unlabeled_fraction: 0.6  # fraction of training labels to hide for self-training
+
+training:
+  supervised_models: ["logreg", "nb"]
+  use_class_weight: true
+
+paths:
+  reports_dir: reports/plots
