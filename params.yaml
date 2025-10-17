@@ -1,0 +1,25 @@
+data:
+  raw_data: "data/raw/spam_Emails_data.csv"
+  processed_dir: "data/processed"
+  test_size: 0.2
+  random_state: 42
+
+preprocessing:
+  lowercase: true
+  remove_punctuation: false
+  remove_stopwords: false
+
+models:
+  vectorizer: "tfidf"
+  max_features: 1000
+  ngram_range: [1, 2]
+  stop_words: "english"
+  logistic_regression:
+    max_iter: 1000
+    random_state: 42
+  random_forest:
+    n_estimators: 100
+    random_state: 42
+  multinomial_nb:
+    alpha: 1.0
+
