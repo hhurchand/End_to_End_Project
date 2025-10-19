@@ -1,0 +1,21 @@
+# DATA
+raw_path: data/raw/EMAILS.csv
+clean_path: data/processed/CLEAN_EMAILS.csv
+
+# SPLIT
+test_size: 0.2
+random_state: 42
+stratify: true
+
+# VECTORIZER
+ngram_low: 1
+ngram_high: 1
+min_df: 1   # keep it simple like class
+
+# MODELS (defaults)
+linear_svc:
+  C: 1.0
+multinomial_nb:
+  alpha: 1.0
+logreg:
+  max_iter: 1000

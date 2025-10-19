@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/14384/Desktop/DataScience/githubproject/integration_project/Classifier/mlruns/903971197221620925/2c8b78d5a49f4cc393603c68fdc26818/artifacts
+end_time: 1760050155358
+entry_point_name: ''
+experiment_id: '903971197221620925'
+lifecycle_stage: active
+run_id: 2c8b78d5a49f4cc393603c68fdc26818
+run_name: tune_LinearSVC
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760050154790
+status: 3
+tags: []
+user_id: '14384'

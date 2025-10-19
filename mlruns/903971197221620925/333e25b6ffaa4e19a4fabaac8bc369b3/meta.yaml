@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/14384/Desktop/DataScience/githubproject/integration_project/Classifier/mlruns/903971197221620925/333e25b6ffaa4e19a4fabaac8bc369b3/artifacts
+end_time: 1760050159783
+entry_point_name: ''
+experiment_id: '903971197221620925'
+lifecycle_stage: active
+run_id: 333e25b6ffaa4e19a4fabaac8bc369b3
+run_name: tune_LogReg
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760050155494
+status: 3
+tags: []
+user_id: '14384'

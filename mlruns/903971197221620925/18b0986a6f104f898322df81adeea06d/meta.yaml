@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/14384/Desktop/DataScience/githubproject/integration_project/Classifier/mlruns/903971197221620925/18b0986a6f104f898322df81adeea06d/artifacts
+end_time: 1759972638836
+entry_point_name: ''
+experiment_id: '903971197221620925'
+lifecycle_stage: active
+run_id: 18b0986a6f104f898322df81adeea06d
+run_name: tune_MultinomialNB
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1759972638736
+status: 3
+tags: []
+user_id: '14384'
