@@ -1,0 +1,74 @@
+# PROJECT PARAMETERS : SPAM VS HAM CLASSIFICATION
+
+
+# outputs/original CONTAINS RESULTS FROM THE ORIGINAL DATASET EMAILS.csv
+# WHICH GAVE US DECENT ACCURACY BUT A VERY LOW F1 SCORE.
+
+
+# TESTING AN INCREASED SPAM COUNT TO IMPROVE F1 SCORE.
+# THE ENHANCED DATASET USES data/final/MERGE_DATA.csv
+# WHICH HAS BEEN TRANSFORMED BEFORE COMBINING THE DATASETS.
+# RESULTS ARE SAVED INSIDE outputs/<MODEL NAME>.
+
+
+# THE PATHS
+data:
+  # RAW DATA | ORIGINAL INPUT (KEPT FOR REFERENCE)
+  # raw: "data/raw/EMAILS.csv"
+
+
+  # CLEAN DATA | MERGED AND CLEANED FINAL DATASET
+  clean: "data/final/MERGE_DATA.csv"
+
+
+  # OUTPUT FOLDER | UPDATED AUTOMATICALLY IN main.py PER MODEL
+  outputs: "outputs/linear"
+
+
+# MODEL SETTINGS | ALL MODELS : BAYES, LOGISTIC, LINEAR WILL BE TRAINED SEQUENTIALLY IN main.py
+model:
+  random_state: 42
+
+# HYPERPARAMETERS USED BY the_model FUNCTIONS IN src/model_*.py
+models:
+  # NAIVE BAYES
+  bayes:
+    alpha: 1.0
+
+  # LOGISTIC REGRESSION
+  logistic:
+    max_iter: 1000
+    random_state: 42
+    class_weight: "balanced"
+
+  # LINEAR SVM | SGDClassifier
+  linear:
+    loss: "hinge"
+    max_iter: 1000
+    tol: 0.001
+    random_state: 42
+    class_weight: "balanced"
+
+# COLUMNS USED IN THE DATASET
+text: "email"
+label: "label"
+
+# TRAIN - TEST SPLIT SETTINGS
+split:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+# DATA CLEANING SETTINGS USED IN transform.py
+clean:
+  uppercase: true
+  remove_whitespaces: true
+  remove_duplicates: true
+  placeholders: ["na", "n/a", "null", "none", ""]
+
+# TF-IDF | VECTORIZER SETTINGS
+tfidf:
+  unigram_min: 1
+  unigram_max: 2
+  min_df: 2
+  max_df: 0.9

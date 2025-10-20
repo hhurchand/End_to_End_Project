@@ -1,0 +1,30 @@
+# BYTE-CODE
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ENVIRONMENTS
+.env
+.venv/
+venv/
+emails_env/
+
+# DATA
+data/
+
+# MLFLOW
+mlruns/
+
+# LOGS
+logs/
+
+# OUTPUTS
+outputs/
+
+# DOCS
+docs/_build/
+
+# SYSTEM / IDE
+.DS_Store
+.ipynb_checkpoints/
+.vscode/

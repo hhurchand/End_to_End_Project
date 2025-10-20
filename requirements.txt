@@ -1,0 +1,21 @@
+# LIBRARIES
+pandas
+numpy
+scikit-learn
+mlflow
+streamlit
+sphinx
+sphinx-rtd-theme
+
+
+# NLP | TEXT PROCESSING
+nltk
+
+# VISUALIZATION
+matplotlib
+
+# LOG & UTILS
+PyYAML
+loguru
+
+

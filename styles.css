@@ -1,0 +1,44 @@
+/* BASE */
+body { background: #fffffff4; }
+
+/* LIGHT GREY SIDEBAR */
+[data-testid="stSidebar"] { background-color: #f6f6f6a8 !important; }
+.browser-dots { display:flex; gap:8px; align-items:center; padding:12px 8px 6px; }
+.dot { width:12px; height:12px; border-radius:50%; display:inline-block; }
+.dot.red{background:#ff0000;} .dot.yellow{background:#f2ff00f0;} .dot.green{background:#44f992;}
+
+/* TITLE */
+.title-center {
+  text-align:center;
+  font-weight:800;
+  font-size:2.2rem;
+  color:#0F172A;
+  margin:0 0 18px;}
+
+/* GRADIENT BORDER */
+textarea {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, #c0ffdc, #c0ffdc, #a8fffb) border-box !important;
+  border: 18px solid transparent !important;   /* broader frame */
+  border-radius: 26px !important;
+  color: #0F172A !important;
+  font-size: 16px !important;
+  padding: 16px !important;
+  box-shadow: none !important;}
+
+/* BUTTONS */
+button[kind="primary"] {
+  background:#8fffd4 !important;
+  color:#0F172A !important;
+  border:none !important;
+  border-radius:12px !important;
+  font-weight:600 !important;}
+
+  button[kind="secondary"] {
+  border-radius:12px !important;
+  font-weight:600 !important;}
+
+/* ALERTS AND PROGRESS */
+.stAlert { border-radius:12px !important; }
+.stProgress > div > div { background-color:#00e6a0 !important; }
