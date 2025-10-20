@@ -1,14 +1,10 @@
-# app/streamlit_app.py
 import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
-# --- Page Config ---
 st.set_page_config(page_title="Spam or Ham Checker", page_icon="📩", layout="centered")
-
-# --- Custom CSS ---
-st.markdown("""
+st.markdown("""""
     <style>
         .main-title {
             text-align: center;
@@ -55,20 +51,17 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- Load CSV ---
 csv_path = "data/raw/spam_Emails_data.csv"
 df = pd.read_csv(csv_path)
 df['text'] = df['text'].fillna("").str.strip()
 df['label'] = df['label'].str.lower()
 
-# --- Train Simple Model ---
 vectorizer = TfidfVectorizer(stop_words="english")
 X = vectorizer.fit_transform(df["text"])
 y = df["label"]
 model = MultinomialNB()
 model.fit(X, y)
 
-# --- UI ---
 st.markdown("<div class='main-title'>📩 Spam or Ham Checker</div>", unsafe_allow_html=True)
 st.markdown("<div class='subtext'>Type a message below to check if it’s in the dataset or let our model predict it!</div>", unsafe_allow_html=True)
 
@@ -86,7 +79,6 @@ if st.button("🚀 Check Message"):
             else:
                 st.markdown("<div class='result-box spam shake'>🚫 SPAM — Suspicious message detected!</div>", unsafe_allow_html=True)
         else:
-            # --- Predict using model ---
             X_input = vectorizer.transform([input_text])
             prediction = model.predict(X_input)[0]
             if prediction == "ham":
