@@ -1,6 +1,5 @@
-# src/pipeline.py
 import pandas as pd
-import joblib
+import pickle
 import mlflow
 import mlflow.sklearn
 from sklearn.linear_model import LogisticRegression
@@ -29,7 +28,7 @@ def train_and_log_model(name, model, X_train, y_train, X_test, y_test):
         print(f"Accuracy: {acc:.4f}")
         print(classification_report(y_test, y_pred))
 
-        joblib.dump(model, f"models/{name}.joblib")
+        pickle.dump(model, f"models/{name}.pickle")
         mlflow.sklearn.log_model(model, name)
 
 def main():
