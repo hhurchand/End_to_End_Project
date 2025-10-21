@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Email Spam or Ham Checker &#8212; Email Spam Verifier 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=f2a433a1"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="src" href="api/modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="email-spam-or-ham-checker">
+<h1>Email Spam or Ham Checker<a class="headerlink" href="#email-spam-or-ham-checker" title="Link to this heading">¶</a></h1>
+<p>A complete end-to-end machine learning pipeline by <strong>H.Patel</strong> that detects whether an email is <strong>Spam</strong> or <strong>Ham</strong> using TF-IDF features and three classic ML algorithms.
+This documentation was generated automatically with Sphinx and includes data processing, model training, and evaluation details.</p>
+<p>—</p>
+<section id="project-overview">
+<h2>📂 Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading">¶</a></h2>
+<p><strong>Project Name:</strong> Email Spam or Ham Checker
+<strong>Author:</strong> H.Patel
+<strong>Version:</strong> 1.0
+<strong>Environment:</strong> PFvenv (Python 3.10+)</p>
+<p>This project performs:
+1. Data ingestion and cleaning
+2. TF-IDF feature extraction
+3. Model training (Logistic Regression, Linear SVM, Random Forest)
+4. MLflow experiment tracking
+5. Model evaluation and storage
+6. Interactive Streamlit App for predictions</p>
+<p>—</p>
+</section>
+<section id="data-description">
+<h2>📊 Data Description<a class="headerlink" href="#data-description" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Dataset 1 → <code class="docutils literal notranslate"><span class="pre">data/combined_dataset.csv</span></code></p></li>
+<li><p>Dataset 2 → <code class="docutils literal notranslate"><span class="pre">data/enron_spam_data.csv</span></code></p></li>
+<li><p>Merged output → <code class="docutils literal notranslate"><span class="pre">data/merged_spam.csv</span></code></p></li>
+</ul>
+<p>The merged dataset contains thousands of email texts labeled as <em>Spam</em> (1) or <em>Ham</em> (0).
+All preprocessing removes duplicates, converts text to lowercase, and drops missing values.</p>
+<p>—</p>
+</section>
+<section id="training-workflow">
+<h2>⚙️ Training Workflow<a class="headerlink" href="#training-workflow" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Merge Datasets</strong>
+Combines <code class="docutils literal notranslate"><span class="pre">combined_dataset.csv</span></code> and <code class="docutils literal notranslate"><span class="pre">enron_spam_data.csv</span></code> → <code class="docutils literal notranslate"><span class="pre">merged_spam.csv</span></code>.</p></li>
+<li><p><strong>Configuration</strong>
+Loaded from <code class="docutils literal notranslate"><span class="pre">params.yaml</span></code> and updated dynamically during runtime.</p></li>
+<li><p><strong>TF-IDF Vectorization</strong>
+Uses unigrams and bigrams with parameters:
+- <cite>min_df=2</cite>
+- <cite>max_df=0.95</cite>
+- <cite>ngram_range=(1, 2)</cite></p></li>
+<li><p><strong>Model Training</strong>
+Trains and evaluates:
+- Logistic Regression
+- Linear SVM
+- Random Forest
+Each model runs <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and logs metrics to MLflow.</p></li>
+<li><p><strong>Model Saving</strong>
+All trained models and vectorizers are saved in the <code class="docutils literal notranslate"><span class="pre">model/</span></code> directory.</p></li>
+<li><p><strong>Prediction</strong>
+The predictor loads <code class="docutils literal notranslate"><span class="pre">vectorizer.joblib</span></code> and <code class="docutils literal notranslate"><span class="pre">*_model.joblib</span></code> to classify new emails as <strong>Spam</strong> or <strong>Ham</strong>.</p></li>
+</ol>
+<p>—</p>
+</section>
+<section id="evaluation-metrics">
+<h2>📈 Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">¶</a></h2>
+<p>Each model logs metrics via MLflow, including:</p>
+<ul class="simple">
+<li><p>Accuracy</p></li>
+<li><p>Precision</p></li>
+<li><p>Recall</p></li>
+<li><p>F1 Score</p></li>
+</ul>
+<p>A comparison report is printed after training to identify the <strong>best model by F1 score</strong>.</p>
+<p>—</p>
+</section>
+<section id="example-training-commands">
+<h2>🧠 Example: Training Commands<a class="headerlink" href="#example-training-commands" title="Link to this heading">¶</a></h2>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> C:\Users\Owner\OneDrive\Desktop\final_final_project\Project_final
+python main.py
+<span class="c1">REM trains models, merges datasets, and logs results to MLflow</span>
+
+python -m src.models.predict
+<span class="c1">REM test a single email input using a saved model</span>
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="file-structure-summary">
+<h2>💾 File Structure Summary<a class="headerlink" href="#file-structure-summary" title="Link to this heading">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FINAL_FINAL_PROJECT/
+├── PFvenv/
+├── Project_final/
+│   ├── app/
+│   │   └── streamlit_app.py
+│   ├── data/
+│   │   ├── combined_dataset.csv
+│   │   ├── enron_spam_data.csv
+│   │   └── merged_spam.csv
+│   ├── model/
+│   │   ├── rf_model.joblib
+│   │   ├── logreg_model.joblib
+│   │   ├── linearsvc_model.joblib
+│   │   └── vectorizer.joblib
+│   ├── src/
+│   │   ├── data/make_dataset.py
+│   │   ├── models/tri_model_trainer.py
+│   │   ├── models/predict.py
+│   │   └── main.py
+│   ├── params.yaml
+│   └── requirements.txt
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="how-to-view-results">
+<h2>💡 How to View Results<a class="headerlink" href="#how-to-view-results" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>After running <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span></code>, open your MLflow UI:
+.. code-block:: bat</p>
+<blockquote>
+<div><p>mlflow ui</p>
+</div></blockquote>
+</li>
+<li><p>Then visit in your browser:
+<a class="reference external" href="http://localhost:5000">http://localhost:5000</a></p>
+<p>You’ll see model runs, parameters, and metrics.</p>
+</li>
+</ol>
+<p>—</p>
+</section>
+<section id="interactive-app">
+<h2>🧩 Interactive App<a class="headerlink" href="#interactive-app" title="Link to this heading">¶</a></h2>
+<p>To run the <strong>Streamlit App</strong> (optional GUI):
+.. code-block:: bat</p>
+<blockquote>
+<div><p>cd Project_final/app
+streamlit run streamlit_app.py</p>
+</div></blockquote>
+<p>—</p>
+</section>
+<section id="api-reference">
+<h2>📚 API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Source Code Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/models.html">models package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Email Spam Verifier</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Source Code Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="api/modules.html" title="next chapter">src</a></li>
+  </ul></li>
+</ul>
+</div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, H.Patel.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.4.7</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

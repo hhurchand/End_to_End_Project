@@ -1,0 +1,16 @@
+data:
+  label_col: target
+  raw_Dataset: C:\Users\Owner\OneDrive\Desktop\final_final_project\Project_final\data\merged_spam.csv
+  text_col: text
+tfidf:
+  lowercase: true
+  max_df: 0.95
+  min_df: 2
+  ngram_range:
+  - 1
+  - 2
+  remove_punct: true
+training:
+  cv_folds: 3
+  random_state: 42
+  test_size: 0.2

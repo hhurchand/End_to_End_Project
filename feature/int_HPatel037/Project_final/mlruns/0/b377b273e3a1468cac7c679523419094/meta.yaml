@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Owner/OneDrive/Desktop/final_final_project/Project_final/mlruns/0/b377b273e3a1468cac7c679523419094/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b377b273e3a1468cac7c679523419094
+run_name: EmailSpam_TriModel_Pipeline
+run_uuid: b377b273e3a1468cac7c679523419094
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760938501886
+status: 1
+tags: []
+user_id: Owner
