@@ -1,0 +1,12 @@
+# Ignore large data and model files
+*.csv
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.npy
+*.npz
+mlruns/
+data/
+__pycache__/
+.DS_Store
