@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Owner/OneDrive/Desktop/final_final_project/Project_final/mlruns/0/ebe626c4c54848bea73ea76075035eda/artifacts
+end_time: 1761004249261
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ebe626c4c54848bea73ea76075035eda
+run_name: linearsvc
+run_uuid: ebe626c4c54848bea73ea76075035eda
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761004238955
+status: 3
+tags: []
+user_id: Owner

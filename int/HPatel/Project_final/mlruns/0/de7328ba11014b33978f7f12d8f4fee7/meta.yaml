@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Owner/OneDrive/Desktop/final_final_project/Project_final/mlruns/0/de7328ba11014b33978f7f12d8f4fee7/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: de7328ba11014b33978f7f12d8f4fee7
+run_name: rf
+run_uuid: de7328ba11014b33978f7f12d8f4fee7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760938027841
+status: 1
+tags: []
+user_id: Owner

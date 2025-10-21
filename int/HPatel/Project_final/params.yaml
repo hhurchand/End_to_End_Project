@@ -1,0 +1,14 @@
+data:
+  label_col: target
+
+tfidf:
+  lowercase: true
+  remove_punct: true
+  max_df: 0.95
+  min_df: 2
+  ngram_range: [1, 2]
+
+training:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 3

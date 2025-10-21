@@ -1,0 +1,47 @@
+/* === Custom styling for Email Spam or Ham Checker === */
+
+/* Body font + spacing */
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: #2a4d8f;
+    font-weight: 600;
+}
+
+/* Sidebar tweaks */
+.sidebar-title {
+    font-weight: bold;
+    color: #1e88e5;
+}
+
+/* Highlight links */
+a, a.reference {
+    color: #1e88e5;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* Code blocks */
+pre, code {
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    font-size: 0.95em;
+}
+
+/* Grid layout polish (for sphinx-design cards) */
+.sd-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    transition: all 0.2s ease-in-out;
+}
+.sd-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}

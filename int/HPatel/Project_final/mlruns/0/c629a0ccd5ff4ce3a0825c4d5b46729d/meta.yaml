@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Owner/OneDrive/Desktop/final_final_project/Project_final/mlruns/0/c629a0ccd5ff4ce3a0825c4d5b46729d/artifacts
+end_time: 1760945787177
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c629a0ccd5ff4ce3a0825c4d5b46729d
+run_name: logreg
+run_uuid: c629a0ccd5ff4ce3a0825c4d5b46729d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760945774108
+status: 3
+tags: []
+user_id: Owner
