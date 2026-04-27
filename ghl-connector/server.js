@@ -520,7 +520,10 @@ app.post("/get-appointment", async (req, res) => {
       || req.body;
     const args = typeof vapiArgs === "string" ? JSON.parse(vapiArgs) : vapiArgs;
 
-    let phone = (args.phone || "").replace(/\D/g, "");
+    const FR_DIGITS = {"zéro":"0","zero":"0","un":"1","une":"1","deux":"2","trois":"3","quatre":"4","cinq":"5","six":"6","sept":"7","huit":"8","neuf":"9"};
+    let phone = (args.phone || "").toLowerCase()
+      .replace(/\b(zéro|zero|un|une|deux|trois|quatre|cinq|six|sept|huit|neuf)\b/g, m => FR_DIGITS[m])
+      .replace(/\D/g, "");
     if (phone.length === 10) phone = "1" + phone;
     if (phone.length > 11)   phone = phone.slice(-11);
 
