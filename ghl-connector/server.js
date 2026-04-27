@@ -570,6 +570,7 @@ app.post("/book-appointment", async (req, res) => {
     });
 
     // Upsert contact — one call, always works for new or existing
+    let contact = null;
     const [firstName, ...rest] = (name || "Client").trim().split(" ");
     const customFields = [
       language ? { id: "58kmzQPUxUjlJcKQhlJd", value: language } : null,
@@ -585,7 +586,7 @@ app.post("/book-appointment", async (req, res) => {
       ...(address ? { address1: address } : {}),
       ...(customFields.length ? { customFields } : {}),
     });
-    const contact = upsertRes.data.contact;
+    contact = upsertRes.data.contact;
     console.log(`✅ Contact upserted: ${contact.id} (+${Date.now()-t0}ms)`);
 
     // Book — GHL will reject if slot is unavailable
@@ -606,7 +607,26 @@ app.post("/book-appointment", async (req, res) => {
     return res.json({ result: `BOOKING_SUCCESS. Appointment confirmed for ${bookedTime}. Tell the caller their appointment is booked for ${bookedTime}. Then call log_caller_info with booked: true. Then end the call. Do NOT call book_appointment again.` });
 
   } catch (err) {
+    const errMsg = err.response?.data?.message || err.message || "";
     console.error("BOOK APPOINTMENT ERROR:", err.response?.data || err.message);
+
+    // If slot is "unavailable" AND we already have the contact, check if they
+    // already have an upcoming appointment (means previous attempt booked it but
+    // VAPI never received the BOOKING_SUCCESS response).
+    if (contact && (errMsg.toLowerCase().includes("no longer available") || errMsg.toLowerCase().includes("slot"))) {
+      try {
+        const existing = await getUpcomingAppointment(contact.id, "client1");
+        if (existing) {
+          const bookedTime = formatDateTime(existing.startTime);
+          console.log(`[book-appt] Slot unavailable but contact already has appt at ${bookedTime} — ALREADY_CONFIRMED`);
+          if (callId) bookedCallIds.add(callId);
+          return res.json({ result: `BOOKING_ALREADY_CONFIRMED. The appointment is already booked for ${bookedTime}. Tell the caller their appointment is confirmed for ${bookedTime}. Call log_caller_info with booked: true, then end the call.` });
+        }
+      } catch (checkErr) {
+        console.error("[book-appt] Check existing appt error:", checkErr.message);
+      }
+    }
+
     return res.json({ result: "BOOKING_FAILED_SLOT_UNAVAILABLE. That time slot is not available. Ask the caller for a different date or time and try again." });
   }
 });
