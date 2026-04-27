@@ -3,9 +3,10 @@ const express = require("express");
 
 const app = express();
 
-// Log every inbound request immediately — before body parsing
+// Log every inbound request + force Connection: close so VAPI doesn't reuse stale connections
 app.use((req, res, next) => {
-  process.stdout.write(`>> ${req.method} ${req.path} [${new Date().toISOString()}]\n`);
+  console.log(`>> ${req.method} ${req.path}`);
+  res.setHeader("Connection", "close");
   next();
 });
 
@@ -735,7 +736,9 @@ app.post("/call-ended", async (req, res) => {
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`\n  GHL Intent Server running on port ${PORT}`);
   console.log(`  POST http://localhost:${PORT}/analyze-intent\n`);
 });
+server.keepAliveTimeout = 5000;
+server.headersTimeout = 6000;
