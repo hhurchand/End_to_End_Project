@@ -2,6 +2,13 @@ require("dotenv").config();
 const express = require("express");
 
 const app = express();
+
+// Log every inbound request immediately — before body parsing
+app.use((req, res, next) => {
+  process.stdout.write(`>> ${req.method} ${req.path} [${new Date().toISOString()}]\n`);
+  next();
+});
+
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
