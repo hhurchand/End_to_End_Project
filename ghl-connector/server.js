@@ -418,6 +418,7 @@ No explanation. No extra text.`,
 // Body: { name, phone, service, language, address, urgency }
 
 app.post("/log-caller-info", async (req, res) => {
+  const t0 = Date.now();
   try {
     console.log("\n=== LOG CALLER INFO ===");
 
@@ -427,7 +428,7 @@ app.post("/log-caller-info", async (req, res) => {
       || req.body;
 
     const args = typeof vapiArgs === "string" ? JSON.parse(vapiArgs) : vapiArgs;
-    console.log("Parsed args:", JSON.stringify(args, null, 2));
+    console.log("Parsed args:", JSON.stringify(args));
 
     const { name, phone, service, language, address, urgency } = args;
 
@@ -435,12 +436,7 @@ app.post("/log-caller-info", async (req, res) => {
       return res.json({ result: "Missing name or phone number." });
     }
 
-    const client1 = require("./index").getGhlClient
-      ? null
-      : null; // use axios directly via ghl client in index
-
     // Upsert contact
-    const axios = require("axios");
     const ghlClient = axios.create({
       baseURL: "https://services.leadconnectorhq.com",
       headers: {
@@ -470,12 +466,11 @@ app.post("/log-caller-info", async (req, res) => {
       ...(customFields.length ? { customFields } : {}),
     };
 
-    console.log("Upserting contact:", JSON.stringify(upsertPayload, null, 2));
-
+    console.log(`[log-caller] +${Date.now()-t0}ms — upserting`);
     const response = await ghlClient.post("/contacts/upsert", upsertPayload);
     const contact = response.data.contact;
 
-    console.log(`✅ Contact saved: ${contact.id} — ${firstName} ${lastName}`);
+    console.log(`✅ Contact saved: ${contact.id} (+${Date.now()-t0}ms)`);
 
     const isEmergency = (urgency || "").toLowerCase().includes("emergency");
     const isBooked    = args.booked === true || args.booked === "true";
@@ -490,6 +485,7 @@ app.post("/log-caller-info", async (req, res) => {
       : `Got it. I've saved your information, ${firstName}. Someone from the team will be in touch shortly.`;
 
     // Respond immediately — don't block on tag/workflow
+    console.log(`[log-caller] +${Date.now()-t0}ms — sending response`);
     res.json({ result: responseMsg });
 
     // Fire-and-forget tag + workflow in background
@@ -510,6 +506,38 @@ app.post("/log-caller-info", async (req, res) => {
   } catch (err) {
     console.error("LOG CALLER INFO ERROR:", err.response?.data || err.message);
     return res.json({ result: "I had trouble saving your info, but someone from the team will follow up shortly." });
+  }
+});
+
+// ─── POST /get-appointment ────────────────────────────────────────────────────
+// Called by VAPI tool when caller asks about their existing appointment.
+// Args: { phone }
+
+app.post("/get-appointment", async (req, res) => {
+  try {
+    const vapiArgs = req.body?.message?.toolCalls?.[0]?.function?.arguments
+      || req.body?.message?.functionCall?.parameters
+      || req.body;
+    const args = typeof vapiArgs === "string" ? JSON.parse(vapiArgs) : vapiArgs;
+
+    let phone = (args.phone || "").replace(/\D/g, "");
+    if (phone.length === 10) phone = "1" + phone;
+    if (phone.length > 11)   phone = phone.slice(-11);
+
+    if (!phone) return res.json({ result: "I need your phone number to look up the appointment." });
+
+    const contact = await findContactByPhone(phone, "client1");
+    if (!contact) return res.json({ result: "I couldn't find any account linked to that number. Could you double-check the phone number you used to book?" });
+
+    const appt = await getUpcomingAppointment(contact.id, "client1");
+    if (!appt) return res.json({ result: "I don't see any upcoming appointments for that number. Feel free to book a new one." });
+
+    const apptTime = formatDateTime(appt.startTime);
+    return res.json({ result: `Your appointment is scheduled for ${apptTime}.` });
+
+  } catch (err) {
+    console.error("GET APPOINTMENT ERROR:", err.message);
+    return res.json({ result: "I had trouble looking that up. The team will be able to confirm your appointment time." });
   }
 });
 
