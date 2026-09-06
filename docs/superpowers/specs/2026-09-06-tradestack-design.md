@@ -1,12 +1,12 @@
 # TradeStack — Platform Design Spec
 **Date:** 2026-09-06
-**Status:** Approved
+**Status:** Approved (revised for Whop)
 
 ---
 
 ## Overview
 
-TradeStack is a Next.js SaaS platform offering 3 AI-powered tools for home service businesses (HVAC, plumbing, auto shops, roofing). One login, one subscription, three tools: Review Rocket, AdForge, and EstimateAI. Built on the existing stack: Next.js App Router, Supabase, Stripe, and Claude API.
+TradeStack is a Next.js SaaS app offering 3 AI-powered tools for home service businesses (HVAC, plumbing, auto shops, roofing): Review Rocket, AdForge, and EstimateAI. Distributed and sold exclusively on Whop.com — Whop handles all billing, subscriptions, and user identity. The app runs inside a Whop iframe. Built on: Next.js App Router, Supabase (app data only), Claude API, Twilio, Resend.
 
 ---
 
@@ -16,60 +16,86 @@ TradeStack is a Next.js SaaS platform offering 3 AI-powered tools for home servi
 | Layer | Technology |
 |---|---|
 | Frontend + API | Next.js App Router (Vercel) |
-| Auth + Database + Storage | Supabase |
-| Billing | Stripe Checkout + Customer Portal |
+| Distribution + Billing + Auth | Whop.com + `@whop/sdk` |
+| App Data (no auth) | Supabase (postgres) |
 | AI | Claude claude-sonnet-4-6 (Anthropic) |
 | SMS | Twilio |
 | Transactional Email | Resend |
 
+### How Whop Works
+- TradeStack is registered as a Whop App with one Experience per tier
+- Users buy a pass on Whop marketplace → Whop loads the app in an iframe
+- Every request includes an `x-whop-user-token` header (short-lived JWT)
+- `verifyUserToken()` from `@whop/sdk` validates the JWT → returns `userId`
+- `checkAccess({ to: experienceId, headers })` verifies the user has an active pass for a given tier
+- No custom login, no Stripe — Whop owns the payment and identity layer entirely
+
+### Whop Products (create in Whop dashboard)
+| Product | Experience ID env var | Price |
+|---|---|---|
+| TradeStack Starter (1 tool) | `WHOP_EXPERIENCE_STARTER` | $79/mo |
+| TradeStack Pro (all 3 tools) | `WHOP_EXPERIENCE_PRO` | $197/mo |
+| TradeStack Agency (5 locations) | `WHOP_EXPERIENCE_AGENCY` | $397/mo |
+
+Each experience points to the same app URL — the app reads which experience the user has access to and unlocks features accordingly.
+
 ### Route Structure
 ```
-/ — marketing landing page
-/login — email/password login + magic link
-/signup — new account creation
-/dashboard — tool hub (all 3 tools)
-/tools/review-rocket — Review Rocket tool
-/tools/adforge — AdForge tool
-/tools/estimateai — EstimateAI tool
-/settings — billing, business profile, locations, team
+/ — app entry point (Whop iframe loads this)
+/onboarding — business profile setup (first visit only)
+/dashboard — tool hub
+/tools/review-rocket — Review Rocket
+/tools/adforge — AdForge
+/tools/estimateai — EstimateAI
+/settings — business profile, locations (Agency)
 /api/ai/review — Claude: generate review SMS
 /api/ai/ad — Claude: generate ad copy
 /api/ai/estimate — Claude: generate estimate
 /api/sms/send — Twilio: send review SMS
 /api/email/send — Resend: send estimate email
-/api/stripe/webhook — Stripe event handler
-/api/stripe/checkout — create Stripe Checkout session
 ```
 
-### Database Schema (Supabase)
+### Database Schema (Supabase — app data only, no auth tables)
 
 **`businesses`**
-- `id`, `user_id`, `name`, `type` (hvac/plumbing/auto/roofing/other)
-- `phone`, `google_review_url`
+- `id`, `whop_user_id` (text, unique), `name`, `type` (hvac/plumbing/auto/roofing/other)
+- `phone`, `google_review_url`, `onboarded_at`
 - `created_at`
 
-**`subscriptions`**
-- `id`, `user_id`, `stripe_customer_id`, `stripe_subscription_id`
-- `tier` (starter/pro/agency), `status` (trialing/active/canceled/past_due)
-- `trial_ends_at`, `current_period_end`
-
 **`locations`** (Agency tier — up to 5 per account)
-- `id`, `user_id`, `business_id`, `name`, `phone`, `google_review_url`
+- `id`, `whop_user_id`, `name`, `phone`, `google_review_url`
+- `created_at`
 
 **`sms_log`**
-- `id`, `business_id`, `customer_name`, `customer_phone`
+- `id`, `whop_user_id`, `customer_name`, `customer_phone`
 - `message`, `twilio_sid`, `status` (queued/sent/delivered/failed)
+- `location_id` (nullable — Agency multi-location)
 - `sent_at`
 
 **`estimates`**
-- `id`, `business_id`, `customer_name`, `customer_email`
-- `job_type`, `scope`, `line_items` (JSONB), `total`, `terms`
+- `id`, `whop_user_id`, `customer_name`, `customer_email`
+- `job_type`, `scope` (text), `line_items` (JSONB), `total` (numeric), `terms` (text)
 - `status` (draft/sent/accepted/declined)
+- `location_id` (nullable)
 - `sent_at`, `created_at`
 
 **`ad_generations`**
-- `id`, `business_id`, `inputs` (JSONB), `variations` (JSONB — 3 ad copies)
+- `id`, `whop_user_id`, `inputs` (JSONB), `variations` (JSONB — 3 ad copies)
 - `platform` (facebook/google), `created_at`
+
+---
+
+## Tier Enforcement
+
+Tier is determined at request time by calling `checkAccess` against each experience ID in order (Agency → Pro → Starter). The first passing check determines the user's tier. This is done in a shared `getTier(headers)` server utility used by every page and API route.
+
+```
+agency  → all tools, 5 locations, 1000 SMS/mo, white-label estimates
+pro     → all tools, 1 location, 200 SMS/mo, unlimited generations
+starter → 1 tool (user picks at onboarding), 1 location, 100 generations/mo
+```
+
+Locked tools render an upgrade prompt with a Whop checkout link.
 
 ---
 
@@ -79,71 +105,50 @@ TradeStack is a Next.js SaaS platform offering 3 AI-powered tools for home servi
 **Purpose:** Send AI-personalized SMS to customers after a job → drive Google reviews.
 
 **Flow:**
-1. Owner enters: customer name, phone number, job type, quick note about the job
+1. Owner enters: customer name, phone number, job type, quick note
 2. Claude generates a personalized, natural-sounding SMS
-3. Owner previews the SMS, edits if needed, hits Send
+3. Owner previews, edits if needed, hits Send
 4. Twilio delivers it — SMS includes direct Google Business review link
-5. Dashboard shows send history with delivery status badges and review count trend
+5. History tab shows send log with delivery status badges
 
-**Limits:** 200 SMS/mo (Pro), 1,000 SMS/mo (Agency), none on Starter (tool locked)
+**Limits:** Starter: locked. Pro: 200 SMS/mo. Agency: 1,000 SMS/mo.
 
 ### AdForge
-**Purpose:** Generate 3 variations of ad copy for Facebook or Google in seconds.
+**Purpose:** Generate 3 variations of ad copy for Facebook or Google.
 
 **Flow:**
-1. Owner selects: business type, service to promote, target audience, offer/hook, tone (professional/casual/urgent), platform (Facebook/Google)
-2. Claude generates 3 ad variations — each with headline, body copy, and CTA
+1. Owner selects: business type, service, target audience, offer/hook, tone, platform
+2. Claude generates 3 ad variations — headline, body, CTA each
 3. One-click copy to clipboard per variation
-4. Generation history saved — owner can reuse or regenerate winners
+4. Generation history saved for reuse
 
-**Limits:** 100 generations/mo (Starter), unlimited (Pro/Agency)
+**Limits:** Starter: 100 generations/mo (if chosen as their tool). Pro/Agency: unlimited.
 
 ### EstimateAI
-**Purpose:** Generate professional customer-facing estimates from job notes — sent directly to customer via email.
+**Purpose:** Generate professional customer-facing estimates — sent directly via email.
 
 **Flow:**
-1. Owner fills in: customer name + email, job type, scope (bullet points or free text), materials list, labor hours, markup %
-2. Claude formats a clean estimate: line items, subtotal, markup, total, payment terms, personalized intro paragraph
+1. Owner enters: customer name + email, job type, scope, materials, labor hours, markup %
+2. Claude formats a clean estimate: line items, subtotal, markup, total, terms, intro paragraph
 3. Owner previews, edits if needed
-4. One-click sends to customer via Resend (branded with business name)
-5. PDF download also available (generated server-side via `@react-pdf/renderer`)
-6. Owner marks estimates as accepted/declined — close rate tracked in dashboard
+4. One-click sends to customer via Resend
+5. PDF download via `@react-pdf/renderer` (server-side)
+6. Owner marks accepted/declined — close rate shown in dashboard
 
-**White-label:** Agency tier — customer sees business branding only, no TradeStack branding
-
----
-
-## Pricing & Billing
-
-| Plan | Price | Tools | Locations | SMS/mo | Generations |
-|---|---|---|---|---|---|
-| Starter | $79/mo | 1 tool | 1 | — | 100 |
-| Pro | $197/mo | All 3 | 1 | 200 | Unlimited |
-| Agency | $397/mo | All 3 | 5 | 1,000 | Unlimited |
-
-**Trial:** 14-day free trial, no credit card required. Stripe Checkout triggered at trial end.
-
-**Mechanics:**
-- Stripe Checkout for initial subscription
-- Stripe Customer Portal for self-serve upgrades, downgrades, cancellations
-- Stripe webhooks sync subscription status to `subscriptions` table in real time
-- Downgrade locks tool access immediately; upgrade unlocks instantly
-- Locked tools on lower tiers show upgrade prompt inline
+**White-label:** Agency tier — no TradeStack branding on customer-facing estimate emails/PDFs.
 
 ---
 
-## Auth & Onboarding
+## Onboarding
 
-**Auth:** Supabase email/password with magic link fallback. No OAuth.
+First visit detection: check if `businesses` row exists for `whop_user_id`. If not → redirect to `/onboarding`.
 
-**Onboarding flow (post-signup):**
-1. Business profile — name, type, phone, Google Business review URL
-2. Plan selection — Starter users pick which 1 tool to activate; Pro/Agency get all 3. Free trial starts immediately, no card required.
-3. Dashboard — all tools visible; locked tools show upgrade CTA
+**Steps:**
+1. Business name, type, phone, Google Business review URL
+2. Starter only: pick which 1 tool to activate
+3. Saved to `businesses` table → redirect to `/dashboard`
 
-**Agency locations:** Owner adds up to 4 additional locations at `/settings/locations`. Each location has its own business profile, review link, and SMS sender name.
-
-**Trial activation:** At trial end, dashboard banner prompts "Activate your plan" → Stripe Checkout session → card collected → subscription activates.
+No plan selection UI — Whop handles that before the user ever reaches the app.
 
 ---
 
@@ -151,27 +156,58 @@ TradeStack is a Next.js SaaS platform offering 3 AI-powered tools for home servi
 
 | Failure | Behavior |
 |---|---|
-| Claude API error | Inline error message, retry button — no silent failures |
+| Whop token invalid/expired | 401 — Whop re-authenticates automatically via iframe |
+| Claude API error | Inline error + retry button, no silent failures |
 | Twilio SMS failure | Log to `sms_log` with failed status, red badge in history |
-| Resend email failure | Auto-retry once, then notify owner in dashboard |
-| Stripe webhook failure | Idempotent handlers, Stripe retries automatically |
-| Generation limit reached | Hard block with upgrade prompt, never silently drop |
+| Resend email failure | Auto-retry once, then show error in dashboard |
+| Generation limit reached | Hard block with Whop upgrade link, never silently drop |
 
 ---
 
 ## Testing
 
-- **Vitest unit tests** — AI prompt builders (validate output format before sending)
-- **Stripe webhook tests** — mock payloads for all subscription events
+- **Vitest unit tests** — AI prompt builders, tier enforcement logic, `getTier()` utility
+- **Whop token mock** — test helper that generates a mock `x-whop-user-token` header for each tier
 - **Playwright E2E** — 3 core flows: send review SMS, generate ad copy, send estimate
-- **Seed script** — fake business, fake subscription, sample generations for local dev
+
+---
+
+## Environment Variables
+
+```
+# Whop
+WHOP_API_KEY=
+WHOP_EXPERIENCE_STARTER=
+WHOP_EXPERIENCE_PRO=
+WHOP_EXPERIENCE_AGENCY=
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Anthropic
+ANTHROPIC_API_KEY=
+
+# Twilio
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+TWILIO_PHONE_NUMBER=
+
+# Resend
+RESEND_API_KEY=
+RESEND_FROM_EMAIL=
+
+# App
+NEXT_PUBLIC_APP_URL=
+```
 
 ---
 
 ## Out of Scope (v1)
 
 - Mobile app
-- Native Zapier / Make integrations
+- Zapier / Make integrations
 - AI-generated images for ads
 - CRM / contact database
-- Multi-user team accounts within a business
+- Multi-user team accounts within one business
