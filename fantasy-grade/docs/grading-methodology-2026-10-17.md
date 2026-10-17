@@ -305,7 +305,33 @@ combined_score = 50 + 25 × norm(starter_PAR)
                     + 10 × (1 − weakness_rate)
 ```
 
-`norm()` maps each component to [0, 1] using pre-specified percentile-based clamping bounds. The clamping bounds are fixed before the experiment runs and must not be adjusted after observing results. This formula is the candidate to be evaluated by the selection rule below. It is not confirmed as the production formula until that rule is satisfied.
+**Component definitions (pre-registered):**
+
+- **`starter_PAR`** — sum of PAR for the players in the optimal starting lineup, as defined in §3.2 and §4.
+- **`bench_depth_PAR`** — the existing `bench_depth` component (§4): the sum of positive PAR among all bench players. Players with PAR ≤ 0 on the bench contribute zero.
+- **`weakness_rate`** — fraction of optimal-lineup starting slots whose starter has PAR < 0:
+  ```
+  weakness_rate = (number of starting slots where starter PAR < 0)
+                  / (total number of starting slots)
+  ```
+  Ranges from 0 (no weak starters) to 1 (all starters below replacement). Used directly as the penalty term `(1 − weakness_rate)`. Not percentile-normalized because it is already bounded to [0, 1].
+
+**Normalization rule for `norm()` (applied to `starter_PAR` and `bench_depth_PAR` only):**
+
+```
+norm(x, P5, P95) = clamp((x − P5) / (P95 − P5), 0.0, 1.0)
+
+Fallback (divide-by-zero guard): if P95 = P5, norm(x) = 0.5 for all x.
+
+clamp(v, 0, 1): v < 0 → 0.0; v > 1 → 1.0; else v.
+```
+
+- **Bounds population:** all team-week observations from the 2016–2020 selection window.
+- **Timing:** P5 and P95 are computed once from the 2016–2020 population before any T_y is calculated. Bounds are not recalculated per season and are not adjusted after examining results.
+- **Per component:** P5 and P95 are computed separately for `starter_PAR` and `bench_depth_PAR`. Each component has its own bounds.
+- **Consistency:** the same bounds are reused across all five seasons (2016–2020).
+
+This formula is the candidate to be evaluated by the selection rule below. It is not confirmed as the production formula until that rule is satisfied.
 
 **Tie handling:** Matchups with an absolute actual-score difference of less than 0.5 points are excluded from the discordant-matchup comparison. This is consistent with the tie-exclusion rule applied in Experiments 2a and 3.
 
