@@ -297,7 +297,26 @@ No power claims are made.
 
 **True independent unit:** NFL season (N=5).
 
-**Estimand:** For each season Y, compute T_y = fraction of matchups where the higher-combined_score team won. Compare to T_y computed using starter_PAR alone.
+**Candidate formula (pre-registered — not confirmed or validated):**
+
+```
+combined_score = 50 + 25 × norm(starter_PAR)
+                    + 15 × norm(bench_depth_PAR)
+                    + 10 × (1 − weakness_rate)
+```
+
+`norm()` maps each component to [0, 1] using pre-specified percentile-based clamping bounds. The clamping bounds are fixed before the experiment runs and must not be adjusted after observing results. This formula is the candidate to be evaluated by the selection rule below. It is not confirmed as the production formula until that rule is satisfied.
+
+**Tie handling:** Matchups with an absolute actual-score difference of less than 0.5 points are excluded from the discordant-matchup comparison. This is consistent with the tie-exclusion rule applied in Experiments 2a and 3.
+
+**Estimand:** For each season Y in 2016–2020, let:
+- c_y = number of eligible matchups won by the higher-combined_score team
+- b_y = number of eligible matchups won by the lower-combined_score team
+- n_y = c_y + b_y (total eligible matchups; ties excluded)
+- T_y = c_y / n_y (fraction of eligible matchups won by the higher-combined_score team)
+- T_obs = mean(T_y) across all 5 seasons (equal weight per season, not per matchup)
+
+Compute the same statistics using starter_PAR alone as the ranking criterion. Experiment 2b evaluates whether combined_score produces higher T_y values than starter_PAR alone, season by season.
 
 **Descriptive retention rule for combined_score:**
 - T_y > 0.52 in at least 4 of 5 seasons
