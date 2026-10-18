@@ -162,6 +162,41 @@ where `team_vorp_zscore` is the z-score of the team's combined_score relative to
 
 All grades are labeled **PROVISIONAL — unvalidated** until the validation experiments (§7) are complete and reviewed.
 
+### 4.2 Individual Player Display Grade (Provisional)
+
+This formula converts a player's PAR into the 0–100 display scale so that individual players can be assigned letter-grade buckets. **PAR remains the primary metric.** The 0–100 number and resulting letter grade are a provisional display convention only.
+
+```
+player_grade = 50 + 50 × clamp(PAR / PAR_95th, -1, 1)
+
+where:
+  PAR_95th  = 95th-percentile PAR value for the position, computed from
+              a pre-specified reference period (see blocking gap below)
+  clamp(v, -1, 1): v < -1 → -1; v > 1 → 1; else v
+```
+
+- A player with PAR = 0 maps to grade 50 (grade C, mid-range).
+- A player with PAR = PAR_95th maps to grade 100 (grade A).
+- A player with PAR = −PAR_95th maps to grade 0 (grade F).
+- PAR_95th is computed separately per position (QB, RB, WR, TE).
+- PAR_95th is fixed before any validation window data is examined.
+
+**This formula is separate from the team-grade formula in §4.1.** The team grade uses `50 + 50 × tanh(team_vorp_zscore)` applied to a team's combined_score. The player display grade uses `50 + 50 × clamp(PAR / PAR_95th, -1, 1)` applied to an individual player's PAR. Do not substitute one for the other.
+
+**Blocking specification gap — PAR_95th is not yet fully defined.**
+
+The following decisions must be made and recorded before PAR_95th is computable and leakage-safe:
+
+1. **Reference period:** The data windows table (§7.1) designates 2012–2015 as the period for deriving fallback constants. Whether PAR_95th is one of those constants, and whether 2012–2015 is confirmed as its reference period, has not been explicitly approved. This must be confirmed.
+
+2. **Population:** Within the reference period, which players are included in the PAR distribution? Options include: all active player-weeks at the position; only players above a starter-threshold projection; or only those who appeared in a minimum number of games. The choice affects where PAR_95th falls and must be fixed before the experiment runs.
+
+3. **Temporal structure:** Is PAR_95th a single constant computed once from the entire reference period, or is it re-derived as a rolling value? A single pre-computed constant is simpler and avoids leakage; a rolling value introduces complexity and requires a separate leakage-safety argument.
+
+4. **Divide-by-zero / zero-variance guard:** If PAR_95th = 0 for a position (possible if replacement level equals the 95th-percentile projection), the formula divides by zero. A fallback rule must be specified (e.g., assign grade 50 to all players at that position when PAR_95th = 0, analogous to the norm() fallback in §7, Experiment 2b).
+
+Until these four decisions are recorded, PAR_95th cannot be computed in a reproducible, leakage-safe way, and the player display grade formula cannot be implemented.
+
 ---
 
 ## 5. League Context
@@ -242,7 +277,7 @@ Synthetic leagues use B1-ranked snake draft — an explicit synthetic drafting r
 
 **Unit:** Player-week.
 
-**Grade buckets:** Pre-specified letter-grade thresholds (A/B/C/D/F per §4.1). Monotonicity predicts mean actual points increase weakly from F to A.
+**Grade buckets:** Pre-specified letter-grade thresholds (A/B/C/D/F per §4.1). Player grades are computed using the provisional player display-grade formula (§4.2). Monotonicity predicts mean actual points increase weakly from F to A.
 
 **Dependence structure:** Player-weeks are not independent.
 1. Same player appears in multiple weeks (within-player autocorrelation).
