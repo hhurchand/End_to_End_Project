@@ -183,19 +183,19 @@ where:
 
 **This formula is separate from the team-grade formula in §4.1.** The team grade uses `50 + 50 × tanh(team_vorp_zscore)` applied to a team's combined_score. The player display grade uses `50 + 50 × clamp(PAR / PAR_95th, -1, 1)` applied to an individual player's PAR. Do not substitute one for the other.
 
-**Blocking specification gap — PAR_95th is not yet fully defined.**
+**PAR_95th specification (approved):**
 
-The following decisions must be made and recorded before PAR_95th is computable and leakage-safe:
+**1. Reference period:** 2012–2015 only (per §7.1 fallback constants window). PAR_95th constants are frozen from this period before any 2021–2022 evaluation data is examined.
 
-1. **Reference period:** The data windows table (§7.1) designates 2012–2015 as the period for deriving fallback constants. Whether PAR_95th is one of those constants, and whether 2012–2015 is confirmed as its reference period, has not been explicitly approved. This must be confirmed.
+**2. Eligibility — genuine B3 only:** Include only player-weeks for which `compute_b3_all()` returns a non-NaN value, i.e., the player had at least 2 prior active games at the time of projection. Player-weeks that fell back to B1 or B0 are excluded from the PAR_95th reference population. This distinction is already present in the existing implementation: `compute_b3_all()` returns NaN for fallback cases before `apply_fallbacks()` is called. No code modification is required to make this distinction. Early-2012 weeks without genuine B3 projections are excluded by this rule.
 
-2. **Population:** Within the reference period, which players are included in the PAR distribution? Options include: all active player-weeks at the position; only players above a starter-threshold projection; or only those who appeared in a minimum number of games. The choice affects where PAR_95th falls and must be fixed before the experiment runs.
+**3. League configuration:** Replacement_pts is computed using the approved default configuration: 12-team league, 1 QB / 2 RB / 3 WR / 1 TE / 1 FLEX, using the approved league-wide optimal-matching definition (§3.2). **PAR_95th constants derived under this configuration are not valid for leagues with different sizes or roster structures.** Grades computed from these constants carry an implicit 12-team standard-lineup assumption that must be disclosed to users.
 
-3. **Temporal structure:** Is PAR_95th a single constant computed once from the entire reference period, or is it re-derived as a rolling value? A single pre-computed constant is simpler and avoids leakage; a rolling value introduces complexity and requires a separate leakage-safety argument.
+**4. Temporal structure:** One fixed 95th-percentile PAR constant per position, derived from the entire eligible 2012–2015 population pooled across all four seasons. Not averaged across per-season percentiles. Not re-derived by week or season. Applied as a frozen constant to all player-weeks in the evaluation window.
 
-4. **Divide-by-zero / zero-variance guard:** If PAR_95th = 0 for a position (possible if replacement level equals the 95th-percentile projection), the formula divides by zero. A fallback rule must be specified (e.g., assign grade 50 to all players at that position when PAR_95th = 0, analogous to the norm() fallback in §7, Experiment 2b).
-
-Until these four decisions are recorded, PAR_95th cannot be computed in a reproducible, leakage-safe way, and the player display grade formula cannot be implemented.
+**5. Invalid or degenerate constants — stop conditions:**
+- If PAR_95th for any position is zero or otherwise invalid (NaN, negative, or non-finite): the grade conversion for that position is undefined. Experiment 1 must stop and the condition must be reviewed before proceeding. No silent substitution.
+- If PAR_95th is positive but unusually small (producing a grade distribution where the majority of players fall in grade A or F): flag the condition for review before proceeding. Do not apply a numerical threshold for "unusually small" without explicit approval.
 
 ---
 
