@@ -36,7 +36,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             {fr ? (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  Nous avons fondé AgenteDirect parce qu&apos;on voyait toujours la même chose : des entreprises locales avec des sites web qui auraient pu appartenir à n&apos;importe qui. Des mises en page génériques. Des photos de banque d&apos;images. Du contenu écrit par personne, pour personne.
+                  On a fondé AgenteDirect après avoir vu trop d&apos;entreprises locales avec des sites qui auraient pu appartenir à n&apos;importe qui. Les mêmes gabarits. Les mêmes photos de stock. Du texte que personne n&apos;a réellement écrit, pour des clients que personne ne connaît vraiment.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   On comprend que certaines entreprises cherchent exactement ça. Et c&apos;est tout à fait correct.
@@ -57,7 +57,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             ) : (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  We started AgenteDirect because we kept seeing the same thing: local businesses with websites that could belong to anyone. Generic layouts. Stock photos. Copy written by no one, for no one.
+                  We started AgenteDirect after seeing too many local businesses with sites that could&apos;ve belonged to anyone. Same layouts. Same stock photos. Words no one actually wrote for them.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   We understand that some businesses are looking for exactly that, and that&apos;s completely valid.

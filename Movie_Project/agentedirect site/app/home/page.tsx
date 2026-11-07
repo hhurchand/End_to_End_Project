@@ -110,7 +110,7 @@ function FinderWindow({ fr, onSectionClick, isTouch, playClickSound }: { fr: boo
           .fw-outer { width: calc(100vw - 24px) !important; max-width: 420px !important; }
           .fw-sidebar { display: none !important; }
           .fw-body { height: 290px !important; }
-          .fw-hint { font-size: 11px !important; white-space: normal !important; text-align: center; }
+          .fw-hint { font-size: 14px !important; white-space: normal !important; text-align: center; }
 
           /* Intro overlay — natural scroll, full layout */
           .intro-copy-section { height: auto !important; justify-content: flex-start !important; overflow: visible !important; padding: 32px 24px 48px !important; }
@@ -172,7 +172,7 @@ function FinderWindow({ fr, onSectionClick, isTouch, playClickSound }: { fr: boo
             </div>
             {/* Disclaimer pinned to bottom of finder */}
             <div style={{ padding: '0 16px 16px', textAlign: 'center' }}>
-              <p className="fw-hint" style={{ margin: 0, fontSize: 12.5, fontWeight: 500, color: 'rgba(255,255,255,0.55)', whiteSpace: 'nowrap' }}>
+              <p className="fw-hint" style={{ margin: 0, fontSize: 13.5, fontWeight: 500, color: 'rgba(255,255,255,0.55)', whiteSpace: 'nowrap' }}>
                 {fr ? 'Cliquez la section que vous souhaitez découvrir' : isTouch ? "Tap a section to explore" : "Click the section you'd like to discover"}
               </p>
             </div>
@@ -208,7 +208,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) videoRef.current.playbackRate = 2.2;
+    if (videoRef.current) videoRef.current.playbackRate = 2.7;
   }, []);
 
   // Pre-unlock AudioContext on first gesture — play a silent 1-sample buffer
