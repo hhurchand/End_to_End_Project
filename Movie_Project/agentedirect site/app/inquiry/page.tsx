@@ -1,10 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useState, useCallback, type ReactNode } from 'react';
 import ChatWidget from '@/components/ChatWidget';
+import PageNav from '@/components/PageNav';
+import PageFooter from '@/components/PageFooter';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const BUSINESS_EMAIL = 'support@agentedirect.ca';
@@ -193,33 +194,12 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
     e.target.style.borderColor = hasError ? 'rgba(239,68,68,0.55)' : 'rgba(255,255,255,0.08)';
   };
 
-  const homeHref = fr ? '/fr/home' : '/home';
-  const beliefsHref = fr ? '/fr/our-beliefs' : '/our-beliefs';
-  const projectsHref = fr ? '/fr/our-work' : '/our-work';
-  const contactHref = fr ? '/fr/inquiry' : '/inquiry';
-
   return (
     <main
       className="min-h-screen flex flex-col"
       style={{ background: '#0F0C07', fontFamily: 'var(--font-space-grotesk)' }}
     >
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-5 md:px-12">
-        <Link href={homeHref}>
-          <Image src="/logo.png" alt="AgenteDirect" width={140} height={36} className="h-8 w-auto" />
-        </Link>
-        <div className="flex items-center gap-6 text-sm font-medium" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          <Link href={homeHref} className="hover:text-white transition-colors">{t.desktop}</Link>
-          <Link href={beliefsHref} className="hover:text-white transition-colors">{t.beliefs}</Link>
-          <Link href={projectsHref} className="hover:text-white transition-colors">{t.projects}</Link>
-          <Link href={contactHref} style={{ color: 'rgba(255,255,255,0.9)' }}>{t.contact}</Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 4, paddingLeft: 16, borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link href="/inquiry" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11 }}>|</span>
-            <Link href="/fr/inquiry" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }} className="hover:text-white transition-colors">FR</Link>
-          </div>
-        </div>
-      </nav>
+      <PageNav lang={lang} active="contact" enHref="/inquiry" frHref="/fr/inquiry" />
 
       {/* Form */}
       <div className="flex-1 flex items-start justify-center px-6 pt-10 pb-16 md:pt-14 md:pb-24">
@@ -324,14 +304,13 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '13px 28px', borderRadius: 50,
-                  background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
-                  color: '#fff', fontSize: 14, fontWeight: 700,
-                  border: 'none', cursor: 'pointer', letterSpacing: '0.01em',
-                  boxShadow: '0 4px 24px rgba(109,40,217,0.4)',
-                  transition: 'transform 0.18s, box-shadow 0.18s',
+                  background: 'rgba(139,92,246,0.15)',
+                  color: 'rgba(220,210,245,0.95)', fontSize: 14, fontWeight: 700,
+                  border: '1px solid rgba(139,92,246,0.4)', cursor: 'pointer', letterSpacing: '0.01em',
+                  transition: 'background 0.2s, border-color 0.2s',
                 }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 8px 36px rgba(109,40,217,0.6)'; }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 4px 24px rgba(109,40,217,0.4)'; }}
+                onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.28)'; el.style.borderColor = 'rgba(139,92,246,0.7)'; }}
+                onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.15)'; el.style.borderColor = 'rgba(139,92,246,0.4)'; }}
               >
                 {t.submit} →
               </button>
@@ -356,6 +335,7 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
 
       <ChatWidget lang={lang} />
 
+      <PageFooter />
       <style>{`
         @media (max-width: 540px) {
           .form-row { grid-template-columns: 1fr !important; }

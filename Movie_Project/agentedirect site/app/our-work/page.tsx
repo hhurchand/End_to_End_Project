@@ -1,9 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import PageNav from '@/components/PageNav';
+import PageFooter from '@/components/PageFooter';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -101,9 +103,6 @@ function ProjectCard({ src, flipped, demo }: { src: string; href: string; flippe
 
 export default function OurWorkPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
   const fr = lang === 'fr';
-  const homeHref = fr ? '/fr/home' : '/home';
-  const beliefsHref = fr ? '/fr/our-beliefs' : '/our-beliefs';
-  const projectsHref = fr ? '/fr/our-work' : '/our-work';
   const contactHref = fr ? '/fr/inquiry' : '/inquiry';
 
   return (
@@ -111,23 +110,7 @@ export default function OurWorkPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
       className="min-h-screen flex flex-col"
       style={{ background: '#0F0C07', fontFamily: 'var(--font-space-grotesk)' }}
     >
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-5 md:px-12">
-        <Link href={homeHref}>
-          <Image src="/logo.png" alt="AgenteDirect" width={140} height={36} className="h-8 w-auto" />
-        </Link>
-        <div className="flex items-center gap-6 text-sm font-medium" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          <Link href={homeHref} className="hover:text-white transition-colors">{fr ? 'Bureau' : 'Desktop'}</Link>
-          <Link href={beliefsHref} className="hover:text-white transition-colors">{fr ? 'Nos croyances' : 'Our Beliefs'}</Link>
-          <Link href={projectsHref} style={{ color: 'rgba(255,255,255,0.9)' }}>{fr ? 'Nos projets' : 'Our Projects'}</Link>
-          <Link href={contactHref} className="hover:text-white transition-colors">{fr ? 'Contact' : 'Contact'}</Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 4, paddingLeft: 16, borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link href="/our-work" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11 }}>|</span>
-            <Link href="/fr/our-work" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }} className="hover:text-white transition-colors">FR</Link>
-          </div>
-        </div>
-      </nav>
+      <PageNav lang={lang} active="work" enHref="/our-work" frHref="/fr/our-work" />
 
       {/* Projects */}
       <div style={{ flex: 1, padding: '40px clamp(24px, 6vw, 80px) 80px' }}>
@@ -241,6 +224,7 @@ export default function OurWorkPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
           }
         }
       `}</style>
+      <PageFooter />
     </main>
   );
 }

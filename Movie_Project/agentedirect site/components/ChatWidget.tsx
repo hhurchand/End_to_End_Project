@@ -195,14 +195,13 @@ export default function ChatWidget({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
         style={{
           position: 'fixed', bottom: 24, right: 24, zIndex: 1001,
           width: 52, height: 52, borderRadius: '50%',
-          background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
-          border: 'none', cursor: 'pointer',
-          boxShadow: '0 4px 24px rgba(109,40,217,0.55)',
+          background: 'rgba(139,92,246,0.15)',
+          border: '1px solid rgba(139,92,246,0.4)', cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transition: 'transform 0.2s, box-shadow 0.2s',
+          transition: 'background 0.2s, border-color 0.2s, transform 0.2s',
         }}
-        onMouseEnter={e => { const el = e.currentTarget; el.style.transform = 'scale(1.08)'; el.style.boxShadow = '0 8px 32px rgba(109,40,217,0.7)'; }}
-        onMouseLeave={e => { const el = e.currentTarget; el.style.transform = 'scale(1)'; el.style.boxShadow = '0 4px 24px rgba(109,40,217,0.55)'; }}
+        onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.28)'; el.style.borderColor = 'rgba(139,92,246,0.7)'; el.style.transform = 'scale(1.08)'; }}
+        onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.15)'; el.style.borderColor = 'rgba(139,92,246,0.4)'; el.style.transform = 'scale(1)'; }}
         aria-label="Open chat"
       >
         {open ? (

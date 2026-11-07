@@ -265,10 +265,12 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
 
   const playClickSound = () => {
     try {
-      const ctx = audioCtxRef.current && audioCtxRef.current.state !== 'closed'
-        ? audioCtxRef.current
-        : new AudioContext();
-      audioCtxRef.current = ctx;
+      // On iOS, suspended contexts don't resume fast enough — create fresh one within the gesture
+      let ctx = audioCtxRef.current;
+      if (!ctx || ctx.state === 'closed' || ctx.state === 'suspended') {
+        ctx = new AudioContext();
+        audioCtxRef.current = ctx;
+      }
       const fire = () => {
         const makeClick = (time: number) => {
           const buf = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * 0.035), ctx.sampleRate);
@@ -295,11 +297,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
         makeClick(now);
         makeClick(now + 0.12);
       };
-      if (ctx.state === 'suspended') {
-        ctx.resume().then(fire).catch(() => {});
-      } else {
-        fire();
-      }
+      fire();
     } catch { /* silent fail */ }
   };
 

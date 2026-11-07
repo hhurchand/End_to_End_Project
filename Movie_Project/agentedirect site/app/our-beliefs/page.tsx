@@ -3,38 +3,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import PageNav from '@/components/PageNav';
+import PageFooter from '@/components/PageFooter';
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
   const fr = lang === 'fr';
-  const homeHref = fr ? '/fr/home' : '/home';
-  const beliefsHref = fr ? '/fr/our-beliefs' : '/our-beliefs';
-  const projectsHref = fr ? '/fr/our-work' : '/our-work';
-  const contactHref = fr ? '/fr/inquiry' : '/inquiry';
 
   return (
     <main
       className="min-h-screen flex flex-col"
       style={{ background: '#0F0C07', fontFamily: 'var(--font-space-grotesk)' }}
     >
-      {/* Nav */}
-      <nav className="flex items-center justify-between px-6 py-5 md:px-12">
-        <Link href={homeHref}>
-          <Image src="/logo.png" alt="AgenteDirect" width={140} height={36} className="h-8 w-auto" />
-        </Link>
-        <div className="flex items-center gap-6 text-sm font-medium" style={{ color: 'rgba(255,255,255,0.45)' }}>
-          <Link href={homeHref} className="hover:text-white transition-colors">{fr ? 'Bureau' : 'Desktop'}</Link>
-          <Link href={beliefsHref} style={{ color: 'rgba(255,255,255,0.9)' }}>{fr ? 'Nos croyances' : 'Our Beliefs'}</Link>
-          <Link href={projectsHref} className="hover:text-white transition-colors">{fr ? 'Nos projets' : 'Our Projects'}</Link>
-          <Link href={contactHref} className="hover:text-white transition-colors">{fr ? 'Contact' : 'Contact'}</Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginLeft: 4, paddingLeft: 16, borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link href="/our-beliefs" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11 }}>|</span>
-            <Link href="/fr/our-beliefs" style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }} className="hover:text-white transition-colors">FR</Link>
-          </div>
-        </div>
-      </nav>
+      <PageNav lang={lang} active="beliefs" enHref="/our-beliefs" frHref="/fr/our-beliefs" />
 
       {/* Letter */}
       <div className="flex-1 flex items-center justify-center px-6 py-16 md:py-24">
@@ -57,7 +39,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
                   Nous avons fondé AgenteDirect parce qu&apos;on voyait toujours la même chose : des entreprises locales avec des sites web qui auraient pu appartenir à n&apos;importe qui. Des mises en page génériques. Des photos de banque d&apos;images. Du contenu écrit par personne, pour personne.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Ce n&apos;est pas ce qu&apos;on fait.
+                  On comprend que certaines entreprises cherchent exactement ça. Et c&apos;est tout à fait correct.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   Quand on prend un projet, on prend le temps. On demande vos vraies photos, vos vrais moments, ceux qui montrent vraiment ce qui rend votre entreprise unique. On construit autour de <em>vous</em>, pas autour d&apos;un gabarit qu&apos;on a utilisé cinquante fois.
@@ -78,7 +60,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
                   We started AgenteDirect because we kept seeing the same thing: local businesses with websites that could belong to anyone. Generic layouts. Stock photos. Copy written by no one, for no one.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  That&apos;s not what we&apos;re here to do.
+                  We understand that some businesses are looking for exactly that, and that&apos;s completely valid.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   When we take on a project, we slow down. We ask for your real photos, your real moments, the ones that actually show what makes your business worth choosing. We build around <em>you</em>, not around a template we&apos;ve used fifty times before.
@@ -121,6 +103,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
           </div>
         </motion.div>
       </div>
+      <PageFooter />
     </main>
   );
 }
