@@ -40,7 +40,7 @@ const CARDS = [
   },
   {
     id: 'lacucina',
-    src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80&fit=crop&crop=top',
+    src: '/mockup-lacucina.jpg',
     label: 'La Cucina',
     desc: 'Italian cuisine · Pointe-Claire, QC',
     url: 'lacucina.agentedirect.ca',
@@ -305,8 +305,8 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
 
   const handleSectionClick = (id: string) => {
     playClickSound();
-    if (id === 'our-beliefs') { setTimeout(() => router.push('/our-beliefs'), 200); return; }
-    if (id === 'selected-work') { setTimeout(() => router.push('/our-work'), 200); return; }
+    if (id === 'our-beliefs') { setTimeout(() => router.push(fr ? '/fr/our-beliefs' : '/our-beliefs'), 200); return; }
+    if (id === 'selected-work') { setTimeout(() => router.push(fr ? '/fr/our-work' : '/our-work'), 200); return; }
     if (id === 'work-with-us') { setTimeout(() => router.push(fr ? '/fr/inquiry' : '/inquiry'), 200); return; }
     setUnlocked(true);
     setActiveSection(id);
@@ -594,7 +594,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
               className="flex flex-wrap items-center" style={{ gap: 10 }}
             >
               <Link
-                href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'}
+                href={fr ? '/fr/inquiry' : '/inquiry'}
                 style={{ display: 'inline-flex', alignItems: 'center', padding: '13px 26px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', boxShadow: '0 4px 22px rgba(109,40,217,0.45)', transition: 'transform 0.2s,box-shadow 0.2s' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 8px 30px rgba(109,40,217,0.60)'; }}
                 onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)'; (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 22px rgba(109,40,217,0.45)'; }}
@@ -743,7 +743,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '11px 24px', borderRadius: 50, border: '1px solid rgba(139,92,246,0.40)', color: '#A78BFA', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', marginTop: 'auto' }}>
+              <Link href={fr ? '/fr/inquiry' : '/inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '11px 24px', borderRadius: 50, border: '1px solid rgba(139,92,246,0.40)', color: '#A78BFA', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', marginTop: 'auto' }}>
                 {fr ? 'Faire une demande →' : 'Inquire →'}
               </Link>
             </div>
@@ -765,7 +765,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                   </li>
                 ))}
               </ul>
-              <Link href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '11px 24px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(109,40,217,0.40)', marginTop: 'auto' }}>
+              <Link href={fr ? '/fr/inquiry' : '/inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '11px 24px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', boxShadow: '0 4px 16px rgba(109,40,217,0.40)', marginTop: 'auto' }}>
                 {fr ? 'Faire une demande →' : 'Inquire →'}
               </Link>
             </div>
@@ -831,7 +831,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                         {fr ? 'On crée des sites web pour les entreprises de Montréal qui convertissent vraiment.' : 'We build websites for Montréal businesses that actually convert.'}
                       </p>
                       <div className="flex flex-wrap items-center" style={{ gap: 10, paddingTop: 4 }}>
-                        <Link href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'} style={{ display: 'inline-flex', alignItems: 'center', padding: '12px 24px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', boxShadow: '0 4px 22px rgba(109,40,217,0.45)' }}>
+                        <Link href={fr ? '/fr/inquiry' : '/inquiry'} style={{ display: 'inline-flex', alignItems: 'center', padding: '12px 24px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', letterSpacing: '0.01em', boxShadow: '0 4px 22px rgba(109,40,217,0.45)' }}>
                           {fr ? 'Créons votre site →' : "Let's Build Your Website →"}
                         </Link>
                       </div>
@@ -934,7 +934,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                             </li>
                           ))}
                         </ul>
-                        <Link href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '9px 16px', borderRadius: 50, border: '1px solid rgba(139,92,246,0.40)', color: '#A78BFA', fontSize: 12, fontWeight: 700, textDecoration: 'none', marginTop: 'auto' }}>
+                        <Link href={fr ? '/fr/inquiry' : '/inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '9px 16px', borderRadius: 50, border: '1px solid rgba(139,92,246,0.40)', color: '#A78BFA', fontSize: 12, fontWeight: 700, textDecoration: 'none', marginTop: 'auto' }}>
                           {fr ? 'Faire une demande →' : 'Inquire →'}
                         </Link>
                       </div>
@@ -952,7 +952,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                             </li>
                           ))}
                         </ul>
-                        <Link href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '9px 16px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 12, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 14px rgba(109,40,217,0.40)', marginTop: 'auto' }}>
+                        <Link href={fr ? '/fr/inquiry' : '/inquiry'} style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '9px 16px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 12, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 14px rgba(109,40,217,0.40)', marginTop: 'auto' }}>
                           {fr ? 'Faire une demande →' : 'Inquire →'}
                         </Link>
                       </div>
@@ -978,7 +978,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
               {fr ? 'Votre site en ligne en 7 jours.' : 'Your website live in 7 days.'}
             </p>
             <Link
-              href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'}
+              href={fr ? '/fr/inquiry' : '/inquiry'}
               style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '13px 30px', borderRadius: 50, background: 'linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%)', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', boxShadow: '0 4px 22px rgba(109,40,217,0.45)' }}
             >
               {fr ? 'Créons votre site →' : "Let's Build Your Website →"}

@@ -194,8 +194,8 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
   };
 
   const homeHref = fr ? '/fr/home' : '/home';
-  const beliefsHref = '/our-beliefs';
-  const projectsHref = '/our-work';
+  const beliefsHref = fr ? '/fr/our-beliefs' : '/our-beliefs';
+  const projectsHref = fr ? '/fr/our-work' : '/our-work';
   const contactHref = fr ? '/fr/inquiry' : '/inquiry';
 
   return (
