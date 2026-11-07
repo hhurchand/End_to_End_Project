@@ -36,7 +36,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             {fr ? (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  On a fondé AgenteDirect après avoir vu trop d&apos;entreprises locales soit coincées avec un site qui aurait pu appartenir à n&apos;importe qui (mêmes gabarits, mêmes photos de stock, du texte que personne n&apos;a réellement écrit), soit sans site du tout, parfois juste une vieille page Facebook qui faisait le travail.
+                  On a fondé AgenteDirect après avoir vu trop d&apos;entreprises locales avec un site qui aurait pu appartenir à n&apos;importe qui, ou sans vraie présence du tout. Mêmes gabarits, mêmes photos de stock, du texte que personne n&apos;a réellement écrit. Parfois juste une vieille page Facebook qui faisait le travail.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   On comprend que certaines entreprises cherchent exactement ça. Et c&apos;est tout à fait correct.
@@ -57,7 +57,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             ) : (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  We started AgenteDirect after seeing too many local businesses either stuck with a site that could&apos;ve belonged to anyone (same layouts, same stock photos, words no one actually wrote for them), or no site at all, sometimes just an old Facebook page holding the fort.
+                  We started AgenteDirect after seeing too many local businesses with a site that could&apos;ve belonged to anyone, or no real site at all. Same layouts, same stock photos, words no one actually wrote. Sometimes just an old Facebook page doing the job.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   We understand that some businesses are looking for exactly that, and that&apos;s completely valid.
