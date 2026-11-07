@@ -36,60 +36,61 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             {fr ? (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  On a fondé AgenteDirect après avoir vu trop d&apos;entreprises locales avec un site qui aurait pu appartenir à n&apos;importe qui, ou sans vraie présence du tout. Mêmes gabarits, mêmes photos de stock, du texte que personne n&apos;a réellement écrit. Parfois juste une vieille page Facebook qui faisait le travail.
+                  On a fondé AgenteDirect parce qu&apos;on voyait trop d&apos;entreprises locales avec des sites qui ne les représentaient pas vraiment. Certains ressemblaient à tous les autres, d&apos;autres étaient dépassés ou n&apos;avaient tout simplement pas de site.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Certaines entreprises veulent simplement quelque chose de propre et fonctionnel, sans tout le travail sur mesure. C&apos;est tout à fait correct aussi.
+                  On sait que toutes les entreprises n&apos;ont pas besoin de quelque chose de compliqué. Parfois, un site simple et propre, c&apos;est exactement ce qu&apos;il faut, et il n&apos;y a rien de mal à ça.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Quand on prend un projet, on prend le temps. On demande vos vraies photos, vos vrais moments, ceux qui montrent vraiment ce qui rend votre entreprise unique. On construit autour de <em>vous</em>, pas autour d&apos;un gabarit qu&apos;on a utilisé cinquante fois.
+                  Mais quand on prend un projet, on veut s&apos;assurer qu&apos;il reflète vraiment votre entreprise. On prend le temps de comprendre ce que vous faites, ce qui vous distingue et qui sont vos clients. On utilise vos photos, votre histoire et les détails qui font que votre entreprise est la vôtre. On ne prend pas un gabarit en changeant juste le logo.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Et on ne disparaît pas après le lancement.
+                  Notre travail ne s&apos;arrête pas une fois votre site en ligne.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  On reste à vos côtés. Quand une nouvelle saison arrive, on vous contacte. Quand vous voulez pousser une promotion ou mettre quelque chose à jour, on est à un message. On se voit moins comme une agence web et plus comme l&apos;équipe qui fait travailler votre présence en ligne pour vous, toute l&apos;année.
+                  Les entreprises évoluent, les saisons passent, et il y a toujours quelque chose à mettre à jour ou à promouvoir. On est là pour ça. Que vous ayez besoin de faire un petit changement, de promouvoir une offre spéciale ou de rafraîchir votre site, vous pouvez nous contacter.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  On veut bâtir des relations à long terme avec les entreprises avec qui on travaille, pas juste construire un site et passer à autre chose.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  Vous remarquerez aussi qu&apos;on n&apos;a pas de page de tarifs ni de liste de forfaits. C&apos;est parce que chaque entreprise a des besoins différents. On préfère discuter, comprendre ce que vous cherchez et trouver ce qui fait le plus de sens.
                 </p>
                 <p style={{ marginBottom: '36px' }}>
-                  Il n&apos;y a pas de page de tarifs ici. Pas de forfaits à choisir. Parce que chaque entreprise est différente, et on préfère avoir une vraie conversation plutôt que de vous remettre un menu déroulant.
+                  Si c&apos;est le genre d&apos;expérience que vous recherchez,{' '}
+                  <Link href="/fr/inquiry" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '4px', textDecorationColor: 'rgba(255,255,255,0.4)' }}>parlons-en.</Link>
                 </p>
               </>
             ) : (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  We started AgenteDirect after seeing too many local businesses with a site that could&apos;ve belonged to anyone, or no real site at all. Same layouts, same stock photos, words no one actually wrote. Sometimes just an old Facebook page doing the job.
+                  We started AgenteDirect because we kept seeing local businesses with websites that didn&apos;t really represent them. Some looked just like every other website out there, while others were outdated or didn&apos;t have a website at all.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Some businesses just want something simple and clean, without all the custom work. That&apos;s completely valid too.
+                  We know not every business needs something complicated. Sometimes a simple, clean website is exactly what you need, and there&apos;s nothing wrong with that.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  When we take on a project, we slow down. We ask for your real photos, your real moments, the ones that actually show what makes your business worth choosing. We build around <em>you</em>, not around a template we&apos;ve used fifty times before.
+                  But when we take on a project, we want to make sure it actually reflects your business. We take the time to understand what you do, what makes you different and who your customers are. We use your photos, your story and the details that make your business yours. We don&apos;t just take the same template and change the logo.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  And we don&apos;t disappear after launch.
+                  Our work doesn&apos;t stop once your website goes live, either.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  We stay by your side. When a new season comes around, we reach out. When you want to push a promotion or update something, we&apos;re a message away. We think of ourselves less as a web agency and more as the team quietly keeping your online presence working for you all year long.
+                  Businesses change, seasons come and go, and there&apos;s always something new to promote or update. We&apos;re here to help with that. Whether you need to make a quick change, promote a special offer or give your website a refresh, you can reach out to us.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  We want to build long-term relationships with the businesses we work with, not just build a website and move on.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  You&apos;ll also notice we don&apos;t have a pricing page or a list of packages. That&apos;s because every business has different needs. We&apos;d rather talk, understand what you&apos;re looking for and figure out what makes the most sense.
                 </p>
                 <p style={{ marginBottom: '36px' }}>
-                  There&apos;s no pricing page here. No packages to pick from. Because every business is different, and we&apos;d rather have a real conversation than hand you a dropdown menu.
+                  If that sounds like the kind of experience you&apos;re looking for,{' '}
+                  <Link href="/inquiry" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '4px', textDecorationColor: 'rgba(255,255,255,0.4)' }}>let&apos;s talk.</Link>
                 </p>
               </>
             )}
           </div>
-
-          {/* Closing */}
-          <p style={{ fontSize: '17px', lineHeight: 1.7, marginBottom: '40px', color: 'rgba(255,255,255,0.85)' }}>
-            {fr ? (
-              <>Si ça ressemble à ce que vous cherchez,{' '}
-                <Link href="/fr/inquiry" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '4px', textDecorationColor: 'rgba(255,255,255,0.4)' }}>parlons-en.</Link>
-              </>
-            ) : (
-              <>If that sounds like what you&apos;ve been looking for,{' '}
-                <Link href="/inquiry" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: '4px', textDecorationColor: 'rgba(255,255,255,0.4)' }}>let&apos;s talk.</Link>
-              </>
-            )}
-          </p>
 
           {/* Signature */}
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px' }}>
