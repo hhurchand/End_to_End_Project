@@ -39,7 +39,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
                   On a fondé AgenteDirect après avoir vu trop d&apos;entreprises locales avec un site qui aurait pu appartenir à n&apos;importe qui, ou sans vraie présence du tout. Mêmes gabarits, mêmes photos de stock, du texte que personne n&apos;a réellement écrit. Parfois juste une vieille page Facebook qui faisait le travail.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  On comprend que certaines entreprises cherchent exactement ça. Et c&apos;est tout à fait correct.
+                  Certaines entreprises veulent simplement quelque chose de propre et fonctionnel, sans tout le travail sur mesure. C&apos;est tout à fait correct aussi.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   Quand on prend un projet, on prend le temps. On demande vos vraies photos, vos vrais moments, ceux qui montrent vraiment ce qui rend votre entreprise unique. On construit autour de <em>vous</em>, pas autour d&apos;un gabarit qu&apos;on a utilisé cinquante fois.
@@ -60,7 +60,7 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
                   We started AgenteDirect after seeing too many local businesses with a site that could&apos;ve belonged to anyone, or no real site at all. Same layouts, same stock photos, words no one actually wrote. Sometimes just an old Facebook page doing the job.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  We understand that some businesses are looking for exactly that, and that&apos;s completely valid.
+                  Some businesses just want something simple and clean, without all the custom work. That&apos;s completely valid too.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   When we take on a project, we slow down. We ask for your real photos, your real moments, the ones that actually show what makes your business worth choosing. We build around <em>you</em>, not around a template we&apos;ve used fifty times before.
