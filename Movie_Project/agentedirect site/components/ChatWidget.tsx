@@ -142,6 +142,7 @@ export default function ChatWidget({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
                 onChange={e => setInput(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } }}
                 placeholder={fr ? 'Posez une question...' : 'Ask anything...'}
+                className="chat-input"
                 style={{
                   flex: 1, background: 'rgba(255,255,255,0.04)',
                   border: '1px solid rgba(255,255,255,0.08)',
@@ -214,6 +215,7 @@ export default function ChatWidget({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
           </svg>
         )}
       </button>
+      <style>{`@media (max-width: 767px) { .chat-input { font-size: 16px !important; } }`}</style>
     </>
   );
 }
