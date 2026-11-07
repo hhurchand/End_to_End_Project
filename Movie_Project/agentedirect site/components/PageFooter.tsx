@@ -1,10 +1,10 @@
 'use client';
 
 // Update PHONE, INSTAGRAM_URL, FACEBOOK_URL with your real info
-const PHONE = '+1 (514) 000-0000';
+const PHONE = '(514) 663-4210';
 const EMAIL = 'support@agentedirect.ca';
-const INSTAGRAM_URL = 'https://www.instagram.com/agentedirect.ca';
-const FACEBOOK_URL = 'https://www.facebook.com/agentedirect.ca';
+const INSTAGRAM_URL = 'https://www.instagram.com/agentedirect';
+const FACEBOOK_URL = 'https://www.facebook.com/share/19mHFnGPXf/?mibextid=wwXIfr';
 
 export default function PageFooter() {
   return (
