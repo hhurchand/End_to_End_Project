@@ -1194,7 +1194,7 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                 onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 10px 40px rgba(109,40,217,0.60)'; }}
                 onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.transform = 'translateY(0)'; el.style.boxShadow = '0 4px 28px rgba(109,40,217,0.45)'; }}
               >
-                {fr ? 'Réserver une consultation gratuite' : 'Book a Free Consultation'}
+                {fr ? 'Travailler avec nous' : 'Work With Us'}
                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden>
                   <path d="M2 11L11 2M11 2H5.5M11 2V7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
