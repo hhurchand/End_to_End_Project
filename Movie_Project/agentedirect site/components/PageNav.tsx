@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 interface PageNavProps {
   lang?: 'en' | 'fr';
-  active: 'beliefs' | 'work' | 'contact';
+  active: 'beliefs' | 'work' | 'contact' | 'strategy';
   enHref: string;
   frHref: string;
 }
@@ -15,10 +15,18 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
   const fr = lang === 'fr';
   const [open, setOpen] = useState(false);
 
-  const homeHref = fr ? '/fr/home' : '/home';
+  const folderMap: Record<string, string> = {
+    beliefs: 'our-beliefs',
+    work: 'selected-work',
+    contact: 'work-with-us',
+    strategy: 'the-strategy',
+  };
+  const openParam = folderMap[active] ? `?open=${folderMap[active]}` : '';
+  const homeHref = fr ? `/fr/home${openParam}` : `/home${openParam}`;
   const beliefsHref = fr ? '/fr/our-beliefs' : '/our-beliefs';
   const projectsHref = fr ? '/fr/our-work' : '/our-work';
   const contactHref = fr ? '/fr/inquiry' : '/inquiry';
+  const planHref = fr ? '/fr/strategy' : '/strategy';
 
   const activeStyle = { color: 'rgba(255,255,255,0.9)' };
   const dimStyle = { color: 'rgba(255,255,255,0.45)' };
@@ -44,6 +52,7 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
           <Link href={homeHref} style={dimStyle} className="hover:text-white transition-colors">{fr ? 'Bureau' : 'Desktop'}</Link>
           <Link href={beliefsHref} style={active === 'beliefs' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'Nos croyances' : 'Our Beliefs'}</Link>
           <Link href={projectsHref} style={active === 'work' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'Nos projets' : 'Our Projects'}</Link>
+          <Link href={planHref} style={active === 'strategy' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'La Stratégie' : 'The Strategy'}</Link>
           <Link href={contactHref} style={active === 'contact' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'Contact' : 'Contact'}</Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingLeft: 16, borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
             <Link href={enHref} style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
@@ -104,6 +113,7 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
               { href: homeHref, label: fr ? 'Bureau' : 'Desktop', isActive: false },
               { href: beliefsHref, label: fr ? 'Nos croyances' : 'Our Beliefs', isActive: active === 'beliefs' },
               { href: projectsHref, label: fr ? 'Nos projets' : 'Our Projects', isActive: active === 'work' },
+              { href: planHref, label: fr ? 'La Stratégie' : 'The Strategy', isActive: active === 'strategy' },
               { href: contactHref, label: fr ? 'Contact' : 'Contact', isActive: active === 'contact' },
             ].map(item => (
               <Link

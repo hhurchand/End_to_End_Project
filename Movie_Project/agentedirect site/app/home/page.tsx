@@ -97,9 +97,14 @@ function MacFolder({ label, selected = false, size = 'md' }: { label: string; se
 
 function FinderWindow({ fr, onSectionClick, isTouch, playClickSound }: { fr: boolean; onSectionClick: (id: string) => void; isTouch: boolean; playClickSound: () => void }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  useEffect(() => {
+    const open = new URLSearchParams(window.location.search).get('open');
+    if (open) setSelectedId(open);
+  }, []);
   const sections = [
     { label: fr ? 'Nos croyances' : 'Our Beliefs', id: 'our-beliefs' },
     { label: fr ? 'Nos projets' : 'Our Projects', id: 'selected-work' },
+    { label: fr ? 'La Stratégie' : 'The Strategy', id: 'the-strategy' },
     { label: fr ? 'Travaillez avec nous' : 'Work With Us', id: 'work-with-us' },
   ];
   return (
@@ -148,7 +153,7 @@ function FinderWindow({ fr, onSectionClick, isTouch, playClickSound }: { fr: boo
           {/* Right panel — folders centered, hint pinned to bottom */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} onClick={e => { if (e.target === e.currentTarget) setSelectedId(null); }}>
             {/* File grid — auto height, not flex:1 */}
-            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '14px 8px', alignContent: 'center', padding: '0 16px' }}>
+            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '14px 8px', alignContent: 'center', padding: '0 16px' }}>
               {sections.map((s, i) => (
                 <motion.button
                   key={s.id} type="button"
@@ -306,6 +311,7 @@ export default function HomePage({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
     if (id === 'our-beliefs') { setTimeout(() => router.push(fr ? '/fr/our-beliefs' : '/our-beliefs'), 200); return; }
     if (id === 'selected-work') { setTimeout(() => router.push(fr ? '/fr/our-work' : '/our-work'), 200); return; }
     if (id === 'work-with-us') { setTimeout(() => router.push(fr ? '/fr/inquiry' : '/inquiry'), 200); return; }
+    if (id === 'the-strategy') { setTimeout(() => router.push(fr ? '/fr/strategy' : '/strategy'), 200); return; }
     setUnlocked(true);
     setActiveSection(id);
   };
