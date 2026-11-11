@@ -672,29 +672,29 @@ const INDUSTRIES: IndustryData[] = [
     hero: {
       headline: {
         en: 'When someone has a pest problem, they search for help immediately. The first result gets the call.',
-        fr: 'Quand quelqu'un a un problème de parasites, il cherche de l'aide immédiatement. Le premier résultat obtient l'appel.',
+        fr: 'Quand quelqu\'un a un problème de parasites, il cherche de l\'aide immédiatement. Le premier résultat obtient l\'appel.',
       },
       sub: {
         en: 'If your pest control business is not visible on Google in Montreal and Quebec, those urgent calls are going straight to your competitors.',
-        fr: 'Si votre entreprise d'extermination n'est pas visible sur Google à Montréal et au Québec, ces appels urgents vont directement chez vos concurrents.',
+        fr: 'Si votre entreprise d\'extermination n\'est pas visible sur Google à Montréal et au Québec, ces appels urgents vont directement chez vos concurrents.',
       },
     },
     stats: [
       {
         value: { en: '59%', fr: '59 %' },
-        label: { en: 'of Canadians are more likely to do business with a company that has a website. Pest control is an urgent, trust-sensitive service. Clients who cannot find you online will not wait. They will call whoever shows up first on Google.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. L'extermination est un service urgent et sensible à la confiance. Les clients qui ne vous trouvent pas en ligne n'attendront pas. Ils appelleront celui qui apparaît en premier sur Google.' },
+        label: { en: 'of Canadians are more likely to do business with a company that has a website. Pest control is an urgent, trust-sensitive service. Clients who cannot find you online will not wait. They will call whoever shows up first on Google.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. L\'extermination est un service urgent et sensible à la confiance. Les clients qui ne vous trouvent pas en ligne n\'attendront pas. Ils appelleront celui qui apparaît en premier sur Google.' },
         source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' },
         year: 2025, geo: { en: 'Canada', fr: 'Canada' },
       },
       {
         value: { en: '75%', fr: '75 %' },
-        label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Renovations disturb walls, foundations and crawl spaces. Pest control demand rises directly alongside home improvement activity across Quebec.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les rénovations perturbent les murs, les fondations et les vides sanitaires. La demande en extermination augmente directement avec l'activité de rénovation résidentielle au Québec.' },
+        label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Renovations disturb walls, foundations and crawl spaces. Pest control demand rises directly alongside home improvement activity across Quebec.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les rénovations perturbent les murs, les fondations et les vides sanitaires. La demande en extermination augmente directement avec l\'activité de rénovation résidentielle au Québec.' },
         source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' },
         year: 2025, geo: { en: 'Canada', fr: 'Canada' },
       },
       {
         value: { en: '9 in 10', fr: '9 sur 10' },
-        label: { en: 'Canadian small businesses use at least one digital channel. But only 1 in 3 currently take bookings or sell online. Pest control companies that offer instant online quote requests and inspection bookings convert high-intent searchers before competitors even answer the phone.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique. Mais seulement 1 sur 3 acceptent des réservations ou vendent en ligne. Les entreprises d'extermination qui offrent des soumissions et réservations d'inspection en ligne convertissent les chercheurs à forte intention avant même que leurs concurrents décrochent le téléphone.' },
+        label: { en: 'Canadian small businesses use at least one digital channel. But only 1 in 3 currently take bookings or sell online. Pest control companies that offer instant online quote requests and inspection bookings convert high-intent searchers before competitors even answer the phone.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique. Mais seulement 1 sur 3 acceptent des réservations ou vendent en ligne. Les entreprises d\'extermination qui offrent des soumissions et réservations d\'inspection en ligne convertissent les chercheurs à forte intention avant même que leurs concurrents décrochent le téléphone.' },
         source: { en: 'CFIB Your Voice Survey, September 2025', fr: 'Sondage Votre voix FCEI, septembre 2025' },
         year: 2025, geo: { en: 'Canada', fr: 'Canada' },
       },
@@ -702,15 +702,15 @@ const INDUSTRIES: IndustryData[] = [
     challenges: [
       {
         title: { en: 'Urgent searches go to whoever ranks first', fr: 'Les recherches urgentes vont au premier résultat' },
-        body: { en: 'Pest problems do not wait. When someone finds mice, bedbugs or cockroaches, they search immediately and call the first credible result. If that is not you, the job is gone.', fr: 'Les problèmes de parasites n'attendent pas. Quand quelqu'un trouve des souris, des punaises ou des coquerelles, il cherche immédiatement et appelle le premier résultat crédible. Si ce n'est pas vous, le contrat est perdu.' },
+        body: { en: 'Pest problems do not wait. When someone finds mice, bedbugs or cockroaches, they search immediately and call the first credible result. If that is not you, the job is gone.', fr: 'Les problèmes de parasites n\'attendent pas. Quand quelqu\'un trouve des souris, des punaises ou des coquerelles, il cherche immédiatement et appelle le premier résultat crédible. Si ce n\'est pas vous, le contrat est perdu.' },
       },
       {
         title: { en: 'Trust is everything in a service that enters the home', fr: 'La confiance est primordiale pour un service qui entre dans la maison' },
-        body: { en: 'Homeowners and tenants need to feel safe before letting someone inside. Without a professional site, certifications visible online and real reviews, doubt replaces trust and the call never comes.', fr: 'Les propriétaires et locataires ont besoin de se sentir en sécurité avant de laisser entrer quelqu'un. Sans site professionnel, certifications visibles et vrais avis en ligne, le doute remplace la confiance et l'appel n'arrive jamais.' },
+        body: { en: 'Homeowners and tenants need to feel safe before letting someone inside. Without a professional site, certifications visible online and real reviews, doubt replaces trust and the call never comes.', fr: 'Les propriétaires et locataires ont besoin de se sentir en sécurité avant de laisser entrer quelqu\'un. Sans site professionnel, certifications visibles et vrais avis en ligne, le doute remplace la confiance et l\'appel n\'arrive jamais.' },
       },
       {
         title: { en: 'Seasonal peaks lost to competitors with better visibility', fr: 'Pics saisonniers perdus au profit de concurrents mieux visibles' },
-        body: { en: 'Spring ant invasions, fall rodent intrusions and summer wasp nests drive predictable surges in demand. Without SEO and a site that captures that traffic, your busy season belongs to whoever ranks above you.', fr: 'Les invasions de fourmis au printemps, les intrusions de rongeurs à l'automne et les nids de guêpes en été créent des pointes de demande prévisibles. Sans SEO et site qui capte ce trafic, votre haute saison appartient à ceux qui vous dépassent sur Google.' },
+        body: { en: 'Spring ant invasions, fall rodent intrusions and summer wasp nests drive predictable surges in demand. Without SEO and a site that captures that traffic, your busy season belongs to whoever ranks above you.', fr: 'Les invasions de fourmis au printemps, les intrusions de rongeurs à l\'automne et les nids de guêpes en été créent des pointes de demande prévisibles. Sans SEO et site qui capte ce trafic, votre haute saison appartient à ceux qui vous dépassent sur Google.' },
       },
     ],
     opportunities: [
@@ -720,11 +720,11 @@ const INDUSTRIES: IndustryData[] = [
       },
       {
         title: { en: 'Build the trust that sends people straight to you', fr: 'Construire la confiance qui envoie les gens directement vers vous' },
-        body: { en: 'Licensed technician profiles, before-and-after treatment photos, your certifications and a wall of verified reviews transform a cold search into a confident call before the competition gets a look in.', fr: 'Profils de techniciens certifiés, photos de traitements avant-après, vos certifications et un mur d'avis vérifiés transforment une recherche froide en appel confiant avant même que la concurrence ait une chance.' },
+        body: { en: 'Licensed technician profiles, before-and-after treatment photos, your certifications and a wall of verified reviews transform a cold search into a confident call before the competition gets a look in.', fr: 'Profils de techniciens certifiés, photos de traitements avant-après, vos certifications et un mur d\'avis vérifiés transforment une recherche froide en appel confiant avant même que la concurrence ait une chance.' },
       },
       {
         title: { en: 'Book inspections around the clock', fr: 'Réserver des inspections en tout temps' },
-        body: { en: 'An online inspection request form available 24 hours a day means a homeowner who discovers a problem at 11pm books with you instead of calling around in the morning. You wake up to a full schedule.', fr: 'Un formulaire de demande d'inspection disponible 24 heures sur 24 signifie qu'un propriétaire qui découvre un problème à 23h réserve avec vous plutôt que d'appeler partout le matin. Vous vous réveillez avec un agenda rempli.' },
+        body: { en: 'An online inspection request form available 24 hours a day means a homeowner who discovers a problem at 11pm books with you instead of calling around in the morning. You wake up to a full schedule.', fr: 'Un formulaire de demande d\'inspection disponible 24 heures sur 24 signifie qu\'un propriétaire qui découvre un problème à 23h réserve avec vous plutôt que d\'appeler partout le matin. Vous vous réveillez avec un agenda rempli.' },
       },
     ],
     seo: {
@@ -742,11 +742,11 @@ const INDUSTRIES: IndustryData[] = [
       },
       attract: {
         en: 'Pest-and-city keyword pages targeting the exact emergency searches your future clients make the moment they have a problem. «Souris Montréal». «Punaises Laval». «Exterminateur urgence Brossard». The search that happens at 10pm on a Tuesday.',
-        fr: 'Des pages par parasite et ville ciblant les recherches d'urgence exactes que vos futurs clients font au moment où ils ont un problème. «Souris Montréal». «Punaises Laval». «Exterminateur urgence Brossard». La recherche qui se fait à 22h un mardi.',
+        fr: 'Des pages par parasite et ville ciblant les recherches d\'urgence exactes que vos futurs clients font au moment où ils ont un problème. «Souris Montréal». «Punaises Laval». «Exterminateur urgence Brossard». La recherche qui se fait à 22h un mardi.',
       },
       convert: {
         en: 'An online inspection booking form and an AI chatbot that helps identify the pest, outlines the treatment and captures contact details right then. No hold music. No missed calls. Just a booked inspection waiting for you in the morning.',
-        fr: 'Un formulaire de réservation d'inspection en ligne et un chatbot IA qui aide à identifier le parasite, présente le traitement et capte les coordonnées sur le moment. Pas de musique d'attente. Pas d'appels manqués. Juste une inspection réservée qui vous attend le matin.',
+        fr: 'Un formulaire de réservation d\'inspection en ligne et un chatbot IA qui aide à identifier le parasite, présente le traitement et capte les coordonnées sur le moment. Pas de musique d\'attente. Pas d\'appels manqués. Juste une inspection réservée qui vous attend le matin.',
       },
     },
     recommended: 'growth',
