@@ -32,9 +32,9 @@ const T = {
     optLaunch: 'Website Launch',
     optGrowth: 'Growth System',
     optPro: 'Growth Pro',
-    descLaunch: 'A professionally designed, custom-built website — mobile-first, bilingual, SEO-ready and built around your brand. The foundation every business needs.',
+    descLaunch: 'A professionally designed, custom-built website. Mobile-first, bilingual, SEO-ready and built around your brand. The foundation every business needs.',
     descGrowth: 'Everything in Website Launch, plus an AI chatbot trained on your business that qualifies leads, answers questions and captures opportunities around the clock.',
-    descPro: 'Full digital growth strategy — advanced local SEO, city pages, Google Business management, review generation and monthly reporting with a dedicated strategist.',
+    descPro: 'Full digital growth strategy. Advanced local SEO, city pages, Google Business management, review generation and monthly reporting with a dedicated strategist.',
     submit: 'Send Inquiry',
     submitHint: 'Opens your email app with the inquiry pre-filled.',
     preferEmail: 'Prefer email?',
@@ -74,9 +74,9 @@ const T = {
     optLaunch: 'Lancement Web',
     optGrowth: 'Système de croissance',
     optPro: 'Croissance Pro',
-    descLaunch: 'Un site web conçu sur mesure — mobile-first, bilingue, prêt pour Google et construit autour de votre marque. La fondation dont chaque entreprise a besoin.',
+    descLaunch: 'Un site web conçu sur mesure. Mobile-first, bilingue, prêt pour Google et construit autour de votre marque. La fondation dont chaque entreprise a besoin.',
     descGrowth: 'Tout ce qui est inclus dans Lancement Web, plus un chatbot IA formé sur votre entreprise qui qualifie les prospects, répond aux questions et capte les opportunités en tout temps.',
-    descPro: 'Stratégie de croissance numérique complète — SEO local avancé, pages par ville, gestion Google Business, génération d\'avis et rapports mensuels avec un stratège dédié.',
+    descPro: 'Stratégie de croissance numérique complète. SEO local avancé, pages par ville, gestion Google Business, génération d\'avis et rapports mensuels avec un stratège dédié.',
     submit: 'Envoyer la demande',
     submitHint: 'Ouvre votre application courriel avec la demande pré-remplie.',
     preferEmail: 'Préférez le courriel?',
@@ -123,27 +123,6 @@ function validate(f: FormState, t: typeof T.en): FormErrors {
   return e;
 }
 
-function buildMailto(f: FormState, t: typeof T.en): string {
-  const planLabel = f.plan === 'growth' ? t.planGrowth : f.plan === 'pro' ? t.planPro : t.planLaunch;
-  const lines = [
-    t.emailGreeting(f.name),
-    ``,
-    `Name: ${f.name}`,
-    `Business: ${f.businessName}`,
-    `Email: ${f.email}`,
-    `${t.emailSiteLabel}: ${f.currentUrl || t.emailNone}`,
-    ``,
-    t.emailAbout,
-    f.businessDescription,
-    ``,
-    `${t.emailInterested} ${planLabel}`,
-    ``,
-    t.emailClosing,
-    ``,
-    f.name,
-  ];
-  return `mailto:${BUSINESS_EMAIL}?subject=${encodeURIComponent(t.emailSubject(f.businessName))}&body=${encodeURIComponent(lines.join('\n'))}`;
-}
 
 function FieldGroup({ label, required, hint, error, children }: {
   label: string; required?: boolean; hint?: string; error?: string; children: ReactNode;
@@ -171,21 +150,39 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [expandedPlan, setExpandedPlan] = useState<'launch' | 'growth' | 'pro' | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const setField = useCallback(<K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm(prev => ({ ...prev, [key]: value }));
     if (key in errors) setErrors(prev => { const n = { ...prev }; delete n[key as keyof FormErrors]; return n; });
   }, [errors]);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     const errs = validate(form, t);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       document.getElementById(`field-${Object.keys(errs)[0]}`)?.focus();
       return;
     }
-    window.location.href = buildMailto(form, t);
-  }, [form, t]);
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, lang }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? 'Something went wrong.');
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please email us directly.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [form, t, lang]);
 
   const inputStyle = (hasError: boolean): React.CSSProperties => ({
     width: '100%',
@@ -220,6 +217,25 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
           transition={{ duration: 0.8, ease }}
           style={{ maxWidth: '600px', width: '100%' }}
         >
+          {submitted ? (
+            <div style={{ textAlign: 'center', paddingTop: 40 }}>
+              <div style={{ fontSize: 40, marginBottom: 24 }}>
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style={{ margin: '0 auto', display: 'block' }}>
+                  <circle cx="24" cy="24" r="23" stroke="rgba(139,92,246,0.5)" strokeWidth="1.5" />
+                  <path d="M14 24l7 7 13-13" stroke="rgba(167,139,250,0.9)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+              <h2 style={{ fontSize: 'clamp(24px,3vw,32px)', fontWeight: 700, color: 'rgba(255,255,255,0.92)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
+                {fr ? 'On a bien reçu votre demande.' : 'Got it. We\'ll be in touch soon.'}
+              </h2>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', lineHeight: 1.75, maxWidth: 400, margin: '0 auto' }}>
+                {fr
+                  ? 'Merci de nous avoir contactés. On vous reviendra rapidement pour discuter de votre projet.'
+                  : 'Thanks for reaching out. We\'ll get back to you shortly to talk about your project.'}
+              </p>
+            </div>
+          ) : (
+          <>
           <p style={{ fontSize: '15px', lineHeight: 1.7, marginBottom: '10px', color: 'rgba(255,255,255,0.45)', fontStyle: 'italic' }}>
             {t.eyebrow}
           </p>
@@ -333,22 +349,23 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
               <button
                 type="button"
                 onClick={handleSubmit}
+                disabled={submitting}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: '13px 28px', borderRadius: 50,
-                  background: 'rgba(139,92,246,0.15)',
-                  color: 'rgba(220,210,245,0.95)', fontSize: 14, fontWeight: 700,
-                  border: '1px solid rgba(139,92,246,0.4)', cursor: 'pointer', letterSpacing: '0.01em',
-                  transition: 'background 0.2s, border-color 0.2s',
+                  background: submitting ? 'rgba(139,92,246,0.08)' : 'rgba(139,92,246,0.15)',
+                  color: submitting ? 'rgba(220,210,245,0.4)' : 'rgba(220,210,245,0.95)', fontSize: 14, fontWeight: 700,
+                  border: '1px solid rgba(139,92,246,0.4)', cursor: submitting ? 'default' : 'pointer', letterSpacing: '0.01em',
+                  transition: 'background 0.2s, border-color 0.2s, color 0.2s',
                 }}
-                onMouseEnter={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.28)'; el.style.borderColor = 'rgba(139,92,246,0.7)'; }}
-                onMouseLeave={e => { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.15)'; el.style.borderColor = 'rgba(139,92,246,0.4)'; }}
+                onMouseEnter={e => { if (!submitting) { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.28)'; el.style.borderColor = 'rgba(139,92,246,0.7)'; }}}
+                onMouseLeave={e => { if (!submitting) { const el = e.currentTarget; el.style.background = 'rgba(139,92,246,0.15)'; el.style.borderColor = 'rgba(139,92,246,0.4)'; }}}
               >
-                {t.submit} →
+                {submitting ? (fr ? 'Envoi...' : 'Sending...') : `${t.submit} \u2192`}
               </button>
-              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.22)', marginTop: 10, lineHeight: 1.5 }}>
-                {t.submitHint}
-              </p>
+              {submitError && (
+                <p style={{ fontSize: 12, color: 'rgba(239,68,68,0.82)', marginTop: 10 }}>{submitError}</p>
+              )}
             </div>
 
           </div>
@@ -362,6 +379,8 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
               </a>
             </p>
           </div>
+          </>
+          )}
         </motion.div>
       </div>
 

@@ -36,25 +36,28 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             {fr ? (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  On a fondé AgenteDirect parce qu&apos;on voyait trop d&apos;entreprises locales avec des sites qui ne les représentaient pas vraiment. Certains ressemblaient à tous les autres, d&apos;autres étaient dépassés ou n&apos;avaient tout simplement pas de site.
+                  On a fondé AgenteDirect parce qu&apos;on voyait trop d&apos;entreprises locales qui méritaient une meilleure présence en ligne. Certaines avaient des sites dépassés qui ne reflétaient plus la qualité de leur travail. D&apos;autres avaient des sites qui ressemblaient à tous les autres. Et certaines n&apos;avaient tout simplement pas de site.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  On sait que toutes les entreprises n&apos;ont pas besoin de quelque chose de compliqué. Parfois, un site simple et propre, c&apos;est exactement ce qu&apos;il faut, et il n&apos;y a rien de mal à ça.
+                  On croit que chaque entreprise mérite un site qui la représente vraiment. Que vous partiez de zéro et ayez besoin d&apos;un tout nouveau site, ou que vous en ayez déjà un qui a besoin d&apos;une refonte complète, on est là pour vous aider.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Mais quand on prend un projet, on veut s&apos;assurer qu&apos;il reflète vraiment votre entreprise. On prend le temps de comprendre ce que vous faites, ce qui vous distingue et qui sont vos clients. On utilise vos photos, votre histoire et les détails qui font que votre entreprise est la vôtre. On ne prend pas un gabarit en changeant juste le logo.
+                  On comprend aussi que toutes les entreprises n&apos;ont pas besoin de quelque chose de compliqué. Parfois, un site simple et propre, c&apos;est exactement ce qu&apos;il faut, et il n&apos;y a rien de mal à ça.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Notre travail ne s&apos;arrête pas une fois votre site en ligne.
+                  Ce qui compte pour nous, c&apos;est que le résultat final ressemble à votre entreprise. On prend le temps de comprendre ce que vous faites, ce qui vous distingue et qui sont vos clients. On utilise vos photos, votre histoire et les détails qui font que votre entreprise est la vôtre. On ne prend pas un gabarit en changeant juste le logo.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Les entreprises évoluent, les saisons passent, et il y a toujours quelque chose à mettre à jour ou à promouvoir. On est là pour ça. Que vous ayez besoin de faire un petit changement, de promouvoir une offre spéciale ou de rafraîchir votre site, vous pouvez nous contacter.
+                  Et notre travail ne s&apos;arrête pas une fois votre site en ligne.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  Les entreprises évoluent. Les saisons changent. De nouveaux services voient le jour, des promotions arrivent et repartent, et parfois votre site a simplement besoin d&apos;un peu d&apos;attention. On est là quand ces choses arrivent, que ce soit pour une mise à jour rapide, une nouvelle page ou une refonte plus importante.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   On veut bâtir des relations à long terme avec les entreprises avec qui on travaille, pas juste construire un site et passer à autre chose.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Vous remarquerez aussi qu&apos;on n&apos;a pas de page de tarifs ni de liste de forfaits. C&apos;est parce que chaque entreprise a des besoins différents. On préfère discuter, comprendre ce que vous cherchez et trouver ce qui fait le plus de sens.
+                  Vous remarquerez aussi qu&apos;on n&apos;affiche pas de tarifs. C&apos;est parce que chaque entreprise a des besoins différents. On préfère apprendre à connaître votre entreprise, comprendre ce que vous cherchez et vous proposer quelque chose qui a du sens pour vous.
                 </p>
                 <p style={{ marginBottom: '36px' }}>
                   Si c&apos;est le genre d&apos;expérience que vous recherchez,{' '}
@@ -64,25 +67,28 @@ export default function OurBeliefsPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) 
             ) : (
               <>
                 <p style={{ marginBottom: '22px' }}>
-                  We started AgenteDirect because we kept seeing local businesses with websites that didn&apos;t really represent them. Some looked just like every other website out there, while others were outdated or didn&apos;t have a website at all.
+                  We started AgenteDirect because we kept seeing local businesses that deserved a better online presence. Some had websites that were outdated or no longer reflected the quality of their work. Others had websites that looked just like everyone else&apos;s. And some didn&apos;t have a website at all.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  We know not every business needs something complicated. Sometimes a simple, clean website is exactly what you need, and there&apos;s nothing wrong with that.
+                  We believe every business deserves a website that represents it properly. Whether you&apos;re starting from scratch and need a brand-new website, or you already have one that needs a complete redesign, we&apos;re here to help.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  But when we take on a project, we want to make sure it actually reflects your business. We take the time to understand what you do, what makes you different and who your customers are. We use your photos, your story and the details that make your business yours. We don&apos;t just take the same template and change the logo.
+                  We also understand that not every business needs something complicated. Sometimes a simple, clean website is exactly what you need, and there&apos;s nothing wrong with that.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Our work doesn&apos;t stop once your website goes live, either.
+                  What matters to us is that the end result feels like your business. We take the time to understand what you do, what makes you different and who your customers are. We use your photos, your story and the details that make your business yours. We don&apos;t just take a template and change the logo.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  Businesses change, seasons come and go, and there&apos;s always something new to promote or update. We&apos;re here to help with that. Whether you need to make a quick change, promote a special offer or give your website a refresh, you can reach out to us.
+                  And our work doesn&apos;t stop once your website goes live.
+                </p>
+                <p style={{ marginBottom: '22px' }}>
+                  Businesses evolve. Seasons change. New services launch, promotions come and go, and sometimes your website simply needs a little attention. We&apos;re here when those things happen, whether it&apos;s a quick update, a new page or a bigger refresh down the road.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
                   We want to build long-term relationships with the businesses we work with, not just build a website and move on.
                 </p>
                 <p style={{ marginBottom: '22px' }}>
-                  You&apos;ll also notice we don&apos;t have a pricing page or a list of packages. That&apos;s because every business has different needs. We&apos;d rather talk, understand what you&apos;re looking for and figure out what makes the most sense.
+                  You&apos;ll also notice we don&apos;t have any pricing. That&apos;s because every business has different needs. We&apos;d rather get to know your business, understand what you&apos;re looking for and put together something that makes sense for you.
                 </p>
                 <p style={{ marginBottom: '36px' }}>
                   If that sounds like the kind of experience you&apos;re looking for,{' '}

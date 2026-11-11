@@ -16,6 +16,8 @@ const PROJECTS = [
     label: 'CarWorks Canada',
     desc: 'Auto body & collision repair out of Montréal. We built them a site that leads with trust, real photos, real reviews, and a clear path to booking.',
     descFr: 'Carrosserie et réparation collision à Montréal. On leur a construit un site qui inspire confiance, avec de vraies photos, de vrais avis, et un chemin clair vers la prise de rendez-vous.',
+    outcome: 'Now the first result people find when they search for collision repair in Montréal. Before they ever pick up the phone.',
+    outcomeFr: 'Premier résultat quand quelqu\'un cherche une carrosserie à Montréal, avant même de décrocher le téléphone.',
     href: 'https://carworkscanada.com/',
     demo: false,
   },
@@ -25,6 +27,8 @@ const PROJECTS = [
     label: 'Jakoa Productions',
     desc: 'DJ & event entertainment based in Montréal. The site captures the energy of the brand, dark, cinematic, and built to convert inquiries.',
     descFr: 'DJ et divertissement événementiel basé à Montréal. Le site capture l\'énergie de la marque, sombre, cinématographique, et conçu pour convertir les demandes.',
+    outcome: 'Inquiry form gets used. The site works as hard as the act. Clients reach out before they\'ve even looked at another DJ.',
+    outcomeFr: 'Le formulaire de contact est utilisé. Le site travaille aussi fort que le groupe, les clients écrivent avant même d\'avoir regardé un autre DJ.',
     href: 'https://jakoa.ca/',
     demo: false,
   },
@@ -34,6 +38,8 @@ const PROJECTS = [
     label: 'La Cucina',
     desc: 'Italian restaurant in Pointe-Claire. Warm, inviting design with online reservations and a menu that makes you hungry just scrolling.',
     descFr: 'Restaurant italien à Pointe-Claire. Un design chaleureux et accueillant avec réservations en ligne et un menu qui donne faim rien qu\'en scrollant.',
+    outcome: 'Built to show what a local restaurant can achieve. Reservations integrated, menu front and center, and a site that makes the decision before the visit.',
+    outcomeFr: 'Conçu pour montrer ce qu\'un restaurant local peut accomplir. Réservations intégrées, menu au premier plan, et un site qui convainc avant la visite.',
     href: 'https://lacucina.agentedirect.ca/',
     demo: true,
   },
@@ -43,6 +49,8 @@ const PROJECTS = [
     label: 'Pavage Gagnon & Fils',
     desc: 'Asphalt, paving stone & concrete services serving greater Montréal. Clean, authoritative, and built to rank locally.',
     descFr: 'Services d\'asphalte, pavé uni et béton pour le grand Montréal. Propre, autoritaire, et conçu pour bien se positionner localement.',
+    outcome: 'Built to own every paving search in greater Montréal. City pages, service pages, and a quote form on every screen.',
+    outcomeFr: 'Conçu pour dominer chaque recherche de pavage dans le grand Montréal, avec des pages par ville, des pages de services et un formulaire de soumission partout.',
     href: 'https://gagnonfils.netlify.app/',
     demo: true,
   },
@@ -156,12 +164,15 @@ export default function OurWorkPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
                   <h2 style={{ fontSize: 'clamp(26px, 3vw, 38px)', fontWeight: 700, color: 'rgba(255,255,255,0.92)', margin: '0 0 18px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
                     {p.label}
                   </h2>
-                  <p style={{ fontSize: 17, lineHeight: 1.75, color: 'rgba(255,255,255,0.55)', margin: '0 0 16px', maxWidth: 420 }}>
+                  <p style={{ fontSize: 17, lineHeight: 1.75, color: 'rgba(255,255,255,0.55)', margin: '0 0 14px', maxWidth: 420 }}>
                     {fr ? p.descFr : p.desc}
+                  </p>
+                  <p style={{ fontSize: 13.5, lineHeight: 1.65, color: 'rgba(167,139,250,0.75)', margin: '0 0 16px', maxWidth: 420, fontStyle: 'italic' }}>
+                    {fr ? p.outcomeFr : p.outcome}
                   </p>
                   {p.demo && (
                     <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.28)', margin: '0 0 20px', letterSpacing: '0.01em' }}>
-                      {fr ? 'Site démo — conçu pour montrer ce qu\'on peut faire pour ce type d\'entreprise.' : 'Demo site, built to show what we can do for a business like this.'}
+                      {fr ? 'Site démo. Conçu pour montrer ce qu\'on peut faire pour ce type d\'entreprise.' : 'Demo site, built to show what we can do for a business like this.'}
                     </p>
                   )}
                   <a
