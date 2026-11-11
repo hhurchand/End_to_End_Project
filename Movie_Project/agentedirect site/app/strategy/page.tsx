@@ -34,7 +34,7 @@ interface SubIndustryData {
   seo: T;
   ai: T;
   approach: { build: T; attract: T; convert: T };
-  recommended?: 'launch' | 'growth' | 'pro';
+  recommended: 'launch' | 'growth' | 'pro';
 }
 
 interface IndustryData {
@@ -153,6 +153,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'Roofing service and city pages targeting every search your future clients make. «Couvreur Montréal». «Réparation toit urgence Laval». «Remplacement toiture Brossard». The search that happens the morning after a hail storm.', fr: 'Des pages de services de couverture et par ville ciblant chaque recherche de vos futurs clients. «Couvreur Montréal». «Réparation toit urgence Laval». «Remplacement toiture Brossard». La recherche qui se fait le matin après une tempête de grêle.' },
           convert: { en: 'An online inspection booking form and an AI chatbot that gathers roof details, photos of the damage and contact info before you have made a single call. So you spend your time doing roofs, not chasing leads.', fr: 'Un formulaire de réservation d\'inspection en ligne et un chatbot IA qui recueille les détails du toit, les photos des dommages et les coordonnées avant que vous ayez passé un seul appel. Pour que vous passiez votre temps à faire des toits, pas à courir après des prospects.' },
         },
+        recommended: 'growth',
       },
       {
         id: 'painters',
@@ -184,6 +185,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'City and service keyword pages targeting the searches homeowners make when they have already decided to repaint and are choosing who to call. «Peintre Montréal». «Peinture extérieure Laval». «Peintre résidentiel Brossard».', fr: 'Des pages par ville et mot-clé de service ciblant les recherches que font les propriétaires quand ils ont déjà décidé de repeindre et choisissent qui appeler. «Peintre Montréal». «Peinture extérieure Laval». «Peintre résidentiel Brossard».' },
           convert: { en: 'A quote request form that collects room type, project size and photos so you can prepare accurate estimates. An AI chatbot that answers timeline and pricing questions after hours. So your calendar fills itself while you are on the job.', fr: 'Un formulaire de soumission qui recueille le type de pièce, la taille du projet et des photos pour que vous puissiez préparer des estimations précises. Un chatbot IA qui répond aux questions de délais et de tarifs après les heures. Pour que votre calendrier se remplisse pendant que vous êtes sur le chantier.' },
         },
+        recommended: 'launch',
       },
       {
         id: 'plumbers',
@@ -215,6 +217,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'Emergency and service-specific pages targeting «plombier urgence Montréal», «débouchage drain Laval», «remplacement chauffe-eau Brossard» and every other search a homeowner makes with a plumbing problem.', fr: 'Des pages d\'urgence et spécifiques à chaque service ciblant «plombier urgence Montréal», «débouchage drain Laval», «remplacement chauffe-eau Brossard» et chaque autre recherche qu\'un propriétaire fait avec un problème de plomberie.' },
           convert: { en: 'A 24/7 service request form that captures urgency level, problem description and contact info. An AI chatbot that handles the first response so no emergency caller feels ignored. So every lead that finds you becomes a booked job.', fr: 'Un formulaire de demande de service 24h/7j qui capture le niveau d\'urgence, la description du problème et les coordonnées. Un chatbot IA qui gère la première réponse pour qu\'aucun appelant en urgence ne se sente ignoré. Pour que chaque prospect qui vous trouve devienne un travail réservé.' },
         },
+        recommended: 'growth',
       },
       {
         id: 'hvac',
@@ -246,6 +249,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'Emergency and service-specific city pages targeting every HVAC search your future clients make. «Urgence chauffage Montréal». «Installation thermopompe Laval». «Entretien fournaise Brossard». The search that happens when the heat stops working at 10pm.', fr: 'Des pages d\'urgence et spécifiques à chaque service par ville ciblant chaque recherche CVCA de vos futurs clients. «Urgence chauffage Montréal». «Installation thermopompe Laval». «Entretien fournaise Brossard». La recherche qui se fait quand le chauffage arrête de fonctionner à 22h.' },
           convert: { en: 'A 24/7 service request form that captures urgency, system type and contact info. An AI chatbot that handles the first response so no cold homeowner feels ignored at 2am. And a maintenance plan page that sells recurring contracts while you sleep.', fr: 'Un formulaire de demande de service 24h/7j qui capture l\'urgence, le type de système et les coordonnées. Un chatbot IA qui gère la première réponse pour qu\'aucun propriétaire sans chauffage ne se sente ignoré à 2h du matin. Et une page de plan d\'entretien qui vend des contrats récurrents pendant que vous dormez.' },
         },
+        recommended: 'growth',
       },
       {
         id: 'electricians',
@@ -277,6 +281,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'Emergency and service-specific city pages for every electrical search your future clients make. «Électricien urgence Montréal». «Installation thermopompe Laval». «Borne recharge VE Brossard». The search that happens the moment an outlet sparks.', fr: 'Des pages d\'urgence et spécifiques à chaque service par ville pour chaque recherche électrique de vos futurs clients. «Électricien urgence Montréal». «Mise à niveau panneau Laval». «Borne recharge VE Brossard». La recherche qui se fait au moment où une prise fait des étincelles.' },
           convert: { en: 'A 24/7 service request form that captures urgency level, project description and photos. An AI chatbot that confirms your licensing, answers permit questions and books the job. So no potential client waits until morning.', fr: 'Un formulaire de demande de service 24h/7j qui capture le niveau d\'urgence, la description du projet et des photos. Un chatbot IA qui confirme votre licence, répond aux questions de permis et réserve le travail. Pour qu\'aucun client potentiel n\'attende jusqu\'au matin.' },
         },
+        recommended: 'growth',
       },
       {
         id: 'landscaping',
@@ -308,6 +313,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'City and service pages targeting every landscaping search your future clients make year-round. «Paysagiste Montréal». «Installation patio Laval». «Déneigement résidentiel Brossard». The search that happens on the first warm day of March.', fr: 'Des pages par ville et service ciblant chaque recherche d\'aménagement paysager de vos futurs clients toute l\'année. «Paysagiste Montréal». «Installation patio Laval». «Déneigement résidentiel Brossard». La recherche qui se fait le premier jour chaud de mars.' },
           convert: { en: 'An online quote request form for each service, a maintenance contract signup page and an AI chatbot that qualifies project type and size. So you arrive at every estimate already knowing what the homeowner wants and what it is worth.', fr: 'Un formulaire de demande de soumission en ligne pour chaque service, une page d\'inscription aux contrats d\'entretien et un chatbot IA qui qualifie le type et la taille du projet. Pour que vous arriviez à chaque soumission en sachant déjà ce que le propriétaire veut et ce que ça vaut.' },
         },
+        recommended: 'launch',
       },
       {
         id: 'cleaning',
@@ -339,6 +345,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'City and service pages targeting every cleaning search your future clients make. «Nettoyage maison Montréal». «Lavage vitres Laval». «Lavage pression Brossard». The search that happens when guests are coming next weekend.', fr: 'Des pages par ville et service ciblant chaque recherche de nettoyage de vos futurs clients. «Nettoyage maison Montréal». «Lavage vitres Laval». «Lavage pression Brossard». La recherche qui se fait quand des invités arrivent la fin de semaine prochaine.' },
           convert: { en: 'An online booking form with instant availability, service frequency selection and address capture. An AI chatbot that provides instant estimates and books the first appointment. So a homeowner who finds you at 10pm has a confirmed booking by 10:01pm.', fr: 'Un formulaire de réservation en ligne avec disponibilités instantanées, sélection de fréquence de service et capture d\'adresse. Un chatbot IA qui fournit des estimations instantanées et réserve le premier rendez-vous. Pour qu\'un propriétaire qui vous trouve à 22h ait une réservation confirmée à 22h01.' },
         },
+        recommended: 'launch',
       },
       {
         id: 'renovations',
@@ -370,6 +377,7 @@ const INDUSTRIES: IndustryData[] = [
           attract: { en: 'Project and city keyword pages targeting every high-intent renovation search. «Rénovation cuisine Montréal». «Finition sous-sol Laval». «Entrepreneur général Brossard». The search that happens when a homeowner finally decides to do that kitchen they have been thinking about for three years.', fr: 'Des pages de projet et par ville ciblant chaque recherche de rénovation à forte intention. «Rénovation cuisine Montréal». «Finition sous-sol Laval». «Entrepreneur général Brossard». La recherche qui se fait quand un propriétaire décide enfin de faire cette cuisine à laquelle il pense depuis trois ans.' },
           convert: { en: 'A consultation booking form that captures project type, budget range and timeline so you arrive at every meeting prepared. An AI chatbot that handles after-hours inquiries and books the consultation. So no high-value lead falls through because they searched on a Sunday.', fr: 'Un formulaire de réservation de consultation qui capture le type de projet, la fourchette de budget et l\'échéancier pour que vous arriviez à chaque réunion préparé. Un chatbot IA qui gère les demandes après les heures et réserve la consultation. Pour qu\'aucun prospect à haute valeur ne passe entre les mailles parce qu\'il a cherché un dimanche.' },
         },
+        recommended: 'growth',
       },
     ],
     recommended: 'growth',
