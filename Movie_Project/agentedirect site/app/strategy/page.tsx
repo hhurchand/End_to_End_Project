@@ -23,6 +23,20 @@ type IndustryId =
 interface Stat  { value: T; label: T; source: T; year: number; geo: T }
 interface Point { title: T; body: T }
 
+interface SubIndustryData {
+  id: string;
+  label: T;
+  accentColor: string;
+  hero: { headline: T; sub: T };
+  stats: Stat[];
+  challenges: [Point, Point, Point];
+  opportunities: [Point, Point, Point];
+  seo: T;
+  ai: T;
+  approach: { build: T; attract: T; convert: T };
+  recommended?: 'launch' | 'growth' | 'pro';
+}
+
 interface IndustryData {
   id: IndustryId;
   label: T;
@@ -35,6 +49,7 @@ interface IndustryData {
   ai: T;
   approach: { build: T; attract: T; convert: T };
   recommended: 'launch' | 'growth' | 'pro';
+  subcategories?: SubIndustryData[];
 }
 
 // ─────────────────────────────────────────────
@@ -107,6 +122,256 @@ const INDUSTRIES: IndustryData[] = [
         fr: 'Un formulaire de soumission en ligne avec confirmation automatique et un chatbot IA qui capte les détails du projet et les coordonnées en tout temps. Pour qu\'aucun prospect ne se refroidisse.',
       },
     },
+    subcategories: [
+      {
+        id: 'roofers',
+        label: { en: 'Roofers', fr: 'Couvreurs' },
+        accentColor: '#F59E0B',
+        hero: {
+          headline: { en: 'When a roof is leaking or at end of life, homeowners search immediately and call the first credible roofer they find.', fr: 'Quand un toit coule ou arrive en fin de vie, les propriétaires cherchent immédiatement et appellent le premier couvreur crédible qu\'ils trouvent.' },
+          sub: { en: 'Roofing is high-ticket, trust-dependent and urgency-driven. If you are not visible on Google when it matters, the job goes to whoever is.', fr: 'La couverture est un service coûteux, dépendant de la confiance et guidé par l\'urgence. Si vous n\'êtes pas visible sur Google au bon moment, le contrat va à celui qui l\'est.' },
+        },
+        stats: [
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Roofing is one of the highest-value renovations on that list, and homeowners searching for a roofer are ready to spend.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. La couverture est l\'une des rénovations à plus haute valeur sur cette liste, et les propriétaires qui cherchent un couvreur sont prêts à dépenser.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a website. A roofing company without a professional online presence loses to competitors who look more established before anyone picks up the phone.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. Une entreprise de couverture sans présence en ligne professionnelle perd face à des concurrents qui semblent plus établis avant même que quelqu\'un décroche le téléphone.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '9 in 10', fr: '9 sur 10' }, label: { en: 'Canadian small businesses use at least one digital channel, but only 1 in 3 take bookings or sell online. Roofers who offer online quote requests and consultations book jobs their competitors never even hear about.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique, mais seulement 1 sur 3 acceptent des réservations ou vendent en ligne. Les couvreurs qui offrent des soumissions et consultations en ligne obtiennent des contrats que leurs concurrents n\'entendent même jamais.' }, source: { en: 'CFIB Your Voice Survey, September 2025', fr: 'Sondage Votre voix FCEI, septembre 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Emergency and urgent calls go to whoever ranks first', fr: 'Les appels urgents vont au premier résultat' }, body: { en: 'A leaking roof after a storm is not a comparison shop. Homeowners call the first roofer they find. Without top local rankings, you are invisible at the highest-intent moment.', fr: 'Un toit qui coule après une tempête n\'est pas un achat comparatif. Les propriétaires appellent le premier couvreur qu\'ils trouvent. Sans classements locaux élevés, vous êtes invisible au moment de plus forte intention.' } },
+          { title: { en: 'No proof of past work builds doubt', fr: 'L\'absence de preuves de travaux passés sème le doute' }, body: { en: 'Roofing is a large investment on something homeowners cannot easily inspect. Without before-and-after photos, real reviews and a project gallery, they hesitate and move on.', fr: 'La couverture est un investissement important sur quelque chose que les propriétaires ne peuvent pas facilement inspecter. Sans photos avant-après, vrais avis et galerie de projets, ils hésitent et passent à autre chose.' } },
+          { title: { en: 'Seasonality kills consistency without SEO', fr: 'La saisonnalité nuit à la constance sans SEO' }, body: { en: 'Spring and fall are peak season. Without search pages targeting those windows, your calendar empties and fills by chance instead of by design.', fr: 'Le printemps et l\'automne sont les saisons de pointe. Sans pages de recherche ciblant ces fenêtres, votre agenda se vide et se remplit par hasard plutôt que par stratégie.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Rank for every roofing search in your territory', fr: 'Dominer chaque recherche de couverture dans votre territoire' }, body: { en: 'Pages targeting «couvreur Montréal», «réparation toit Laval», «remplacement toiture Longueuil» put you in front of homeowners at the exact moment they are ready to call.', fr: 'Des pages ciblant «couvreur Montréal», «réparation toit Laval», «remplacement toiture Longueuil» vous placent devant les propriétaires au moment exact où ils sont prêts à appeler.' } },
+          { title: { en: 'Build the credibility that closes before the first call', fr: 'Construire la crédibilité qui convainc avant le premier appel' }, body: { en: 'A portfolio of completed roofs, your insurance and licensing details, real reviews and a clear warranty statement turn a nervous homeowner into a confident caller.', fr: 'Un portfolio de toitures complétées, vos détails d\'assurance et de licence, de vrais avis et une déclaration de garantie claire transforment un propriétaire nerveux en appelant confiant.' } },
+          { title: { en: 'Capture quote requests while your phone is off', fr: 'Capturer des demandes de soumission quand votre téléphone est éteint' }, body: { en: 'An online quote form with auto-confirmation means every homeowner who finds you at 10pm does not move on to the next result. They request a quote and wait for your morning call.', fr: 'Un formulaire de soumission en ligne avec confirmation automatique signifie que chaque propriétaire qui vous trouve à 22h ne passe pas au résultat suivant. Il demande une soumission et attend votre appel matinal.' } },
+        ],
+        seo: { en: 'City and service pages targeting «couvreur Montréal», «réparation toiture Laval», «remplacement bardeaux Brossard», «toit plat Longueuil» for every area you cover across greater Montreal and Quebec.', fr: 'Des pages par ville et service ciblant «couvreur Montréal», «réparation toiture Laval», «remplacement bardeaux Brossard», «toit plat Longueuil» pour chaque secteur que vous couvrez dans le grand Montréal et au Québec.' },
+        ai: { en: 'An AI chatbot that qualifies roofing requests by urgency, describes your process, collects property details and books an inspection. Available the moment a storm passes and homeowners start searching.', fr: 'Un chatbot IA qui qualifie les demandes de couverture par urgence, décrit votre processus, recueille les détails de la propriété et réserve une inspection. Disponible au moment où une tempête passe et où les propriétaires commencent à chercher.' },
+        approach: {
+          build: { en: 'A site organized by roofing type and service area. Shingles, flat roofs, emergency repairs, complete replacement. Montreal, Laval, Longueuil, South Shore. With a portfolio of real completed roofs and customer reviews that make homeowners feel confident before the first call.', fr: 'Un site organisé par type de toiture et zone de service. Bardeaux, toits plats, réparations d\'urgence, remplacement complet. Montréal, Laval, Longueuil, Rive-Sud. Avec un portfolio de toitures réellement complétées et des avis clients qui donnent confiance aux propriétaires avant le premier appel.' },
+          attract: { en: 'Roofing service and city pages targeting every search your future clients make. «Couvreur Montréal». «Réparation toit urgence Laval». «Remplacement toiture Brossard». The search that happens the morning after a hail storm.', fr: 'Des pages de services de couverture et par ville ciblant chaque recherche de vos futurs clients. «Couvreur Montréal». «Réparation toit urgence Laval». «Remplacement toiture Brossard». La recherche qui se fait le matin après une tempête de grêle.' },
+          convert: { en: 'An online inspection booking form and an AI chatbot that gathers roof details, photos of the damage and contact info before you have made a single call. So you spend your time doing roofs, not chasing leads.', fr: 'Un formulaire de réservation d\'inspection en ligne et un chatbot IA qui recueille les détails du toit, les photos des dommages et les coordonnées avant que vous ayez passé un seul appel. Pour que vous passiez votre temps à faire des toits, pas à courir après des prospects.' },
+        },
+      },
+      {
+        id: 'painters',
+        label: { en: 'Painters', fr: 'Peintres' },
+        accentColor: '#F97316',
+        hero: {
+          headline: { en: 'Painting is the most requested home renovation in Canada. The painters who win the work are the ones homeowners find first online.', fr: 'La peinture est la rénovation résidentielle la plus demandée au Canada. Les peintres qui obtiennent les contrats sont ceux que les propriétaires trouvent en premier en ligne.' },
+          sub: { en: 'A before-and-after gallery, real reviews and a simple quote request form are the difference between a full calendar and waiting for the phone to ring.', fr: 'Une galerie avant-après, de vrais avis et un simple formulaire de soumission font la différence entre un calendrier plein et attendre que le téléphone sonne.' },
+        },
+        stats: [
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Interior and exterior painting consistently rank as the most common renovation project, meaning the demand is there. The question is whether they find you first.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. La peinture intérieure et extérieure se classe constamment parmi les projets de rénovation les plus courants. La demande est là. La question est de savoir s\'ils vous trouvent en premier.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a professional website. For painters, a site with real project photos and customer reviews closes jobs before the estimate even happens.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web professionnel. Pour les peintres, un site avec de vraies photos de projets et des avis clients conclut des contrats avant même que la soumission n\'arrive.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '1 in 3', fr: '1 sur 3' }, label: { en: 'Canadian small businesses currently take bookings or sell services online. Painting companies that add an online quote request form are capturing the two-thirds of the market that their competitors are sending to voicemail.', fr: 'petites entreprises canadiennes acceptent actuellement des réservations ou vendent des services en ligne. Les entreprises de peinture qui ajoutent un formulaire de soumission en ligne captent les deux tiers du marché que leurs concurrents envoient à la messagerie vocale.' }, source: { en: 'CFIB Digital Transformation Report 2025', fr: 'Rapport sur la transformation numérique FCEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Price shoppers skip painters without a portfolio', fr: 'Les chasseurs de prix ignorent les peintres sans portfolio' }, body: { en: 'Without real before-and-after photos online, homeowners have no way to judge your quality. They default to whoever looks most established, or just go with the cheapest quote.', fr: 'Sans vraies photos avant-après en ligne, les propriétaires n\'ont aucun moyen d\'évaluer votre qualité. Ils choisissent celui qui semble le plus établi, ou simplement le moins cher.' } },
+          { title: { en: 'No way to book or request a quote after hours', fr: 'Aucun moyen de réserver ou demander une soumission en dehors des heures' }, body: { en: 'Most homeowners research painting companies on evenings and weekends. Without an online quote form, that research ends at a competitor who made it easy to take the next step.', fr: 'La plupart des propriétaires recherchent des peintres le soir et les fins de semaine. Sans formulaire de soumission en ligne, cette recherche se termine chez un concurrent qui a rendu facile le passage à l\'action.' } },
+          { title: { en: 'Lost in a sea of local painters with no differentiator', fr: 'Perdu dans un océan de peintres locaux sans différenciateur' }, body: { en: 'Painting is a competitive trade. Without a clear specialty, a geographic focus and social proof visible online, you compete purely on price instead of on quality and trust.', fr: 'La peinture est un métier compétitif. Sans spécialité claire, focus géographique et preuve sociale visible en ligne, vous concurrencez uniquement sur le prix plutôt que sur la qualité et la confiance.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Let your portfolio do the selling before you say a word', fr: 'Laisser votre portfolio vendre avant que vous disiez un mot' }, body: { en: 'A well-organized gallery of interior and exterior projects, organized by room and finish type, convinces homeowners of your quality before the first message. The estimate becomes a formality.', fr: 'Une galerie bien organisée de projets intérieurs et extérieurs, classée par pièce et type de finition, convainc les propriétaires de votre qualité avant le premier message. La soumission devient une formalité.' } },
+          { title: { en: 'Rank for every painting search in your city', fr: 'Dominer chaque recherche de peinture dans votre ville' }, body: { en: 'Service and city pages targeting «peintre Montréal», «peinture intérieure Laval», «peintre résidentiel Longueuil» capture high-intent clients who have already decided to hire a painter and are choosing who.', fr: 'Des pages de services et par ville ciblant «peintre Montréal», «peinture intérieure Laval», «peintre résidentiel Longueuil» captent des clients à forte intention qui ont déjà décidé d\'engager un peintre et choisissent lequel.' } },
+          { title: { en: 'Fill your calendar with online quote requests', fr: 'Remplir votre calendrier avec des demandes de soumission en ligne' }, body: { en: 'A simple quote request form with room type, project scope and photos means you arrive at estimates already informed, and homeowners feel taken care of from the first interaction.', fr: 'Un simple formulaire de demande de soumission avec type de pièce, portée du projet et photos signifie que vous arrivez aux soumissions déjà informé, et les propriétaires se sentent pris en charge dès la première interaction.' } },
+        ],
+        seo: { en: 'Interior and exterior painting pages for every neighbourhood and city you work in. «Peintre Montréal», «peinture intérieure Laval», «peintre résidentiel Brossard», «peinture commerciale Longueuil».', fr: 'Des pages de peinture intérieure et extérieure pour chaque quartier et ville où vous travaillez. «Peintre Montréal», «peinture intérieure Laval», «peintre résidentiel Brossard», «peinture commerciale Longueuil».' },
+        ai: { en: 'An AI chatbot that gathers room dimensions, finish preferences and photo uploads, books an on-site estimate and answers common questions about preparation, timeline and pricing. Available every evening when homeowners are planning their renovation.', fr: 'Un chatbot IA qui recueille les dimensions des pièces, les préférences de finition et les photos, réserve une soumission sur place et répond aux questions courantes sur la préparation, les délais et les tarifs. Disponible chaque soir quand les propriétaires planifient leur rénovation.' },
+        approach: {
+          build: { en: 'A site organized by project type and location. Interior painting, exterior painting, commercial, staining and finishing. With a portfolio of real completed projects grouped by style and a clear online quote request process.', fr: 'Un site organisé par type de projet et localisation. Peinture intérieure, extérieure, commerciale, teinture et finition. Avec un portfolio de vrais projets complétés regroupés par style et un processus clair de demande de soumission en ligne.' },
+          attract: { en: 'City and service keyword pages targeting the searches homeowners make when they have already decided to repaint and are choosing who to call. «Peintre Montréal». «Peinture extérieure Laval». «Peintre résidentiel Brossard».', fr: 'Des pages par ville et mot-clé de service ciblant les recherches que font les propriétaires quand ils ont déjà décidé de repeindre et choisissent qui appeler. «Peintre Montréal». «Peinture extérieure Laval». «Peintre résidentiel Brossard».' },
+          convert: { en: 'A quote request form that collects room type, project size and photos so you can prepare accurate estimates. An AI chatbot that answers timeline and pricing questions after hours. So your calendar fills itself while you are on the job.', fr: 'Un formulaire de soumission qui recueille le type de pièce, la taille du projet et des photos pour que vous puissiez préparer des estimations précises. Un chatbot IA qui répond aux questions de délais et de tarifs après les heures. Pour que votre calendrier se remplisse pendant que vous êtes sur le chantier.' },
+        },
+      },
+      {
+        id: 'plumbers',
+        label: { en: 'Plumbers', fr: 'Plombiers' },
+        accentColor: '#3B82F6',
+        hero: {
+          headline: { en: 'A plumbing emergency does not wait. The homeowner searches, calls the first result and forgets every other plumber in the city.', fr: 'Une urgence de plomberie n\'attend pas. Le propriétaire cherche, appelle le premier résultat et oublie tous les autres plombiers de la ville.' },
+          sub: { en: 'Whether it is an emergency call or a planned renovation, the plumber who ranks first on Google gets the work. Everything else is a tiebreaker.', fr: 'Qu\'il s\'agisse d\'un appel d\'urgence ou d\'une rénovation planifiée, le plombier qui se classe premier sur Google obtient le travail. Tout le reste est un départage.' },
+        },
+        stats: [
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a professional website. In plumbing, where homeowners are dealing with damage, water and stress, a credible online presence is the first trust signal that determines who gets the call.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web professionnel. En plomberie, où les propriétaires font face à des dommages, de l\'eau et du stress, une présence en ligne crédible est le premier signal de confiance qui détermine qui obtient l\'appel.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Bathroom and kitchen renovations rank among the most common, and both require a licensed plumber. This is a steady pipeline of planned work on top of emergency calls.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les rénovations de salle de bain et de cuisine se classent parmi les plus courantes, et les deux nécessitent un plombier licencié. C\'est un flux constant de travail planifié en plus des appels d\'urgence.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '9 in 10', fr: '9 sur 10' }, label: { en: 'Canadian small businesses use at least one digital channel, but only 1 in 3 take bookings or requests online. Plumbers who offer 24/7 online service requests convert the clients their competitors send to voicemail at 2am.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique, mais seulement 1 sur 3 acceptent des réservations ou demandes en ligne. Les plombiers qui offrent des demandes de service en ligne 24h/7j convertissent les clients que leurs concurrents envoient à la messagerie vocale à 2h du matin.' }, source: { en: 'CFIB Your Voice Survey, September 2025', fr: 'Sondage Votre voix FCEI, septembre 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Emergency calls go to the first result, not the best plumber', fr: 'Les appels d\'urgence vont au premier résultat, pas au meilleur plombier' }, body: { en: 'When a pipe bursts at midnight, homeowners do not scroll past page one. They call the first plumber who shows up, looks credible and answers. Without top local rankings, those jobs do not exist for you.', fr: 'Quand un tuyau éclate à minuit, les propriétaires ne défilent pas au-delà de la première page. Ils appellent le premier plombier qui apparaît, semble crédible et répond. Sans classements locaux élevés, ces contrats n\'existent pas pour vous.' } },
+          { title: { en: 'No after-hours lead capture loses planned jobs too', fr: 'L\'absence de capture de prospects hors heures perd aussi les travaux planifiés' }, body: { en: 'Most homeowners research plumbers for planned work on evenings and weekends. Without an online request form, they move on to whoever made it easy to take action at 9pm on a Sunday.', fr: 'La plupart des propriétaires recherchent des plombiers pour des travaux planifiés le soir et les fins de semaine. Sans formulaire de demande en ligne, ils passent à celui qui a facilité le passage à l\'action à 21h un dimanche.' } },
+          { title: { en: 'Trust gap in a service that accesses the whole home', fr: 'Manque de confiance dans un service qui accède à toute la maison' }, body: { en: 'Homeowners need to trust the person they let in. Without licensing and insurance details, real reviews and a professional site, that trust is not established before the first call.', fr: 'Les propriétaires doivent faire confiance à la personne qu\'ils laissent entrer. Sans détails de licence et d\'assurance, vrais avis et site professionnel, cette confiance n\'est pas établie avant le premier appel.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Own emergency and planned plumbing searches in your city', fr: 'Dominer les recherches de plomberie d\'urgence et planifiées dans votre ville' }, body: { en: 'Pages targeting «plombier urgence Montréal», «réparation tuyau Laval», «installation salle de bain Longueuil» capture both the panicked emergency call and the calm renovation inquiry.', fr: 'Des pages ciblant «plombier urgence Montréal», «réparation tuyau Laval», «installation salle de bain Longueuil» captent à la fois l\'appel d\'urgence paniqué et la demande de rénovation calme.' } },
+          { title: { en: 'Build the trust that makes homeowners choose you before comparing', fr: 'Construire la confiance qui fait que les propriétaires vous choisissent avant de comparer' }, body: { en: 'Your license number, liability insurance, real reviews and completed project photos on a professional site establish credibility before the conversation starts.', fr: 'Votre numéro de licence, assurance responsabilité, vrais avis et photos de projets complétés sur un site professionnel établissent la crédibilité avant que la conversation commence.' } },
+          { title: { en: 'Capture requests at 2am and wake up to a full schedule', fr: 'Capturer les demandes à 2h du matin et se réveiller avec un agenda plein' }, body: { en: 'A 24/7 online service request form means no potential client slips through. Emergency or planned, they submit their request and your morning starts with real leads, not missed calls.', fr: 'Un formulaire de demande de service en ligne 24h/7j signifie qu\'aucun client potentiel ne passe entre les mailles. Urgence ou planifié, ils soumettent leur demande et votre matin commence avec de vrais prospects, pas des appels manqués.' } },
+        ],
+        seo: { en: 'Emergency and planned plumbing pages for every area you serve. «Plombier Montréal», «plombier urgence Laval», «réparation plomberie Brossard», «installation salle de bain Longueuil».', fr: 'Des pages de plomberie d\'urgence et planifiée pour chaque secteur que vous couvrez. «Plombier Montréal», «plombier urgence Laval», «réparation plomberie Brossard», «installation salle de bain Longueuil».' },
+        ai: { en: 'An AI chatbot that triages urgency, gathers problem details, provides first-response guidance and books a service call. Available at 3am when a pipe bursts and your competitors are asleep.', fr: 'Un chatbot IA qui trie l\'urgence, recueille les détails du problème, fournit des conseils de première réponse et réserve un appel de service. Disponible à 3h du matin quand un tuyau éclate et que vos concurrents dorment.' },
+        approach: {
+          build: { en: 'A site organized by service type and urgency. Emergency repairs, planned renovations, water heater installation, drain cleaning. With your license and insurance visible upfront, real reviews and a request form available 24/7.', fr: 'Un site organisé par type de service et urgence. Réparations d\'urgence, rénovations planifiées, installation de chauffe-eau, nettoyage de drains. Avec votre licence et assurance visibles dès le départ, vrais avis et formulaire de demande disponible 24h/7j.' },
+          attract: { en: 'Emergency and service-specific pages targeting «plombier urgence Montréal», «débouchage drain Laval», «remplacement chauffe-eau Brossard» and every other search a homeowner makes with a plumbing problem.', fr: 'Des pages d\'urgence et spécifiques à chaque service ciblant «plombier urgence Montréal», «débouchage drain Laval», «remplacement chauffe-eau Brossard» et chaque autre recherche qu\'un propriétaire fait avec un problème de plomberie.' },
+          convert: { en: 'A 24/7 service request form that captures urgency level, problem description and contact info. An AI chatbot that handles the first response so no emergency caller feels ignored. So every lead that finds you becomes a booked job.', fr: 'Un formulaire de demande de service 24h/7j qui capture le niveau d\'urgence, la description du problème et les coordonnées. Un chatbot IA qui gère la première réponse pour qu\'aucun appelant en urgence ne se sente ignoré. Pour que chaque prospect qui vous trouve devienne un travail réservé.' },
+        },
+      },
+      {
+        id: 'hvac',
+        label: { en: 'HVAC', fr: 'CVCA' },
+        accentColor: '#06B6D4',
+        hero: {
+          headline: { en: 'When a furnace fails in January or AC breaks in July, homeowners call whoever they can find online. That should be you.', fr: 'Quand une fournaise tombe en panne en janvier ou un climatiseur lâche en juillet, les propriétaires appellent celui qu\'ils trouvent en ligne. Ce devrait être vous.' },
+          sub: { en: 'HVAC is the ultimate urgent home service. Comfort, safety and system replacements all start with a Google search. The company that shows up first gets the call.', fr: 'Le CVCA est le service résidentiel d\'urgence par excellence. Confort, sécurité et remplacement de systèmes commencent tous par une recherche Google. L\'entreprise qui apparaît en premier obtient l\'appel.' },
+        },
+        stats: [
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a website. In HVAC, where homeowners are dealing with no heat or no AC in extreme weather, the first credible result online gets the job. Period.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. En CVCA, où les propriétaires n\'ont pas de chauffage ou de climatisation par temps extrême, le premier résultat crédible en ligne obtient le contrat. Point.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. HVAC system upgrades, heat pump installations and ductwork are among the most expensive items on that renovation list. These are planned, high-value jobs waiting to be won online.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les mises à niveau de systèmes CVCA, installations de thermopompes et travaux de conduits figurent parmi les postes les plus coûteux de cette liste de rénovation. Ce sont des contrats planifiés à haute valeur qui attendent d\'être gagnés en ligne.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '9 in 10', fr: '9 sur 10' }, label: { en: 'Canadian small businesses use at least one digital channel, but only 1 in 3 accept bookings or requests online. HVAC companies with 24/7 online service requests convert the emergency calls their competitors miss after hours.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique, mais seulement 1 sur 3 acceptent des réservations ou demandes en ligne. Les entreprises CVCA avec des demandes de service en ligne 24h/7j convertissent les appels d\'urgence que leurs concurrents manquent après les heures.' }, source: { en: 'CFIB Your Voice Survey, September 2025', fr: 'Sondage Votre voix FCEI, septembre 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Seasonal peaks with no digital pipeline means feast or famine', fr: 'Des pics saisonniers sans pipeline numérique signifient l\'abondance ou la famine' }, body: { en: 'January furnace emergencies and July AC breakdowns flood with demand. Without search rankings and an online request system, those peaks go to whoever already has the digital infrastructure.', fr: 'Les urgences de fournaises en janvier et les pannes de climatisation en juillet débordent de demande. Sans classements de recherche et système de demande en ligne, ces pics vont à celui qui a déjà l\'infrastructure numérique.' } },
+          { title: { en: 'Big-ticket installs need trust before homeowners commit', fr: 'Les installations à prix élevé nécessitent la confiance avant que les propriétaires s\'engagent' }, body: { en: 'Replacing a furnace or installing a heat pump is a $5,000 to $15,000 decision. Without certifications, financing info, real reviews and completed project photos online, homeowners choose whoever feels safest.', fr: 'Remplacer une fournaise ou installer une thermopompe est une décision de 5 000 à 15 000 $. Sans certifications, informations de financement, vrais avis et photos de projets complétés en ligne, les propriétaires choisissent celui qui semble le plus sûr.' } },
+          { title: { en: 'Maintenance contracts lost to competitors with better web presence', fr: 'Contrats d\'entretien perdus au profit de concurrents avec une meilleure présence web' }, body: { en: 'Annual maintenance agreements are the recurring revenue that stabilizes an HVAC business. Without a clear online pitch and an easy sign-up path, those contracts go to the company homeowners found first.', fr: 'Les contrats d\'entretien annuels sont les revenus récurrents qui stabilisent une entreprise de CVCA. Sans argumentaire en ligne clair et chemin d\'inscription facile, ces contrats vont à l\'entreprise que les propriétaires ont trouvée en premier.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Rank for emergency HVAC calls across your whole territory', fr: 'Dominer les appels HVAC d\'urgence sur tout votre territoire' }, body: { en: 'Pages targeting «urgence chauffage Montréal», «réparation climatisation Laval», «thermopompe Longueuil» capture the highest-value calls the moment they happen. No heat in winter is not a comparison shop.', fr: 'Des pages ciblant «urgence chauffage Montréal», «réparation climatisation Laval», «thermopompe Longueuil» captent les appels à plus haute valeur au moment où ils se produisent. Pas de chauffage en hiver n\'est pas un achat comparatif.' } },
+          { title: { en: 'Build a maintenance contract pipeline that runs year round', fr: 'Construire un pipeline de contrats d\'entretien qui fonctionne toute l\'année' }, body: { en: 'A dedicated maintenance plan page with pricing, what is included and an easy signup keeps your calendar booked through the quiet months and builds recurring revenue that does not depend on emergencies.', fr: 'Une page de plan d\'entretien dédiée avec tarification, ce qui est inclus et une inscription facile garde votre calendrier réservé pendant les mois calmes et crée des revenus récurrents qui ne dépendent pas des urgences.' } },
+          { title: { en: 'Win the heat pump and system replacement jobs before they call anyone else', fr: 'Gagner les contrats de thermopompe et de remplacement de système avant qu\'ils appellent quelqu\'un d\'autre' }, body: { en: 'A dedicated system replacement page with financing options, brand comparisons and real customer testimonials positions you as the obvious choice for the highest-ticket jobs in the trade.', fr: 'Une page de remplacement de système dédiée avec options de financement, comparaisons de marques et vrais témoignages clients vous positionne comme le choix évident pour les contrats à plus haute valeur du métier.' } },
+        ],
+        seo: { en: 'Emergency and planned HVAC pages for every city you serve. «Urgence chauffage Montréal», «réparation AC Laval», «installation thermopompe Brossard», «entretien fournaise Longueuil».', fr: 'Des pages CVCA d\'urgence et planifiées pour chaque ville que vous couvrez. «Urgence chauffage Montréal», «réparation AC Laval», «installation thermopompe Brossard», «entretien fournaise Longueuil».' },
+        ai: { en: 'An AI chatbot that triages heating and cooling emergencies, describes your service process, collects system details and books an appointment. Running 24/7 so no emergency caller gets sent to voicemail.', fr: 'Un chatbot IA qui trie les urgences de chauffage et climatisation, décrit votre processus de service, recueille les détails du système et réserve un rendez-vous. Fonctionnant 24h/7j pour qu\'aucun appelant en urgence ne soit envoyé à la messagerie vocale.' },
+        approach: {
+          build: { en: 'A site organized by service type. Emergency heating and cooling, system replacement, heat pump installation, maintenance plans. With your certifications, financing options and a 24/7 request form that keeps working long after your office closes.', fr: 'Un site organisé par type de service. Chauffage et climatisation d\'urgence, remplacement de système, installation de thermopompe, plans d\'entretien. Avec vos certifications, options de financement et un formulaire de demande 24h/7j qui continue de fonctionner longtemps après la fermeture de votre bureau.' },
+          attract: { en: 'Emergency and service-specific city pages targeting every HVAC search your future clients make. «Urgence chauffage Montréal». «Installation thermopompe Laval». «Entretien fournaise Brossard». The search that happens when the heat stops working at 10pm.', fr: 'Des pages d\'urgence et spécifiques à chaque service par ville ciblant chaque recherche CVCA de vos futurs clients. «Urgence chauffage Montréal». «Installation thermopompe Laval». «Entretien fournaise Brossard». La recherche qui se fait quand le chauffage arrête de fonctionner à 22h.' },
+          convert: { en: 'A 24/7 service request form that captures urgency, system type and contact info. An AI chatbot that handles the first response so no cold homeowner feels ignored at 2am. And a maintenance plan page that sells recurring contracts while you sleep.', fr: 'Un formulaire de demande de service 24h/7j qui capture l\'urgence, le type de système et les coordonnées. Un chatbot IA qui gère la première réponse pour qu\'aucun propriétaire sans chauffage ne se sente ignoré à 2h du matin. Et une page de plan d\'entretien qui vend des contrats récurrents pendant que vous dormez.' },
+        },
+      },
+      {
+        id: 'electricians',
+        label: { en: 'Electricians', fr: 'Électriciens' },
+        accentColor: '#EAB308',
+        hero: {
+          headline: { en: 'Electrical work requires a licensed professional. Homeowners know this and they search online first to find one they can trust.', fr: 'Les travaux électriques nécessitent un professionnel licencié. Les propriétaires le savent et cherchent en ligne d\'abord pour en trouver un en qui ils ont confiance.' },
+          sub: { en: 'Whether it is an emergency, a renovation or an EV charger installation, the electrician who appears first and looks most credible gets the call before the comparison even starts.', fr: 'Qu\'il s\'agisse d\'une urgence, d\'une rénovation ou d\'une installation de borne de recharge, l\'électricien qui apparaît en premier et semble le plus crédible obtient l\'appel avant même que la comparaison commence.' },
+        },
+        stats: [
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a professional website. For electricians, where licensing and credibility are non-negotiable, a professional site with your license number and insurance details is not optional. It is the minimum.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web professionnel. Pour les électriciens, où la licence et la crédibilité sont non négociables, un site professionnel avec votre numéro de licence et vos détails d\'assurance n\'est pas facultatif. C\'est le minimum.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Electrical panel upgrades, EV charger installations and smart home wiring are among the fastest-growing renovation projects in Quebec right now.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les mises à niveau de panneaux électriques, installations de bornes de recharge pour VE et câblage domotique sont parmi les projets de rénovation à la plus forte croissance au Québec en ce moment.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '9 in 10', fr: '9 sur 10' }, label: { en: 'Canadian small businesses use at least one digital channel, but only 1 in 3 accept service requests online. Electricians who offer online booking and after-hours request forms convert clients whose first call went to voicemail.', fr: 'petites entreprises canadiennes utilisent au moins un canal numérique, mais seulement 1 sur 3 acceptent des demandes de service en ligne. Les électriciens qui offrent des réservations en ligne et des formulaires de demande après les heures convertissent les clients dont le premier appel est allé à la messagerie vocale.' }, source: { en: 'CFIB Your Voice Survey, September 2025', fr: 'Sondage Votre voix FCEI, septembre 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Emergency electrical calls go to whoever ranks first online', fr: 'Les appels électriques d\'urgence vont à celui qui se classe premier en ligne' }, body: { en: 'A tripped panel, sparking outlet or complete power failure is not a time to compare quotes. Homeowners call the first licensed electrician they find. Without top local search rankings, those calls never reach you.', fr: 'Un panneau qui disjoncte, une prise qui fait des étincelles ou une panne de courant complète n\'est pas le moment de comparer des devis. Les propriétaires appellent le premier électricien licencié qu\'ils trouvent. Sans classements locaux élevés, ces appels ne vous parviennent jamais.' } },
+          { title: { en: 'No visible licensing builds doubt before the quote', fr: 'L\'absence de licence visible sème le doute avant la soumission' }, body: { en: 'Electrical work requires provincial licensing. Homeowners know this. Without your license number, insurance details and certifications clearly visible on your site, they move to whoever provides that reassurance first.', fr: 'Les travaux électriques nécessitent une licence provinciale. Les propriétaires le savent. Sans votre numéro de licence, détails d\'assurance et certifications clairement visibles sur votre site, ils passent à celui qui fournit cette réassurance en premier.' } },
+          { title: { en: 'Missing the EV charger and panel upgrade wave', fr: 'Manquer la vague des bornes de recharge et mises à niveau de panneaux' }, body: { en: 'EV adoption is accelerating in Quebec. Homeowners buying their first electric vehicle search for a licensed electrician to install a charger. Without a dedicated page, you are invisible to this growing and high-value job type.', fr: 'L\'adoption des VE s\'accélère au Québec. Les propriétaires qui achètent leur premier véhicule électrique cherchent un électricien licencié pour installer une borne. Sans page dédiée, vous êtes invisible pour ce type de contrat en forte croissance et à haute valeur.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Own emergency and planned electrical searches in your city', fr: 'Dominer les recherches électriques d\'urgence et planifiées dans votre ville' }, body: { en: 'Pages targeting «électricien urgence Montréal», «installation panneau électrique Laval», «borne de recharge VE Longueuil» capture both the panicked emergency call and the calm renovation inquiry.', fr: 'Des pages ciblant «électricien urgence Montréal», «installation panneau électrique Laval», «borne de recharge VE Longueuil» captent à la fois l\'appel d\'urgence paniqué et la demande de rénovation calme.' } },
+          { title: { en: 'Capture the EV charger installation market now', fr: 'Capturer le marché d\'installation de bornes de recharge maintenant' }, body: { en: 'A dedicated EV charger installation page with rebate information, process details and your licensing sets you apart from competitors who have not updated their sites in years. This is a high-value job type with predictable, growing search volume.', fr: 'Une page d\'installation de borne de recharge dédiée avec informations sur les subventions, détails du processus et votre licence vous distingue des concurrents qui n\'ont pas mis à jour leurs sites depuis des années. C\'est un type de contrat à haute valeur avec un volume de recherche prévisible et croissant.' } },
+          { title: { en: 'Build the credibility that closes before the first call', fr: 'Construire la crédibilité qui convainc avant le premier appel' }, body: { en: 'Your Régie du bâtiment license, liability insurance, completed project photos and verified reviews on a professional site establish the trust that makes homeowners choose you before comparing.', fr: 'Votre licence de la Régie du bâtiment, assurance responsabilité, photos de projets complétés et avis vérifiés sur un site professionnel établissent la confiance qui fait que les propriétaires vous choisissent avant de comparer.' } },
+        ],
+        seo: { en: 'Emergency and service-specific city pages targeting every electrical search. «Électricien Montréal», «urgence électrique Laval», «installation borne recharge Brossard», «mise à niveau panneau Longueuil».', fr: 'Des pages d\'urgence et spécifiques à chaque service par ville ciblant chaque recherche électrique. «Électricien Montréal», «urgence électrique Laval», «installation borne recharge Brossard», «mise à niveau panneau Longueuil».' },
+        ai: { en: 'An AI chatbot that triages electrical emergencies, confirms your licensing credentials, answers common questions about permits and process, and books a service call. Available 24/7 so no emergency caller waits in the dark.', fr: 'Un chatbot IA qui trie les urgences électriques, confirme vos accréditations de licence, répond aux questions courantes sur les permis et le processus, et réserve un appel de service. Disponible 24h/7j pour qu\'aucun appelant en urgence n\'attende dans le noir.' },
+        approach: {
+          build: { en: 'A site organized by service type. Emergency electrical, panel upgrades, EV charger installation, home renovation wiring, commercial work. With your Régie du bâtiment license front and center, insurance details and a 24/7 service request form.', fr: 'Un site organisé par type de service. Électricité d\'urgence, mises à niveau de panneaux, installation de bornes de recharge, câblage de rénovation résidentielle, travaux commerciaux. Avec votre licence de la Régie du bâtiment bien en vue, détails d\'assurance et formulaire de demande de service 24h/7j.' },
+          attract: { en: 'Emergency and service-specific city pages for every electrical search your future clients make. «Électricien urgence Montréal». «Installation thermopompe Laval». «Borne recharge VE Brossard». The search that happens the moment an outlet sparks.', fr: 'Des pages d\'urgence et spécifiques à chaque service par ville pour chaque recherche électrique de vos futurs clients. «Électricien urgence Montréal». «Mise à niveau panneau Laval». «Borne recharge VE Brossard». La recherche qui se fait au moment où une prise fait des étincelles.' },
+          convert: { en: 'A 24/7 service request form that captures urgency level, project description and photos. An AI chatbot that confirms your licensing, answers permit questions and books the job. So no potential client waits until morning.', fr: 'Un formulaire de demande de service 24h/7j qui capture le niveau d\'urgence, la description du projet et des photos. Un chatbot IA qui confirme votre licence, répond aux questions de permis et réserve le travail. Pour qu\'aucun client potentiel n\'attende jusqu\'au matin.' },
+        },
+      },
+      {
+        id: 'landscaping',
+        label: { en: 'Landscaping', fr: 'Aménagement paysager' },
+        accentColor: '#22C55E',
+        hero: {
+          headline: { en: 'Every spring in Montreal, homeowners search for a landscaper before the snow is fully gone. The ones who rank first fill their season before it starts.', fr: 'Chaque printemps à Montréal, les propriétaires cherchent un paysagiste avant même que la neige soit complètement fondue. Ceux qui se classent premiers remplissent leur saison avant qu\'elle commence.' },
+          sub: { en: 'Landscaping is seasonal, visual and highly competitive. The companies that dominate local search and have the portfolio to prove their work win the spring rush every year.', fr: 'L\'aménagement paysager est saisonnier, visuel et très compétitif. Les entreprises qui dominent la recherche locale et ont le portfolio pour prouver leur travail remportent la ruée printanière chaque année.' },
+        },
+        stats: [
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. Outdoor renovations including landscaping, decks and terraces are consistently among the top planned projects. This is a steady pipeline of seasonal and project-based work.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. Les rénovations extérieures incluant l\'aménagement paysager, les terrasses et les patios figurent constamment parmi les projets les plus planifiés. C\'est un flux constant de travaux saisonniers et de projets.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a website. In a visual trade like landscaping, a site with real project photos, before-and-after galleries and customer reviews is the single most effective sales tool you have.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. Dans un métier visuel comme l\'aménagement paysager, un site avec de vraies photos de projets, galeries avant-après et avis clients est l\'outil de vente le plus efficace dont vous disposez.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '1 in 3', fr: '1 sur 3' }, label: { en: 'Canadian small businesses currently take bookings or sell services online. Landscaping companies that add an online quote request capture the homeowners their competitors never respond to because those requests go straight to voicemail.', fr: 'petites entreprises canadiennes acceptent actuellement des réservations ou vendent des services en ligne. Les entreprises d\'aménagement paysager qui ajoutent une demande de soumission en ligne capturent les propriétaires que leurs concurrents ne rappellent jamais parce que ces demandes vont directement à la messagerie vocale.' }, source: { en: 'CFIB Digital Transformation Report 2025', fr: 'Rapport sur la transformation numérique FCEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'The spring rush is won or lost in winter SEO', fr: 'La ruée printanière se gagne ou se perd dans le SEO hivernal' }, body: { en: 'Homeowners research landscapers in February and March while snow is still on the ground. Without search rankings built before the season starts, your competitors book the spring and you get what is left.', fr: 'Les propriétaires recherchent des paysagistes en février et mars pendant que la neige est encore au sol. Sans classements de recherche construits avant le début de la saison, vos concurrents réservent le printemps et vous obtenez ce qui reste.' } },
+          { title: { en: 'No portfolio online means homeowners cannot visualize your work', fr: 'Pas de portfolio en ligne signifie que les propriétaires ne peuvent pas visualiser votre travail' }, body: { en: 'Landscaping is a visual purchase. Without a gallery of completed projects showing different styles, plants and layouts, homeowners cannot judge quality and default to whoever shows the most photos.', fr: 'L\'aménagement paysager est un achat visuel. Sans galerie de projets complétés montrant différents styles, plantes et aménagements, les propriétaires ne peuvent pas juger la qualité et choisissent celui qui montre le plus de photos.' } },
+          { title: { en: 'Maintenance contracts going to competitors who make it easy to sign up', fr: 'Contrats d\'entretien allant à des concurrents qui facilitent l\'inscription' }, body: { en: 'Lawn care, snowblowing and seasonal maintenance are recurring revenue that stabilizes a landscaping business year-round. Without an easy online signup, those contracts go to whoever a homeowner remembers to call.', fr: 'L\'entretien de pelouse, le déneigement et l\'entretien saisonnier sont des revenus récurrents qui stabilisent une entreprise d\'aménagement paysager toute l\'année. Sans inscription en ligne facile, ces contrats vont à celui dont un propriétaire se souvient d\'appeler.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Rank for every landscaping search before spring starts', fr: 'Se classer pour chaque recherche d\'aménagement paysager avant le printemps' }, body: { en: 'Pages targeting «paysagiste Montréal», «aménagement jardin Laval», «entretien pelouse Longueuil», «installation patio Brossard» capture homeowners planning their outdoor projects months in advance.', fr: 'Des pages ciblant «paysagiste Montréal», «aménagement jardin Laval», «entretien pelouse Longueuil», «installation patio Brossard» captent les propriétaires qui planifient leurs projets extérieurs des mois à l\'avance.' } },
+          { title: { en: 'Let your portfolio close jobs before you quote', fr: 'Laisser votre portfolio conclure des contrats avant que vous fassiez une soumission' }, body: { en: 'A before-and-after gallery organized by project type. Patios, garden beds, lawns, hedges. Convinces homeowners of your quality before the first message. The estimate becomes a formality.', fr: 'Une galerie avant-après organisée par type de projet. Patios, massifs de fleurs, pelouses, haies. Convainc les propriétaires de votre qualité avant le premier message. La soumission devient une formalité.' } },
+          { title: { en: 'Build a maintenance contract base that generates income all year', fr: 'Construire une base de contrats d\'entretien qui génère des revenus toute l\'année' }, body: { en: 'A dedicated maintenance page offering lawn care, hedge trimming, snowblowing and fall cleanup as a year-round package creates the recurring revenue that lets you plan ahead instead of scrambling every spring.', fr: 'Une page d\'entretien dédiée offrant la tonte, la taille de haies, le déneigement et le nettoyage d\'automne comme forfait annuel crée les revenus récurrents qui vous permettent de planifier à l\'avance plutôt que de vous démener chaque printemps.' } },
+        ],
+        seo: { en: 'City and service pages targeting every landscaping search. «Paysagiste Montréal», «aménagement jardin Laval», «installation patio Brossard», «entretien pelouse Longueuil», «déneigement résidentiel Rive-Sud».', fr: 'Des pages par ville et service ciblant chaque recherche d\'aménagement paysager. «Paysagiste Montréal», «aménagement jardin Laval», «installation patio Brossard», «entretien pelouse Longueuil», «déneigement résidentiel Rive-Sud».' },
+        ai: { en: 'An AI chatbot that gathers project details, yard dimensions and style preferences, books a free consultation and answers common questions about timeline and seasonal availability. Capturing off-season interest before spring demand peaks.', fr: 'Un chatbot IA qui recueille les détails du projet, les dimensions de la cour et les préférences de style, réserve une consultation gratuite et répond aux questions courantes sur les délais et la disponibilité saisonnière. Captant l\'intérêt hors saison avant que la demande printanière atteigne son pic.' },
+        approach: {
+          build: { en: 'A site organized by service type and season. Landscaping and design, lawn care and maintenance, patios and outdoor living, snowblowing and winter services. With a visual project gallery, before-and-after photos and an online quote form for each service.', fr: 'Un site organisé par type de service et saison. Aménagement paysager et design, entretien de pelouse, patios et espaces extérieurs, déneigement et services d\'hiver. Avec une galerie de projets visuels, photos avant-après et formulaire de soumission en ligne pour chaque service.' },
+          attract: { en: 'City and service pages targeting every landscaping search your future clients make year-round. «Paysagiste Montréal». «Installation patio Laval». «Déneigement résidentiel Brossard». The search that happens on the first warm day of March.', fr: 'Des pages par ville et service ciblant chaque recherche d\'aménagement paysager de vos futurs clients toute l\'année. «Paysagiste Montréal». «Installation patio Laval». «Déneigement résidentiel Brossard». La recherche qui se fait le premier jour chaud de mars.' },
+          convert: { en: 'An online quote request form for each service, a maintenance contract signup page and an AI chatbot that qualifies project type and size. So you arrive at every estimate already knowing what the homeowner wants and what it is worth.', fr: 'Un formulaire de demande de soumission en ligne pour chaque service, une page d\'inscription aux contrats d\'entretien et un chatbot IA qui qualifie le type et la taille du projet. Pour que vous arriviez à chaque soumission en sachant déjà ce que le propriétaire veut et ce que ça vaut.' },
+        },
+      },
+      {
+        id: 'cleaning',
+        label: { en: 'Cleaning, Windows & Pressure Washing', fr: 'Nettoyage, vitres et lavage pression' },
+        accentColor: '#67E8F9',
+        hero: {
+          headline: { en: 'Cleaning services live and die by recurring clients. The ones who dominate local search fill their schedule with clients who book again and again.', fr: 'Les services de nettoyage vivent et meurent par leurs clients récurrents. Ceux qui dominent la recherche locale remplissent leur horaire avec des clients qui réservent encore et encore.' },
+          sub: { en: 'Whether it is residential cleaning, window washing or pressure washing, the company homeowners find first online and trust most on the spot gets the first booking and keeps it.', fr: 'Qu\'il s\'agisse de nettoyage résidentiel, de lavage de vitres ou de lavage sous pression, l\'entreprise que les propriétaires trouvent en premier en ligne et en qui ils ont le plus confiance obtient la première réservation et la garde.' },
+        },
+        stats: [
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a website. In cleaning services, where homeowners are inviting someone into their home repeatedly, a professional online presence with real reviews and clear pricing is the foundation of every new client relationship.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. Dans les services de nettoyage, où les propriétaires invitent quelqu\'un dans leur maison de façon répétée, une présence en ligne professionnelle avec de vrais avis et des tarifs clairs est la base de chaque nouvelle relation client.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '1 in 3', fr: '1 sur 3' }, label: { en: 'Canadian small businesses currently take bookings or sell services online. Cleaning companies that add online booking convert the homeowners their competitors make fill out a form or wait for a callback. First one to respond wins the client.', fr: 'petites entreprises canadiennes acceptent actuellement des réservations ou vendent des services en ligne. Les entreprises de nettoyage qui ajoutent la réservation en ligne convertissent les propriétaires que leurs concurrents font remplir un formulaire ou attendre un rappel. Le premier à répondre gagne le client.' }, source: { en: 'CFIB Digital Transformation Report 2025', fr: 'Rapport sur la transformation numérique FCEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '86%', fr: '86 %' }, label: { en: 'of Canadians made an online purchase or booking in the past year. Homeowners expect to be able to book cleaning services, request pressure washing estimates and schedule window cleaning online the same way they book everything else.', fr: 'des Canadiens ont effectué un achat ou une réservation en ligne au cours de la dernière année. Les propriétaires s\'attendent à pouvoir réserver des services de nettoyage, demander des estimations de lavage sous pression et planifier le nettoyage de vitres en ligne comme ils réservent tout le reste.' }, source: { en: 'CIRA Canadian Internet Trends 2026', fr: 'Tendances Internet canadiennes ACEI 2026' }, year: 2026, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'Price competition from cleaning companies with no online presence', fr: 'Concurrence de prix des entreprises de nettoyage sans présence en ligne' }, body: { en: 'Without a professional site, real reviews and clear pricing, homeowners compare you purely on cost. A site that communicates reliability, thoroughness and trust wins on value instead of competing on rate.', fr: 'Sans site professionnel, vrais avis et tarifs clairs, les propriétaires vous comparent uniquement sur le coût. Un site qui communique la fiabilité, le soin et la confiance gagne sur la valeur plutôt que de concurrencer sur le tarif.' } },
+          { title: { en: 'Recurring clients lost because booking is too hard', fr: 'Clients récurrents perdus parce que la réservation est trop compliquée' }, body: { en: 'The easiest cleaning company to rebook is the one that gets rebooked. Without an online booking link or a simple rebooking process, satisfied clients drift to whoever makes it easier next time.', fr: 'L\'entreprise de nettoyage la plus facile à rebooker est celle qui est rebookée. Sans lien de réservation en ligne ou processus de réservation simple, les clients satisfaits dérivent vers celui qui le rend plus facile la prochaine fois.' } },
+          { title: { en: 'Seasonal pressure washing and window cleaning demand left uncaptured', fr: 'Demande saisonnière de lavage sous pression et nettoyage de vitres non capturée' }, body: { en: 'Spring cleaning, post-winter pressure washing and fall gutter cleaning are predictable surges. Without search rankings targeting those windows, the surge goes to competitors who have already built the SEO foundation.', fr: 'Le ménage du printemps, le lavage sous pression post-hiver et le nettoyage de gouttières d\'automne sont des pointes prévisibles. Sans classements de recherche ciblant ces fenêtres, la pointe va aux concurrents qui ont déjà construit la base SEO.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Rank for every cleaning search in your neighbourhood', fr: 'Se classer pour chaque recherche de nettoyage dans votre quartier' }, body: { en: 'Pages targeting «nettoyage maison Montréal», «lavage vitres Laval», «lavage pression Longueuil», «service ménager Brossard» capture high-intent homeowners searching by exact service and location.', fr: 'Des pages ciblant «nettoyage maison Montréal», «lavage vitres Laval», «lavage pression Longueuil», «service ménager Brossard» captent des propriétaires à forte intention cherchant par service exact et localisation.' } },
+          { title: { en: 'Build a recurring client base with an easy online booking flow', fr: 'Construire une clientèle récurrente avec un flux de réservation en ligne facile' }, body: { en: 'An online booking form with service frequency options. Weekly, biweekly, monthly, one-time. Converts a first booking into a recurring client relationship without a single phone call.', fr: 'Un formulaire de réservation en ligne avec options de fréquence de service. Hebdomadaire, aux deux semaines, mensuel, ponctuel. Convertit une première réservation en relation client récurrente sans un seul appel téléphonique.' } },
+          { title: { en: 'Capture spring and seasonal cleaning demand before it peaks', fr: 'Capturer la demande de nettoyage printanier et saisonnier avant qu\'elle atteigne son pic' }, body: { en: 'Dedicated seasonal pages for spring cleaning, post-construction cleanup and pressure washing rank before the demand arrives so your calendar is full before homeowners start mass-searching in April.', fr: 'Des pages saisonnières dédiées pour le ménage du printemps, le nettoyage post-construction et le lavage sous pression se classent avant que la demande arrive pour que votre calendrier soit plein avant que les propriétaires commencent à chercher en masse en avril.' } },
+        ],
+        seo: { en: 'City and service pages for every cleaning search. «Nettoyage maison Montréal», «service ménager Laval», «lavage vitres Brossard», «lavage sous pression Longueuil», «nettoyage gouttières Rive-Sud».', fr: 'Des pages par ville et service pour chaque recherche de nettoyage. «Nettoyage maison Montréal», «service ménager Laval», «lavage vitres Brossard», «lavage sous pression Longueuil», «nettoyage gouttières Rive-Sud».' },
+        ai: { en: 'An AI chatbot that qualifies home size and cleaning frequency, provides instant pricing estimates, books the first appointment and sets up recurring schedule preferences. Converting first inquiries into monthly clients while you are cleaning someone else\'s home.', fr: 'Un chatbot IA qui qualifie la taille du domicile et la fréquence de nettoyage, fournit des estimations de prix instantanées, réserve le premier rendez-vous et configure les préférences de calendrier récurrent. Convertissant les premières demandes en clients mensuels pendant que vous nettoyez la maison de quelqu\'un d\'autre.' },
+        approach: {
+          build: { en: 'A site organized by service type. Residential cleaning, window washing, pressure washing, post-construction cleanup, recurring plans. With real client reviews, before-and-after photos and an online booking system with frequency and date selection.', fr: 'Un site organisé par type de service. Nettoyage résidentiel, lavage de vitres, lavage sous pression, nettoyage post-construction, forfaits récurrents. Avec de vrais avis clients, photos avant-après et un système de réservation en ligne avec sélection de fréquence et de date.' },
+          attract: { en: 'City and service pages targeting every cleaning search your future clients make. «Nettoyage maison Montréal». «Lavage vitres Laval». «Lavage pression Brossard». The search that happens when guests are coming next weekend.', fr: 'Des pages par ville et service ciblant chaque recherche de nettoyage de vos futurs clients. «Nettoyage maison Montréal». «Lavage vitres Laval». «Lavage pression Brossard». La recherche qui se fait quand des invités arrivent la fin de semaine prochaine.' },
+          convert: { en: 'An online booking form with instant availability, service frequency selection and address capture. An AI chatbot that provides instant estimates and books the first appointment. So a homeowner who finds you at 10pm has a confirmed booking by 10:01pm.', fr: 'Un formulaire de réservation en ligne avec disponibilités instantanées, sélection de fréquence de service et capture d\'adresse. Un chatbot IA qui fournit des estimations instantanées et réserve le premier rendez-vous. Pour qu\'un propriétaire qui vous trouve à 22h ait une réservation confirmée à 22h01.' },
+        },
+      },
+      {
+        id: 'renovations',
+        label: { en: 'Renovations', fr: 'Rénovations' },
+        accentColor: '#A78BFA',
+        hero: {
+          headline: { en: 'Renovation is the highest-value home service category in Canada. The contractors who win the best projects are the ones homeowners find and trust first online.', fr: 'La rénovation est la catégorie de services résidentiels à plus haute valeur au Canada. Les entrepreneurs qui remportent les meilleurs projets sont ceux que les propriétaires trouvent et en qui ils ont confiance en premier en ligne.' },
+          sub: { en: 'A kitchen, bathroom or basement renovation is a $20,000 to $100,000 decision. Homeowners research extensively online before making the first call. That research needs to end at your site.', fr: 'Une rénovation de cuisine, salle de bain ou sous-sol est une décision de 20 000 à 100 000 $. Les propriétaires font des recherches approfondies en ligne avant de passer le premier appel. Cette recherche doit se terminer sur votre site.' },
+        },
+        stats: [
+          { value: { en: '75%', fr: '75 %' }, label: { en: 'of Canadian mortgage consumers plan to renovate their home in the next five years. This is the core market for general contractors and renovation specialists. With 75% of homeowners planning a renovation project, the question is not whether the demand is there. It is whether they find you.', fr: 'des consommateurs hypothécaires canadiens prévoient rénover leur maison au cours des cinq prochaines années. C\'est le marché central pour les entrepreneurs généraux et spécialistes de la rénovation. Avec 75 % des propriétaires planifiant un projet de rénovation, la question n\'est pas de savoir si la demande est là. C\'est de savoir s\'ils vous trouvent.' }, source: { en: 'CMHC 2025 Mortgage Consumer Survey', fr: 'Sondage auprès des consommateurs hypothécaires SCHL 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '59%', fr: '59 %' }, label: { en: 'of Canadians are more likely to do business with a company that has a professional website. For renovation contractors handling $50,000 projects, a polished site with a real portfolio and customer testimonials is the difference between a qualified lead and a cold call.', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web professionnel. Pour les entrepreneurs de rénovation qui gèrent des projets de 50 000 $, un site soigné avec un vrai portfolio et des témoignages clients fait la différence entre un prospect qualifié et un appel à froid.' }, source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' }, year: 2025, geo: { en: 'Canada', fr: 'Canada' } },
+          { value: { en: '86%', fr: '86 %' }, label: { en: 'of Canadians researched or transacted online in the past year. For high-ticket renovations, the research phase is long and thorough. Homeowners visit multiple contractor sites, compare portfolios and read reviews before making the first call. Your site either makes the shortlist or does not.', fr: 'des Canadiens ont fait des recherches ou effectué des transactions en ligne au cours de la dernière année. Pour les rénovations à prix élevé, la phase de recherche est longue et approfondie. Les propriétaires visitent plusieurs sites d\'entrepreneurs, comparent les portfolios et lisent les avis avant de passer le premier appel. Votre site figure sur la liste restreinte ou non.' }, source: { en: 'CIRA Canadian Internet Trends 2026', fr: 'Tendances Internet canadiennes ACEI 2026' }, year: 2026, geo: { en: 'Canada', fr: 'Canada' } },
+        ],
+        challenges: [
+          { title: { en: 'The best projects go to whoever homeowners trust most online', fr: 'Les meilleurs projets vont à celui en qui les propriétaires ont le plus confiance en ligne' }, body: { en: 'High-ticket renovations are not impulse purchases. Homeowners compare multiple contractors online before making a single call. Without a portfolio, reviews and a professional site, you do not make the shortlist.', fr: 'Les rénovations à prix élevé ne sont pas des achats impulsifs. Les propriétaires comparent plusieurs entrepreneurs en ligne avant de passer un seul appel. Sans portfolio, avis et site professionnel, vous ne figurez pas sur la liste restreinte.' } },
+          { title: { en: 'No online quote or consultation request means leads go cold', fr: 'Pas de demande de soumission ou consultation en ligne signifie que les prospects se refroidissent' }, body: { en: 'Most homeowners research renovations on evenings and weekends. Without an online consultation request form, the momentum dies and they move on to whoever made it easy to take the next step at 9pm.', fr: 'La plupart des propriétaires recherchent des rénovations le soir et les fins de semaine. Sans formulaire de demande de consultation en ligne, l\'élan meurt et ils passent à celui qui a facilité le passage à l\'action à 21h.' } },
+          { title: { en: 'No project-specific pages means low-quality leads and missed SEO', fr: 'Pas de pages spécifiques aux projets signifie des prospects de faible qualité et du SEO manqué' }, body: { en: 'Without dedicated pages for kitchen renovations, bathroom renovations and basement finishing, you miss the homeowners who search specifically for what you do best. Generic contractor pages rank poorly and attract unqualified inquiries.', fr: 'Sans pages dédiées aux rénovations de cuisine, salle de bain et finition de sous-sol, vous manquez les propriétaires qui recherchent spécifiquement ce que vous faites le mieux. Les pages d\'entrepreneur génériques se classent mal et attirent des demandes non qualifiées.' } },
+        ],
+        opportunities: [
+          { title: { en: 'Build a portfolio that closes projects before the first meeting', fr: 'Construire un portfolio qui conclut des projets avant la première rencontre' }, body: { en: 'An organized project gallery with before-and-after photos, project budget ranges and customer testimonials convinces homeowners of your quality before they have asked a single question. Estimates become confirmation calls.', fr: 'Une galerie de projets organisée avec photos avant-après, fourchettes de budget de projet et témoignages clients convainc les propriétaires de votre qualité avant qu\'ils aient posé une seule question. Les soumissions deviennent des appels de confirmation.' } },
+          { title: { en: 'Rank for every high-value renovation search in your city', fr: 'Se classer pour chaque recherche de rénovation à haute valeur dans votre ville' }, body: { en: 'Pages targeting «rénovation cuisine Montréal», «salle de bain Laval», «finition sous-sol Longueuil», «entrepreneur général Brossard» capture homeowners who have already decided to renovate and are choosing who to trust.', fr: 'Des pages ciblant «rénovation cuisine Montréal», «salle de bain Laval», «finition sous-sol Longueuil», «entrepreneur général Brossard» captent les propriétaires qui ont déjà décidé de rénover et choisissent en qui faire confiance.' } },
+          { title: { en: 'Convert high-intent research visits into consultation bookings', fr: 'Convertir les visites de recherche à forte intention en réservations de consultation' }, body: { en: 'A consultation booking form with project type, timeline and rough budget creates a qualified lead pipeline. An AI chatbot that asks the right qualifying questions after hours ensures no serious homeowner slips through.', fr: 'Un formulaire de réservation de consultation avec type de projet, échéancier et budget approximatif crée un pipeline de prospects qualifiés. Un chatbot IA qui pose les bonnes questions de qualification après les heures assure qu\'aucun propriétaire sérieux ne passe entre les mailles.' } },
+        ],
+        seo: { en: 'Project-specific city pages for every renovation type you offer. «Rénovation cuisine Montréal», «salle de bain Laval», «finition sous-sol Brossard», «entrepreneur général Longueuil», «rénovation maison Rive-Sud».', fr: 'Des pages spécifiques aux projets par ville pour chaque type de rénovation que vous offrez. «Rénovation cuisine Montréal», «salle de bain Laval», «finition sous-sol Brossard», «entrepreneur général Longueuil», «rénovation maison Rive-Sud».' },
+        ai: { en: 'An AI chatbot that qualifies project type, rough scope and timeline, answers common questions about permits and process, and books a consultation. So every homeowner who finds you at 10pm on a Sunday becomes a Monday morning lead with context already gathered.', fr: 'Un chatbot IA qui qualifie le type de projet, la portée approximative et l\'échéancier, répond aux questions courantes sur les permis et le processus, et réserve une consultation. Pour que chaque propriétaire qui vous trouve à 22h un dimanche devienne un prospect du lundi matin avec le contexte déjà recueilli.' },
+        approach: {
+          build: { en: 'A site organized by renovation type. Kitchens, bathrooms, basements, additions, full home renovations. With a visual portfolio of real completed projects, budget ranges, your licensing details and a consultation booking form that qualifies the lead before you meet.', fr: 'Un site organisé par type de rénovation. Cuisines, salles de bain, sous-sols, agrandissements, rénovations complètes. Avec un portfolio visuel de vrais projets complétés, fourchettes de budget, vos détails de licence et un formulaire de réservation de consultation qui qualifie le prospect avant que vous vous rencontriez.' },
+          attract: { en: 'Project and city keyword pages targeting every high-intent renovation search. «Rénovation cuisine Montréal». «Finition sous-sol Laval». «Entrepreneur général Brossard». The search that happens when a homeowner finally decides to do that kitchen they have been thinking about for three years.', fr: 'Des pages de projet et par ville ciblant chaque recherche de rénovation à forte intention. «Rénovation cuisine Montréal». «Finition sous-sol Laval». «Entrepreneur général Brossard». La recherche qui se fait quand un propriétaire décide enfin de faire cette cuisine à laquelle il pense depuis trois ans.' },
+          convert: { en: 'A consultation booking form that captures project type, budget range and timeline so you arrive at every meeting prepared. An AI chatbot that handles after-hours inquiries and books the consultation. So no high-value lead falls through because they searched on a Sunday.', fr: 'Un formulaire de réservation de consultation qui capture le type de projet, la fourchette de budget et l\'échéancier pour que vous arriviez à chaque réunion préparé. Un chatbot IA qui gère les demandes après les heures et réserve la consultation. Pour qu\'aucun prospect à haute valeur ne passe entre les mailles parce qu\'il a cherché un dimanche.' },
+        },
+      },
+    ],
     recommended: 'growth',
   },
   {
@@ -598,74 +863,6 @@ const INDUSTRIES: IndustryData[] = [
     recommended: 'growth',
   },
   {
-    id: 'other',
-    label: { en: 'Other', fr: 'Autre' },
-    accentColor: '#8B5CF6',
-    hero: {
-      headline: {
-        en: 'Whatever your business does, your customers are searching for it online right now.',
-        fr: 'Peu importe ce que fait votre entreprise, vos clients la recherchent en ligne en ce moment.',
-      },
-      sub: {
-        en: 'Every business in Quebec. In every industry. Deserves a digital presence that works as hard as the people behind it.',
-        fr: 'Chaque entreprise au Québec. Dans chaque industrie. Mérite une présence numérique qui travaille aussi fort que les gens qui la font tourner.',
-      },
-    },
-    stats: [
-      {
-        value: { en: '59%', fr: '59 %' },
-        label: { en: 'of Canadians are more likely to do business with a company that has a website. Whatever your industry, not having a website is a first impression you cannot afford to get wrong', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. Peu importe votre secteur, l\'absence de site web est une première impression que vous ne pouvez pas vous permettre de rater' },
-        source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' },
-        year: 2025, geo: { en: 'Canada', fr: 'Canada' },
-      },
-      {
-        value: { en: '1 in 3', fr: '1 sur 3' },
-        label: { en: 'Canadian small businesses currently sell or take orders online. Meaning most businesses across all industries still have no digital sales or booking channel, and those that add one gain an immediate advantage over competitors who rely on phone and walk-in alone', fr: 'petites entreprises canadiennes vendent ou acceptent des commandes en ligne. La plupart des entreprises dans tous les secteurs n\'ont encore aucun canal de vente ou de réservation numérique, et celles qui en ajoutent un gagnent un avantage immédiat' },
-        source: { en: 'CFIB Digital Transformation Report 2025', fr: 'Rapport sur la transformation numérique FCEI 2025' },
-        year: 2025, geo: { en: 'Canada', fr: 'Canada' },
-      },
-      {
-        value: { en: '86%', fr: '86 %' },
-        label: { en: 'of Canadians made an online purchase in the past year. Whatever your business, your customers expect to find you, research you and contact you online before they ever show up at your door', fr: 'des Canadiens ont effectué un achat en ligne au cours de la dernière année. Peu importe votre entreprise, vos clients s\'attendent à vous trouver, vous évaluer et vous contacter en ligne avant de se présenter chez vous' },
-        source: { en: 'CIRA Canadian Internet Trends 2026', fr: 'Tendances Internet canadiennes ACEI 2026' },
-        year: 2026, geo: { en: 'Canada', fr: 'Canada' },
-      },
-    ],
-    challenges: [
-      { title: { en: 'Not visible when people search', fr: 'Non visible lors des recherches' }, body: { en: 'Without a website and local SEO foundation, your business simply doesn\'t appear when potential customers search for what you offer in your city.', fr: 'Sans site web et base SEO locale, votre entreprise n\'apparaît tout simplement pas quand des clients potentiels cherchent ce que vous offrez dans votre ville.' } },
-      { title: { en: 'No way to convert interest into action', fr: 'Aucun moyen de convertir l\'intérêt en action' }, body: { en: 'Without clear calls-to-action, contact forms and an AI assistant, people who find you online have nowhere to go. And they move on.', fr: 'Sans appels à l\'action clairs, formulaires de contact et assistant IA, les personnes qui vous trouvent en ligne n\'ont nulle part où aller. Et elles passent à autre chose.' } },
-      { title: { en: 'Missing the mobile-first reality', fr: 'Rater la réalité mobile-first' }, body: { en: 'Most local searches happen on a phone. A site that isn\'t fast, mobile-friendly and bilingual is losing customers before they\'ve read a single word.', fr: 'La plupart des recherches locales se font sur un téléphone. Un site qui n\'est pas rapide, adapté aux mobiles et bilingue perd des clients avant qu\'ils aient lu un seul mot.' } },
-    ],
-    opportunities: [
-      { title: { en: 'Get found before the competition', fr: 'Être trouvé avant la concurrence' }, body: { en: 'A well-structured website with local SEO puts you in front of customers actively searching for what you do. In Montreal, Quebec City and everywhere in between.', fr: 'Un site bien structuré avec un SEO local vous place devant les clients qui cherchent activement ce que vous faites. À Montréal, Québec et partout entre les deux.' } },
-      { title: { en: 'Convert visitors into customers', fr: 'Convertir les visiteurs en clients' }, body: { en: 'Clear service pages, real photos, genuine reviews and a contact form that works on any device turn online discovery into real business.', fr: 'Des pages de services claires, de vraies photos, des avis authentiques et un formulaire de contact qui fonctionne sur n\'importe quel appareil transforment la découverte en ligne en vrais affaires.' } },
-      { title: { en: 'Automate the first contact', fr: 'Automatiser le premier contact' }, body: { en: 'An AI chatbot that answers questions and captures lead info means no potential customer falls through the cracks. Even when you\'re busy doing what you do best.', fr: 'Un chatbot IA qui répond aux questions et capte les informations des prospects signifie qu\'aucun client potentiel ne passe entre les mailles. Même quand vous êtes occupé à faire ce que vous faites de mieux.' } },
-    ],
-    seo: {
-      en: 'City and service pages that target what your customers actually search for. From Montreal neighbourhoods to cities across Quebec.',
-      fr: 'Des pages par ville et par service qui ciblent ce que vos clients recherchent réellement. Des quartiers de Montréal aux villes du Québec.',
-    },
-    ai: {
-      en: 'A custom AI chatbot trained on your business, your services and your most common questions. Available 24/7 to answer, qualify and convert.',
-      fr: 'Un chatbot IA personnalisé formé sur votre entreprise, vos services et vos questions les plus courantes. Disponible 24h/7j pour répondre, qualifier et convertir.',
-    },
-    approach: {
-      build: {
-        en: 'A professionally designed website built around your actual business. Your services, your team, your city. Not a generic template with your name swapped in.',
-        fr: 'Un site web conçu professionnellement autour de votre vraie entreprise. Vos services, votre équipe, votre ville. Pas un gabarit générique avec votre nom échangé.',
-      },
-      attract: {
-        en: 'Local SEO structure and service pages targeting the specific searches your future customers are making in Montreal and Quebec. Right now.',
-        fr: 'Une structure SEO locale et des pages de services ciblant les recherches spécifiques que vos futurs clients font à Montréal et au Québec. En ce moment.',
-      },
-      convert: {
-        en: 'Contact forms, clear calls to action and an AI chatbot that answers questions and captures leads around the clock. So no potential customer falls through the cracks.',
-        fr: 'Des formulaires de contact, des appels à l\'action clairs et un chatbot IA qui répond aux questions et capte les prospects en tout temps. Pour qu\'aucun client potentiel ne passe entre les mailles.',
-      },
-    },
-    recommended: 'launch',
-  },
-  {
     id: 'pest-control',
     label: { en: 'Pest Control', fr: 'Extermination et contrôle parasitaire' },
     accentColor: '#84CC16',
@@ -751,6 +948,74 @@ const INDUSTRIES: IndustryData[] = [
     },
     recommended: 'growth',
   },
+  {
+    id: 'other',
+    label: { en: 'Other', fr: 'Autre' },
+    accentColor: '#8B5CF6',
+    hero: {
+      headline: {
+        en: 'Whatever your business does, your customers are searching for it online right now.',
+        fr: 'Peu importe ce que fait votre entreprise, vos clients la recherchent en ligne en ce moment.',
+      },
+      sub: {
+        en: 'Every business in Quebec. In every industry. Deserves a digital presence that works as hard as the people behind it.',
+        fr: 'Chaque entreprise au Québec. Dans chaque industrie. Mérite une présence numérique qui travaille aussi fort que les gens qui la font tourner.',
+      },
+    },
+    stats: [
+      {
+        value: { en: '59%', fr: '59 %' },
+        label: { en: 'of Canadians are more likely to do business with a company that has a website. Whatever your industry, not having a website is a first impression you cannot afford to get wrong', fr: 'des Canadiens sont plus susceptibles de faire affaire avec une entreprise qui a un site web. Peu importe votre secteur, l\'absence de site web est une première impression que vous ne pouvez pas vous permettre de rater' },
+        source: { en: 'CIRA Canadian Internet Trends 2025', fr: 'Tendances Internet canadiennes ACEI 2025' },
+        year: 2025, geo: { en: 'Canada', fr: 'Canada' },
+      },
+      {
+        value: { en: '1 in 3', fr: '1 sur 3' },
+        label: { en: 'Canadian small businesses currently sell or take orders online. Meaning most businesses across all industries still have no digital sales or booking channel, and those that add one gain an immediate advantage over competitors who rely on phone and walk-in alone', fr: 'petites entreprises canadiennes vendent ou acceptent des commandes en ligne. La plupart des entreprises dans tous les secteurs n\'ont encore aucun canal de vente ou de réservation numérique, et celles qui en ajoutent un gagnent un avantage immédiat' },
+        source: { en: 'CFIB Digital Transformation Report 2025', fr: 'Rapport sur la transformation numérique FCEI 2025' },
+        year: 2025, geo: { en: 'Canada', fr: 'Canada' },
+      },
+      {
+        value: { en: '86%', fr: '86 %' },
+        label: { en: 'of Canadians made an online purchase in the past year. Whatever your business, your customers expect to find you, research you and contact you online before they ever show up at your door', fr: 'des Canadiens ont effectué un achat en ligne au cours de la dernière année. Peu importe votre entreprise, vos clients s\'attendent à vous trouver, vous évaluer et vous contacter en ligne avant de se présenter chez vous' },
+        source: { en: 'CIRA Canadian Internet Trends 2026', fr: 'Tendances Internet canadiennes ACEI 2026' },
+        year: 2026, geo: { en: 'Canada', fr: 'Canada' },
+      },
+    ],
+    challenges: [
+      { title: { en: 'Not visible when people search', fr: 'Non visible lors des recherches' }, body: { en: 'Without a website and local SEO foundation, your business simply doesn\'t appear when potential customers search for what you offer in your city.', fr: 'Sans site web et base SEO locale, votre entreprise n\'apparaît tout simplement pas quand des clients potentiels cherchent ce que vous offrez dans votre ville.' } },
+      { title: { en: 'No way to convert interest into action', fr: 'Aucun moyen de convertir l\'intérêt en action' }, body: { en: 'Without clear calls-to-action, contact forms and an AI assistant, people who find you online have nowhere to go. And they move on.', fr: 'Sans appels à l\'action clairs, formulaires de contact et assistant IA, les personnes qui vous trouvent en ligne n\'ont nulle part où aller. Et elles passent à autre chose.' } },
+      { title: { en: 'Missing the mobile-first reality', fr: 'Rater la réalité mobile-first' }, body: { en: 'Most local searches happen on a phone. A site that isn\'t fast, mobile-friendly and bilingual is losing customers before they\'ve read a single word.', fr: 'La plupart des recherches locales se font sur un téléphone. Un site qui n\'est pas rapide, adapté aux mobiles et bilingue perd des clients avant qu\'ils aient lu un seul mot.' } },
+    ],
+    opportunities: [
+      { title: { en: 'Get found before the competition', fr: 'Être trouvé avant la concurrence' }, body: { en: 'A well-structured website with local SEO puts you in front of customers actively searching for what you do. In Montreal, Quebec City and everywhere in between.', fr: 'Un site bien structuré avec un SEO local vous place devant les clients qui cherchent activement ce que vous faites. À Montréal, Québec et partout entre les deux.' } },
+      { title: { en: 'Convert visitors into customers', fr: 'Convertir les visiteurs en clients' }, body: { en: 'Clear service pages, real photos, genuine reviews and a contact form that works on any device turn online discovery into real business.', fr: 'Des pages de services claires, de vraies photos, des avis authentiques et un formulaire de contact qui fonctionne sur n\'importe quel appareil transforment la découverte en ligne en vrais affaires.' } },
+      { title: { en: 'Automate the first contact', fr: 'Automatiser le premier contact' }, body: { en: 'An AI chatbot that answers questions and captures lead info means no potential customer falls through the cracks. Even when you\'re busy doing what you do best.', fr: 'Un chatbot IA qui répond aux questions et capte les informations des prospects signifie qu\'aucun client potentiel ne passe entre les mailles. Même quand vous êtes occupé à faire ce que vous faites de mieux.' } },
+    ],
+    seo: {
+      en: 'City and service pages that target what your customers actually search for. From Montreal neighbourhoods to cities across Quebec.',
+      fr: 'Des pages par ville et par service qui ciblent ce que vos clients recherchent réellement. Des quartiers de Montréal aux villes du Québec.',
+    },
+    ai: {
+      en: 'A custom AI chatbot trained on your business, your services and your most common questions. Available 24/7 to answer, qualify and convert.',
+      fr: 'Un chatbot IA personnalisé formé sur votre entreprise, vos services et vos questions les plus courantes. Disponible 24h/7j pour répondre, qualifier et convertir.',
+    },
+    approach: {
+      build: {
+        en: 'A professionally designed website built around your actual business. Your services, your team, your city. Not a generic template with your name swapped in.',
+        fr: 'Un site web conçu professionnellement autour de votre vraie entreprise. Vos services, votre équipe, votre ville. Pas un gabarit générique avec votre nom échangé.',
+      },
+      attract: {
+        en: 'Local SEO structure and service pages targeting the specific searches your future customers are making in Montreal and Quebec. Right now.',
+        fr: 'Une structure SEO locale et des pages de services ciblant les recherches spécifiques que vos futurs clients font à Montréal et au Québec. En ce moment.',
+      },
+      convert: {
+        en: 'Contact forms, clear calls to action and an AI chatbot that answers questions and captures leads around the clock. So no potential customer falls through the cracks.',
+        fr: 'Des formulaires de contact, des appels à l\'action clairs et un chatbot IA qui répond aux questions et capte les prospects en tout temps. Pour qu\'aucun client potentiel ne passe entre les mailles.',
+      },
+    },
+    recommended: 'launch',
+  },
 ];
 
 const PACKAGES = [
@@ -827,8 +1092,11 @@ function PlanPageInner({ lang }: { lang: Lang }) {
   const paramId = searchParams.get('industry') as IndustryId | null;
   const [selected, setSelected] = useState<IndustryId | null>(paramId);
   const [open, setOpen] = useState(false);
+  const [selectedSub, setSelectedSub] = useState<string | null>(null);
+  const [openSub, setOpenSub] = useState(false);
 
   const industry = INDUSTRIES.find(i => i.id === selected) ?? null;
+  const activeSub = (industry?.subcategories ?? []).find(s => s.id === selectedSub) ?? null;
 
   useEffect(() => {
     if (selected) {
@@ -838,7 +1106,9 @@ function PlanPageInner({ lang }: { lang: Lang }) {
     }
   }, [selected, router]);
 
-  const accent = industry?.accentColor ?? '#8B5CF6';
+  // When a sub-industry is selected, use its data for the content section
+  const activeData = activeSub ?? industry;
+  const accent = activeData?.accentColor ?? '#8B5CF6';
   const t = (obj: T) => obj[fr ? 'fr' : 'en'];
 
   return (
@@ -923,7 +1193,7 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                     {INDUSTRIES.map(ind => (
                       <button
                         key={ind.id}
-                        onClick={() => { setSelected(ind.id); setOpen(false); }}
+                        onClick={() => { setSelected(ind.id); setOpen(false); setSelectedSub(null); }}
                         style={{
                           width: '100%', display: 'flex', alignItems: 'center', gap: 12,
                           padding: '12px 20px', background: selected === ind.id ? `rgba(${hexToRgb(ind.accentColor)},0.1)` : 'none',
@@ -947,11 +1217,90 @@ function PlanPageInner({ lang }: { lang: Lang }) {
           </motion.div>
         </section>
 
+        {/* ── SUB-INDUSTRY SELECTOR (home-services only) ── */}
+        <AnimatePresence>
+          {industry?.subcategories && industry.subcategories.length > 0 && (
+            <motion.section
+              key="sub-selector"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4, ease }}
+              style={{ padding: '0 clamp(24px,5vw,80px) clamp(32px,4vh,48px)', maxWidth: 1200, margin: '0 auto' }}
+            >
+              <p style={{ fontSize: 13, fontWeight: 700, color: '#A78BFA', marginBottom: 10, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                {fr ? 'Quel type de service?' : 'What type of home service?'}
+              </p>
+              <div style={{ position: 'relative', maxWidth: 480 }}>
+                <button
+                  onClick={() => setOpenSub(o => !o)}
+                  style={{
+                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '16px 20px', borderRadius: 12,
+                    background: activeSub ? `rgba(${hexToRgb(activeSub.accentColor)},0.08)` : 'rgba(139,92,246,0.04)',
+                    border: `1.5px solid ${activeSub ? `rgba(${hexToRgb(activeSub.accentColor)},0.4)` : 'rgba(139,92,246,0.3)'}`,
+                    color: activeSub ? '#F5F0FC' : 'rgba(196,181,253,0.7)',
+                    fontSize: 15, fontWeight: activeSub ? 600 : 400,
+                    cursor: 'pointer', textAlign: 'left', outline: 'none',
+                    transition: 'border-color 0.2s, background 0.2s',
+                    fontFamily: 'var(--font-space-grotesk)',
+                  }}
+                >
+                  <span>{activeSub ? t(activeSub.label) : (fr ? '— Choisissez une catégorie' : '— Choose a category')}</span>
+                  <svg
+                    width="16" height="16" viewBox="0 0 16 16" fill="none"
+                    style={{ transform: openSub ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', flexShrink: 0 }}
+                  >
+                    <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+                <AnimatePresence>
+                  {openSub && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6, scale: 0.98 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                      transition={{ duration: 0.18, ease }}
+                      style={{
+                        position: 'absolute', top: 'calc(100% + 6px)', left: 0, right: 0, zIndex: 50,
+                        background: 'rgba(12,6,32,0.98)', border: '1px solid rgba(139,92,246,0.18)',
+                        borderRadius: 12, overflow: 'hidden',
+                        boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
+                      }}
+                    >
+                      {industry.subcategories!.map(sub => (
+                        <button
+                          key={sub.id}
+                          onClick={() => { setSelectedSub(sub.id); setOpenSub(false); }}
+                          style={{
+                            width: '100%', display: 'flex', alignItems: 'center', gap: 12,
+                            padding: '12px 20px', background: selectedSub === sub.id ? `rgba(${hexToRgb(sub.accentColor)},0.1)` : 'none',
+                            border: 'none', cursor: 'pointer', textAlign: 'left',
+                            color: selectedSub === sub.id ? '#F5F0FC' : 'rgba(220,210,245,0.60)',
+                            fontSize: 14, fontWeight: selectedSub === sub.id ? 600 : 400,
+                            transition: 'background 0.15s, color 0.15s',
+                            fontFamily: 'var(--font-space-grotesk)',
+                          }}
+                          onMouseEnter={e => { if (selectedSub !== sub.id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.03)'; }}
+                          onMouseLeave={e => { if (selectedSub !== sub.id) (e.currentTarget as HTMLButtonElement).style.background = 'none'; }}
+                        >
+                          <span style={{ width: 8, height: 8, borderRadius: '50%', background: sub.accentColor, flexShrink: 0, opacity: selectedSub === sub.id ? 1 : 0.4 }} />
+                          {t(sub.label)}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.section>
+          )}
+        </AnimatePresence>
+
         {/* ── DYNAMIC CONTENT ── */}
         <AnimatePresence mode="wait">
           {industry && (
             <motion.div
-              key={industry.id}
+              key={activeSub ? activeSub.id : industry.id}
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
@@ -962,21 +1311,21 @@ function PlanPageInner({ lang }: { lang: Lang }) {
 
               {/* ── INDUSTRY HERO ── */}
               <section style={{ padding: 'clamp(56px,7vh,80px) clamp(24px,5vw,80px)', maxWidth: 1200, margin: '0 auto' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: industry.stats.length > 0 ? 'repeat(auto-fit,minmax(300px,1fr))' : '1fr', gap: 'clamp(32px,4vw,64px)', alignItems: industry.stats.length > 0 ? 'center' : 'start' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: activeData!.stats.length > 0 ? 'repeat(auto-fit,minmax(300px,1fr))' : '1fr', gap: 'clamp(32px,4vw,64px)', alignItems: activeData!.stats.length > 0 ? 'center' : 'start' }}>
                   <div>
                     <SectionLabel n="01" label={fr ? 'L\'opportunité' : 'The Opportunity'} />
                     <h2 style={{ fontSize: 'clamp(26px,3.5vw,44px)', fontWeight: 800, color: '#F5F0FC', letterSpacing: '-0.03em', lineHeight: 1.1, margin: '0 0 20px' }}>
-                      {t(industry.hero.headline)}
+                      {t(activeData!.hero.headline)}
                     </h2>
-                    <p style={{ fontSize: 'clamp(15px,1.3vw,17px)', color: 'rgba(220,210,245,0.55)', lineHeight: 1.75, margin: 0, maxWidth: industry.stats.length === 0 ? 680 : undefined }}>
-                      {t(industry.hero.sub)}
+                    <p style={{ fontSize: 'clamp(15px,1.3vw,17px)', color: 'rgba(220,210,245,0.55)', lineHeight: 1.75, margin: 0, maxWidth: activeData!.stats.length === 0 ? 680 : undefined }}>
+                      {t(activeData!.hero.sub)}
                     </p>
                   </div>
 
                   {/* Stats. Only rendered when the industry has qualifying data */}
-                  {industry.stats.length > 0 && (
+                  {activeData!.stats.length > 0 && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                      {industry.stats.map((stat, i) => (
+                      {activeData!.stats.map((stat, i) => (
                         <motion.div
                           key={i}
                           initial={{ opacity: 0, x: 20 }}
@@ -1014,7 +1363,7 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                   {fr ? 'Ce que la plupart des entreprises dans votre industrie vivent en ligne.' : 'What most businesses in your industry experience online.'}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 20 }}>
-                  {industry.challenges.map((c, i) => (
+                  {activeData!.challenges.map((c, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 16 }}
@@ -1041,7 +1390,7 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                   {fr ? 'Comment une meilleure présence numérique transforme votre entreprise.' : 'How a better digital presence transforms your business.'}
                 </h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 20 }}>
-                  {industry.opportunities.map((o, i) => (
+                  {activeData!.opportunities.map((o, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 16 }}
@@ -1068,14 +1417,14 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke={accent} strokeWidth="1.5"/><path d="M13 13l3 3" stroke={accent} strokeWidth="1.5" strokeLinecap="round"/></svg>
                       ),
                       eyebrow: { en: 'Local SEO', fr: 'SEO local' },
-                      body: industry.seo,
+                      body: activeData!.seo,
                     },
                     {
                       icon: (
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke={accent} strokeWidth="1.5"/><path d="M5 9h4M5 12h2" stroke={accent} strokeWidth="1.3" strokeLinecap="round"/><circle cx="13" cy="9" r="1.5" fill={accent}/></svg>
                       ),
                       eyebrow: { en: 'AI & Automation', fr: 'IA et automatisation' },
-                      body: industry.ai,
+                      body: activeData!.ai,
                     },
                   ].map((item, i) => (
                     <div key={i} style={{ padding: '24px 28px', borderRadius: 14, background: `rgba(${hexToRgb(accent)},0.04)`, border: `1px solid rgba(${hexToRgb(accent)},0.14)`, display: 'flex', gap: 16 }}>
@@ -1106,21 +1455,21 @@ function PlanPageInner({ lang }: { lang: Lang }) {
                 n: '01',
                 word: 'BUILD',
                 title: { en: 'Foundation', fr: 'Fondation' },
-                body: industry?.approach.build ?? { en: 'A professionally designed website, built around your brand, your services and your city. Not a template with your logo swapped in.', fr: 'Un site web conçu professionnellement, bâti autour de votre marque, vos services et votre ville. Pas un gabarit avec votre logo échangé.' },
+                body: activeData?.approach.build ?? { en: 'A professionally designed website, built around your brand, your services and your city. Not a template with your logo swapped in.', fr: 'Un site web conçu professionnellement, bâti autour de votre marque, vos services et votre ville. Pas un gabarit avec votre logo échangé.' },
                 color: '#8B5CF6',
               },
               {
                 n: '02',
                 word: 'ATTRACT',
                 title: { en: 'Visibility', fr: 'Visibilité' },
-                body: industry?.approach.attract ?? { en: 'Local SEO structure, Google Business optimisation and content that ranks for the specific searches your future customers are making right now.', fr: 'Structure SEO locale, optimisation Google Business et contenu qui se positionne sur les recherches spécifiques que vos futurs clients font en ce moment.' },
+                body: activeData?.approach.attract ?? { en: 'Local SEO structure, Google Business optimisation and content that ranks for the specific searches your future customers are making right now.', fr: 'Structure SEO locale, optimisation Google Business et contenu qui se positionne sur les recherches spécifiques que vos futurs clients font en ce moment.' },
                 color: '#3B82F6',
               },
               {
                 n: '03',
                 word: 'CONVERT',
                 title: { en: 'Conversion', fr: 'Conversion' },
-                body: industry?.approach.convert ?? { en: 'Lead capture forms, AI chatbot, booking systems and CTAs designed to turn every visitor into a contact. Especially when you\'re not available to answer.', fr: 'Formulaires de capture, chatbot IA, systèmes de réservation et appels à l\'action conçus pour transformer chaque visiteur en contact. Surtout quand vous n\'êtes pas disponible.' },
+                body: activeData?.approach.convert ?? { en: 'Lead capture forms, AI chatbot, booking systems and CTAs designed to turn every visitor into a contact. Especially when you\'re not available to answer.', fr: 'Formulaires de capture, chatbot IA, systèmes de réservation et appels à l\'action conçus pour transformer chaque visiteur en contact. Surtout quand vous n\'êtes pas disponible.' },
                 color: '#10B981',
               },
             ].map((p, i) => (
@@ -1150,15 +1499,15 @@ function PlanPageInner({ lang }: { lang: Lang }) {
           <h2 style={{ fontSize: 'clamp(24px,3vw,38px)', fontWeight: 800, color: '#F5F0FC', letterSpacing: '-0.03em', lineHeight: 1.1, margin: '0 0 12px', maxWidth: 560 }}>
             {fr ? 'Choisissez le niveau de croissance qui vous convient.' : 'Choose the level of growth that fits your business.'}
           </h2>
-          {industry && (
+          {activeData && (
             <p style={{ fontSize: 14, color: 'rgba(220,210,245,0.40)', margin: '0 0 40px' }}>
-              {fr ? `Recommandé pour ${t(industry.label)} :` : `Recommended for ${t(industry.label)}:`}
-              {' '}<span style={{ color: 'rgba(139,92,246,0.80)', fontWeight: 600 }}>{PACKAGES.find(p => p.id === industry.recommended) ? t(PACKAGES.find(p => p.id === industry.recommended)!.name) : ''}</span>
+              {fr ? `Recommandé pour ${t(activeData.label)} :` : `Recommended for ${t(activeData.label)}:`}
+              {' '}<span style={{ color: 'rgba(139,92,246,0.80)', fontWeight: 600 }}>{PACKAGES.find(p => p.id === activeData.recommended) ? t(PACKAGES.find(p => p.id === activeData.recommended)!.name) : ''}</span>
             </p>
           )}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
             {PACKAGES.map((pkg, i) => {
-              const isRec = industry?.recommended === pkg.id;
+              const isRec = activeData?.recommended === pkg.id;
               return (
                 <motion.div
                   key={pkg.id}
