@@ -105,7 +105,7 @@ function FinderWindow({ fr, onSectionClick, isTouch, playClickSound }: { fr: boo
   const sections = [
     { label: fr ? 'Nos croyances' : 'Our Beliefs', id: 'our-beliefs' },
     { label: fr ? 'Nos projets' : 'Our Projects', id: 'selected-work' },
-    { label: fr ? 'La Stratégie' : 'The Strategy', id: 'the-strategy' },
+    { label: fr ? 'Services et stratégie' : 'Services & Strategy', id: 'the-strategy' },
     { label: fr ? 'Travaillez avec nous' : 'Work With Us', id: 'work-with-us' },
   ];
   return (

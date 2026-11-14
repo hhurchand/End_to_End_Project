@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'The Strategy',
+  title: 'Services & Strategy',
   description: 'A professional website built around your business — custom design, bilingual, and always there when you need updates.',
   alternates: {
     canonical: 'https://agentedirect.ca/strategy',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'The Strategy',
+    title: 'Services & Strategy',
     description: 'A professional website built around your business — custom design, bilingual, and always there when you need updates.',
     url: 'https://agentedirect.ca/strategy',
     locale: 'en_CA',
