@@ -18,6 +18,7 @@ const T = {
     contact: 'Contact',
     eyebrow: "Let's talk.",
     heading: 'Tell us about your business.',
+    promise: "Free quote, no obligation. You'll hear back within 24 hours.",
     labelName: 'Full Name',
     labelBusiness: 'Business Name',
     labelEmail: 'Email Address',
@@ -64,6 +65,7 @@ const T = {
     contact: 'Contact',
     eyebrow: 'Parlons-en.',
     heading: 'Parlez-nous de votre entreprise.',
+    promise: 'Soumission gratuite, sans engagement. Vous aurez de nos nouvelles dans les 24 heures.',
     labelName: 'Nom complet',
     labelBusiness: "Nom de l'entreprise",
     labelEmail: 'Adresse courriel',
@@ -250,12 +252,12 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
                 </svg>
               </div>
               <h2 style={{ fontSize: 'clamp(24px,3vw,32px)', fontWeight: 700, color: 'rgba(255,255,255,0.92)', margin: '0 0 16px', letterSpacing: '-0.02em' }}>
-                {fr ? 'On a bien reçu votre demande.' : 'Got it. We\'ll be in touch soon.'}
+                {fr ? 'On a bien reçu votre demande.' : 'Got it. We\'ll be in touch within 24 hours.'}
               </h2>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.66)', lineHeight: 1.75, maxWidth: 400, margin: '0 auto' }}>
                 {fr
-                  ? 'Merci de nous avoir contactés. On vous reviendra rapidement pour discuter de votre projet.'
-                  : 'Thanks for reaching out. We\'ll get back to you shortly to talk about your project.'}
+                  ? 'Merci de nous avoir contactés. Vous aurez de nos nouvelles dans les 24 heures pour discuter de votre projet.'
+                  : 'Thanks for reaching out. You\'ll hear back within 24 hours to talk about your project.'}
               </p>
             </div>
           ) : (
@@ -266,6 +268,9 @@ export default function InquiryPage({ lang = 'en' }: { lang?: 'en' | 'fr' }) {
           <h1 style={{ fontSize: 'clamp(28px, 4vw, 42px)', fontWeight: 700, color: 'rgba(255,255,255,0.92)', margin: '0 0 36px', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
             {t.heading}
           </h1>
+          <p style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(194,141,255,0.85)', margin: '-24px 0 32px' }}>
+            {t.promise}
+          </p>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 
