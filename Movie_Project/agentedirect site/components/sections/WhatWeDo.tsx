@@ -31,7 +31,7 @@ const SERVICES = [
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
         <rect x="2.5" y="1.5" width="11" height="14" rx="1.5" stroke="currentColor" strokeWidth="1.5"/>
         <path d="M5.5 5.5h5M5.5 8.5h5M5.5 11.5h3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" opacity="0.5"/>
-        <circle cx="15.5" cy="14.5" r="3.5" fill="#6D28D9"/>
+        <circle cx="15.5" cy="14.5" r="3.5" fill="#7A1DF0"/>
         <path d="M13.8 14.5l1.2 1.2 2.2-2.2" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
@@ -72,14 +72,14 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
           .wwd-grid { grid-template-columns: repeat(3, 1fr) !important; }
         }
         .wwd-card:hover {
-          border-color: rgba(139,92,246,0.28) !important;
-          background: rgba(139,92,246,0.05) !important;
+          border-color: rgba(162,75,255,0.55) !important;
+          background: rgba(162,75,255,0.05) !important;
           transform: translateY(-5px) !important;
-          box-shadow: 0 20px 56px rgba(80,20,200,0.16) !important;
+          box-shadow: 0 20px 56px rgba(110,30,235,0.16) !important;
         }
         .wwd-card:hover .wwd-icon {
-          background: rgba(139,92,246,0.18) !important;
-          border-color: rgba(139,92,246,0.38) !important;
+          background: rgba(162,75,255,0.18) !important;
+          border-color: rgba(162,75,255,0.62) !important;
         }
       `}</style>
 
@@ -97,13 +97,13 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
         {/* Atmosphere */}
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 60% 50% at 50% 60%, rgba(109,40,217,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 60% 50% at 50% 60%, rgba(122,29,240,0.07) 0%, transparent 70%)',
         }} />
 
         {/* Top hairline */}
         <div aria-hidden style={{
           position: 'absolute', top: 0, left: '6%', right: '6%', height: 1,
-          background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.22) 25%, rgba(139,92,246,0.22) 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(162,75,255,0.22) 25%, rgba(162,75,255,0.22) 75%, transparent 100%)',
         }} />
 
         <div className="max-w-7xl mx-auto px-6 md:px-14">
@@ -117,8 +117,8 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
           >
             <p style={{
               fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.24em',
-              textTransform: 'uppercase', color: '#8B5CF6', margin: '0 0 20px',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.24em',
+              textTransform: 'uppercase', color: '#A24BFF', margin: '0 0 20px',
             }}>
               {fr ? 'Ce qu\'on fait' : 'What We Do'}
             </p>
@@ -131,12 +131,12 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
               margin: '0 0 18px',
             }}>
               {fr ? 'Plus qu\'un' : 'More than a'}{' '}
-              <span style={{ color: 'rgba(220,210,245,0.28)' }}>{fr ? 'beau site web.' : 'good-looking website.'}</span>
+              <span style={{ color: 'rgba(220,210,245,0.55)' }}>{fr ? 'beau site web.' : 'good-looking website.'}</span>
             </h2>
 
             <p style={{
-              fontSize: 'clamp(14px, 1.3vw, 16px)',
-              color: 'rgba(220,210,245,0.50)',
+              fontSize: 'clamp(15px, 1.3vw,17px)',
+              color: 'rgba(220,210,245,0.69)',
               lineHeight: 1.78, margin: 0,
             }}>
               {fr
@@ -181,7 +181,7 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                 <div aria-hidden style={{
                   position: 'absolute',
                   top: 0, left: 24, right: 24, height: 1,
-                  background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.30), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(162,75,255,0.30), transparent)',
                   borderRadius: '0 0 2px 2px',
                 }} />
 
@@ -190,10 +190,10 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                   className="wwd-icon"
                   style={{
                     width: 44, height: 44, borderRadius: 10, flexShrink: 0,
-                    background: 'rgba(139,92,246,0.09)',
-                    border: '1px solid rgba(139,92,246,0.18)',
+                    background: 'rgba(162,75,255,0.09)',
+                    border: '1px solid rgba(162,75,255,0.18)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: '#A78BFA',
+                    color: '#C28DFF',
                     transition: 'background 0.28s ease, border-color 0.28s ease',
                   }}
                 >
@@ -211,8 +211,8 @@ export default function WhatWeDo({ lang = 'en' }: { lang?: 'en' | 'fr' } = {}) {
                     {text.title}
                   </h3>
                   <p style={{
-                    fontSize: 'clamp(13.5px, 1.05vw, 15px)',
-                    color: 'rgba(220,210,245,0.50)',
+                    fontSize: 'clamp(14.5px, 1.05vw,16px)',
+                    color: 'rgba(220,210,245,0.69)',
                     lineHeight: 1.75, margin: 0,
                   }}>
                     {text.body}

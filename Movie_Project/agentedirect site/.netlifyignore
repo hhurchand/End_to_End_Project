@@ -1,0 +1,6 @@
+# Dev cache — huge, never needed in production
+.next/dev
+.next/cache
+
+# Local tooling
+node_modules

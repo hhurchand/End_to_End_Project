@@ -12,7 +12,6 @@ const W         = 572;
 const H         = 377;
 const CX        = W / 2;   // 286
 const CY        = H / 2;   // 188.5
-const SEAL_SIZE = 62;
 
 type EnvPhase = 'idle' | 'opening' | 'done';
 
@@ -44,9 +43,9 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
           aspectRatio:  `${W} / ${H}`,
           position:     'relative',
           cursor:       phase === 'idle' ? 'pointer' : 'default',
-          background:   '#7C3AED',
+          background:   '#8F2BFF',
           borderRadius: 8,
-          boxShadow:    '0 4px 18px rgba(0,0,0,0.4), 0 12px 48px rgba(80,20,200,0.55)',
+          boxShadow:    '0 4px 18px rgba(0,0,0,0.4), 0 12px 48px rgba(110,30,235,0.55)',
         }}
         animate={
           shouldReduceMotion || phase !== 'idle'
@@ -103,8 +102,8 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
           <defs>
             {/* Body — vivid brand purple */}
             <linearGradient id="g-body" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stopColor="#7C3AED" />
-              <stop offset="100%" stopColor="#6D28D9" />
+              <stop offset="0%"   stopColor="#8F2BFF" />
+              <stop offset="100%" stopColor="#7A1DF0" />
             </linearGradient>
 
             {/* Interior pocket — dark, revealed once flap folds away */}
@@ -115,26 +114,26 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
 
             {/* Left lower fold — slightly lighter (lit side) */}
             <linearGradient id="g-left" x1="0" y1="0.5" x2="1" y2="0.5">
-              <stop offset="0%"   stopColor="#8B5CF6" />
-              <stop offset="100%" stopColor="#6D28D9" />
+              <stop offset="0%"   stopColor="#A24BFF" />
+              <stop offset="100%" stopColor="#7A1DF0" />
             </linearGradient>
 
             {/* Right lower fold — slightly darker (shadow side) */}
             <linearGradient id="g-right" x1="1" y1="0.5" x2="0" y2="0.5">
-              <stop offset="0%"   stopColor="#7C3AED" />
+              <stop offset="0%"   stopColor="#8F2BFF" />
               <stop offset="100%" stopColor="#5B21B6" />
             </linearGradient>
 
             {/* Bottom fold */}
             <linearGradient id="g-bottom" x1="0.5" y1="1" x2="0.5" y2="0">
-              <stop offset="0%"   stopColor="#8B5CF6" />
-              <stop offset="100%" stopColor="#6D28D9" />
+              <stop offset="0%"   stopColor="#A24BFF" />
+              <stop offset="100%" stopColor="#7A1DF0" />
             </linearGradient>
 
             {/* Flap — brightest purple at top */}
             <linearGradient id="g-flap" x1="0.3" y1="0" x2="0.7" y2="1">
-              <stop offset="0%"   stopColor="#A78BFA" />
-              <stop offset="100%" stopColor="#7C3AED" />
+              <stop offset="0%"   stopColor="#C28DFF" />
+              <stop offset="100%" stopColor="#8F2BFF" />
             </linearGradient>
 
             {/* Noise */}
@@ -183,7 +182,7 @@ export default function Envelope({ onOpen }: EnvelopeProps) {
             height:          `${(CY / H) * 100}%`,
             clipPath:        'polygon(0% 0%, 100% 0%, 50% 100%)',
             transformOrigin: 'top center',
-            background:      'linear-gradient(160deg, #A78BFA 0%, #7C3AED 100%)',
+            background:      'linear-gradient(160deg, #C28DFF 0%, #8F2BFF 100%)',
             zIndex:          20,
             pointerEvents:   'none',
           }}

@@ -20,7 +20,7 @@ export default function ProgressDots({ current }: ProgressDotsProps) {
             animate={{
               width:   active ? 24 : 8,
               opacity: done ? 0.5 : active ? 1 : 0.25,
-              backgroundColor: done || active ? '#8B5CF6' : 'rgba(245,240,252,0.25)',
+              backgroundColor: done || active ? '#A24BFF' : 'rgba(245,240,252,0.25)',
             }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             style={{ height: 8, borderRadius: 4 }}

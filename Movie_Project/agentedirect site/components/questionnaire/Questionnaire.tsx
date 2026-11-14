@@ -8,7 +8,6 @@ import ProgressDots from './ProgressDots';
 import QuestionCard from './QuestionCard';
 import ContactForm from './ContactForm';
 
-const HOME_URL = '/home';
 
 type FormErrors = Partial<Record<keyof QuizAnswers, string>>;
 
@@ -129,12 +128,12 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, duration: 0.5, type: 'spring', stiffness: 200 }}
           className="flex items-center justify-center rounded-full"
-          style={{ width: 72, height: 72, background: 'rgba(139,92,246,0.12)', border: '1.5px solid rgba(139,92,246,0.4)' }}
+          style={{ width: 72, height: 72, background: 'rgba(162,75,255,0.12)', border: '1.5px solid rgba(162,75,255,0.4)' }}
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
             <motion.path
               d="M8 16L13.5 22L24 10"
-              stroke="#8B5CF6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              stroke="#A24BFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
               transition={{ delay: 0.5, duration: 0.5, ease: 'easeOut' }}
@@ -146,7 +145,7 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(26px,4vw,36px)', fontWeight: 800, letterSpacing: '-0.04em', color: '#F5F0E8', marginBottom: 12 }}>
             Invitation accepted.
           </h2>
-          <p style={{ fontSize: 16, color: 'rgba(245,240,232,0.55)', lineHeight: 1.75, maxWidth: 380 }}>
+          <p style={{ fontSize: 16, color: 'rgba(245,240,232,0.72)', lineHeight: 1.75, maxWidth: 380 }}>
             Thanks for telling us about your business. We&rsquo;ll review your answers and be in touch soon.
           </p>
         </div>
@@ -155,9 +154,9 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
           onClick={onExit}
           className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold"
           style={{
-            background: 'rgba(139,92,246,0.12)',
-            border: '1px solid rgba(139,92,246,0.4)',
-            color: '#A78BFA',
+            background: 'rgba(162,75,255,0.12)',
+            border: '1px solid rgba(162,75,255,0.4)',
+            color: '#C28DFF',
             marginTop: 8,
             cursor: 'pointer',
           }}
@@ -175,14 +174,14 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
         <ProgressDots current={step} />
         <button
           onClick={onExit}
-          style={{ fontSize: 12, color: 'rgba(245,240,232,0.3)', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600 }}
+          style={{ fontSize: 13, color: 'rgba(245,240,232,0.57)', letterSpacing: '0.06em', textTransform: 'uppercase', fontWeight: 600 }}
         >
           Skip →
         </button>
       </div>
 
       {/* Step label */}
-      <p style={{ fontSize: 11.5, color: 'rgba(245,240,232,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 20 }}>
+      <p style={{ fontSize: 13, color: 'rgba(245,240,232,0.60)', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: 20 }}>
         Question {step} of {TOTAL_STEPS}
       </p>
 
@@ -214,7 +213,7 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
         <button
           onClick={goBack}
           className="flex items-center gap-2 text-sm font-semibold"
-          style={{ color: 'rgba(245,240,232,0.35)', letterSpacing: '0.02em' }}
+          style={{ color: 'rgba(245,240,232,0.60)', letterSpacing: '0.02em' }}
         >
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
             <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -231,7 +230,7 @@ export default function Questionnaire({ onExit }: QuestionnaireProps) {
             whileTap={{ scale: 0.97 }}
             className="px-7 py-3 rounded-full text-sm font-bold"
             style={{
-              background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
+              background: 'linear-gradient(135deg, #A24BFF 0%, #7A1DF0 100%)',
               color: '#FFFFFF',
               opacity: status === 'submitting' ? 0.7 : 1,
               cursor: status === 'submitting' ? 'wait' : 'pointer',

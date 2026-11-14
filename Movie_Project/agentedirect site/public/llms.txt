@@ -1,0 +1,35 @@
+# AgenteDirect
+
+AgenteDirect is a web design agency based in Montreal, Quebec, Canada. We build custom, professional websites for local businesses — contractors, auto body shops, entertainment companies, paving companies, restaurants, and service providers across Montreal and Quebec.
+
+## What We Do
+- Custom website design and development
+- Bilingual websites (English and French / bilingues EN/FR)
+- Mobile-first, responsive design
+- SEO-optimized builds
+- Ongoing hosting and support
+
+## Pricing
+No published prices. Every project is quoted to fit the business. Request a free quote at https://agentedirect.ca/inquiry. No long-term contracts.
+
+## Who We Serve
+Local businesses in Montreal, Laval, Longueuil, Quebec City, and across Canada. Industries include home services, contracting, automotive, restaurants, entertainment, professional services, and retail.
+
+## Real Client Work
+- CarWorks Canada — Auto body & collision repair, Saint-Laurent, Montreal (carworkscanada.com)
+- Jakoa Productions — DJ & event entertainment, Montreal (jakoa.ca)
+
+## Demo Sites (concept work, not real clients)
+- Pavage Gagnon & Fils — Paving & exterior works (gagnonfils.netlify.app)
+- La Cucina — Italian restaurant (lacucina.agentedirect.ca)
+- Ciel Residences — Luxury real estate (cielresidence.netlify.app)
+
+## Contact
+Website (English): https://agentedirect.ca/home
+Website (Français): https://agentedirect.ca/fr/home
+Request a quote: https://agentedirect.ca/inquiry
+Email: support@agentedirect.ca
+Phone: (514) 663-4210
+
+## Languages
+English and French (bilingual agency)

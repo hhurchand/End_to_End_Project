@@ -94,13 +94,13 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
         {/* Atmosphere */}
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(109,40,217,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 55% 45% at 50% 50%, rgba(122,29,240,0.06) 0%, transparent 70%)',
         }} />
 
         {/* Top hairline */}
         <div aria-hidden style={{
           position: 'absolute', top: 0, left: '6%', right: '6%', height: 1,
-          background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.22) 25%, rgba(139,92,246,0.22) 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(162,75,255,0.22) 25%, rgba(162,75,255,0.22) 75%, transparent 100%)',
         }} />
 
         <div className="max-w-7xl mx-auto px-6 md:px-14">
@@ -114,8 +114,8 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
           >
             <p style={{
               fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.24em',
-              textTransform: 'uppercase', color: '#8B5CF6', margin: '0 0 20px',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.24em',
+              textTransform: 'uppercase', color: '#A24BFF', margin: '0 0 20px',
             }}>
               {fr ? 'Notre processus' : 'Our Process'}
             </p>
@@ -128,12 +128,12 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
               margin: '0 0 18px',
             }}>
               {fr ? 'De la première conversation' : 'From first conversation'}{' '}
-              <span style={{ color: 'rgba(220,210,245,0.28)' }}>{fr ? 'au lancement.' : 'to launch.'}</span>
+              <span style={{ color: 'rgba(220,210,245,0.55)' }}>{fr ? 'au lancement.' : 'to launch.'}</span>
             </h2>
 
             <p style={{
-              fontSize: 'clamp(14px, 1.3vw, 16px)',
-              color: 'rgba(220,210,245,0.50)',
+              fontSize: 'clamp(15px, 1.3vw,17px)',
+              color: 'rgba(220,210,245,0.69)',
               lineHeight: 1.78, margin: 0,
             }}>
               {fr ? 'Pas de processus compliqué. Juste un site conçu pour votre entreprise.' : 'No confusing process. Just a website built around your business.'}
@@ -158,7 +158,7 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
                 left: 'calc(100% / 6)',
                 right: 'calc(100% / 6)',
                 height: 1,
-                background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.18) 20%, rgba(139,92,246,0.18) 80%, transparent)',
+                background: 'linear-gradient(90deg, transparent, rgba(162,75,255,0.18) 20%, rgba(162,75,255,0.18) 80%, transparent)',
                 pointerEvents: 'none',
                 zIndex: 0,
               }}
@@ -180,7 +180,7 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
                       flexDirection: 'row',    /* mobile: badge left, text right */
                       alignItems: 'flex-start',
                       gap: 20,
-                      borderTop: i > 0 ? '1px solid rgba(139,92,246,0.08)' : 'none',
+                      borderTop: i > 0 ? '1px solid rgba(162,75,255,0.08)' : 'none',
                       paddingTop: i > 0 ? 28 : 0,
                       paddingBottom: 0,
                     }}
@@ -190,15 +190,15 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
                       <div style={{
                         width: 36, height: 36, borderRadius: '50%',
                         background: '#0A041E',
-                        border: '1.5px solid rgba(139,92,246,0.28)',
+                        border: '1.5px solid rgba(162,75,255,0.28)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         flexShrink: 0,
                         position: 'relative', zIndex: 1,
                       }}>
                         <span style={{
                           fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-                          fontSize: 10, fontWeight: 700,
-                          color: '#A78BFA', letterSpacing: '0.06em',
+                          fontSize: 12, fontWeight: 700,
+                          color: '#C28DFF', letterSpacing: '0.06em',
                         }}>
                           {step.num}
                         </span>
@@ -214,7 +214,7 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
                             flex: 1,
                             minHeight: 28,
                             marginTop: 8,
-                            background: 'rgba(139,92,246,0.18)',
+                            background: 'rgba(162,75,255,0.18)',
                           }}
                         />
                       )}
@@ -239,8 +239,8 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
                         {step.title}
                       </h3>
                       <p style={{
-                        fontSize: 'clamp(13.5px, 1.05vw, 15px)',
-                        color: 'rgba(220,210,245,0.50)',
+                        fontSize: 'clamp(14.5px, 1.05vw,16px)',
+                        color: 'rgba(220,210,245,0.69)',
                         lineHeight: 1.75, margin: 0,
                       }}>
                         {step.body}
@@ -266,7 +266,7 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
             {/* Subtle vertical thread above CTA */}
             <div aria-hidden style={{
               width: 1, height: 44,
-              background: 'linear-gradient(to bottom, transparent, rgba(139,92,246,0.35))',
+              background: 'linear-gradient(to bottom, transparent, rgba(162,75,255,0.35))',
             }} />
 
             <p style={{
@@ -279,26 +279,26 @@ export default function OurProcess({ lang = 'en', overlay = false }: { lang?: 'e
             </p>
 
             <Link
-              href={fr ? '/fr/pricing-and-inquiry' : '/pricing-and-inquiry'}
+              href={fr ? '/fr/inquiry' : '/inquiry'}
               onMouseEnter={e => {
                 const el = e.currentTarget as HTMLAnchorElement;
-                el.style.background = 'linear-gradient(135deg, #9D6FF5 0%, #7C3AED 100%)';
-                el.style.boxShadow = '0 8px 36px rgba(109,40,217,0.60)';
+                el.style.background = 'linear-gradient(135deg, #9D6FF5 0%, #8F2BFF 100%)';
+                el.style.boxShadow = '0 8px 36px rgba(122,29,240,0.60)';
                 el.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={e => {
                 const el = e.currentTarget as HTMLAnchorElement;
-                el.style.background = 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)';
-                el.style.boxShadow = '0 4px 24px rgba(109,40,217,0.44)';
+                el.style.background = 'linear-gradient(135deg, #A24BFF 0%, #7A1DF0 100%)';
+                el.style.boxShadow = '0 4px 24px rgba(122,29,240,0.44)';
                 el.style.transform = 'translateY(0)';
               }}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '13px 28px', borderRadius: 50,
-                background: 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)',
-                color: '#fff', fontSize: 14, fontWeight: 700,
+                background: 'linear-gradient(135deg, #A24BFF 0%, #7A1DF0 100%)',
+                color: '#fff', fontSize: 15, fontWeight: 700,
                 textDecoration: 'none', letterSpacing: '0.01em',
-                boxShadow: '0 4px 24px rgba(109,40,217,0.44)',
+                boxShadow: '0 4px 24px rgba(122,29,240,0.44)',
                 transition: 'background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease',
               }}
             >

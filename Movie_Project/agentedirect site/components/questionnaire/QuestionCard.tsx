@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import type { Question } from '@/lib/questions';
 import type { QuizAnswers } from '@/lib/types';
 
@@ -70,9 +70,9 @@ export default function QuestionCard({ question, answers, onAnswer, onOtherText,
                   className="w-full text-left flex items-center gap-4 rounded-xl px-5 py-4 transition-colors"
                   style={{
                     background: active
-                      ? 'rgba(139,92,246,0.14)'
+                      ? 'rgba(162,75,255,0.14)'
                       : 'rgba(245,240,252,0.05)',
-                    border: `1.5px solid ${active ? 'rgba(139,92,246,0.65)' : 'rgba(245,240,252,0.11)'}`,
+                    border: `1.5px solid ${active ? 'rgba(162,75,255,0.65)' : 'rgba(245,240,252,0.11)'}`,
                     cursor: 'pointer',
                   }}
                 >
@@ -82,8 +82,8 @@ export default function QuestionCard({ question, answers, onAnswer, onOtherText,
                     style={{
                       width: 22,
                       height: 22,
-                      border: `2px solid ${active ? '#8B5CF6' : 'rgba(245,240,252,0.25)'}`,
-                      background: active ? '#8B5CF6' : 'transparent',
+                      border: `2px solid ${active ? '#A24BFF' : 'rgba(245,240,252,0.25)'}`,
+                      background: active ? '#A24BFF' : 'transparent',
                       transition: 'all 0.2s',
                     }}
                   >
@@ -100,7 +100,7 @@ export default function QuestionCard({ question, answers, onAnswer, onOtherText,
                     style={{
                       fontSize: 15,
                       fontWeight: 500,
-                      color: active ? '#F5F0E8' : 'rgba(245,240,232,0.7)',
+                      color: active ? '#F5F0E8' : 'rgba(245,240,232,0.81)',
                       lineHeight: 1.4,
                     }}
                   >
@@ -127,7 +127,7 @@ export default function QuestionCard({ question, answers, onAnswer, onOtherText,
                         background: 'rgba(245,240,232,0.08)',
                         border: '1.5px solid rgba(245,240,232,0.2)',
                         color: '#F5F0E8',
-                        fontSize: 14,
+                        fontSize: 15,
                       }}
                     />
                   </motion.div>

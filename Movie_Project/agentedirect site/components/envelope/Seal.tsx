@@ -34,7 +34,7 @@ export default function Seal({ opened }: SealProps) {
           inset: -16,
           borderRadius: '50%',
           background:
-            'radial-gradient(circle, rgba(139,92,246,0.28) 0%, rgba(109,40,217,0.1) 50%, transparent 75%)',
+            'radial-gradient(circle, rgba(162,75,255,0.28) 0%, rgba(122,29,240,0.1) 50%, transparent 75%)',
           pointerEvents: 'none',
         }}
       />

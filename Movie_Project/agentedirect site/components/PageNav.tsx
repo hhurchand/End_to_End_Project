@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 interface PageNavProps {
   lang?: 'en' | 'fr';
-  active: 'beliefs' | 'work' | 'contact' | 'strategy';
+  active: 'beliefs' | 'work' | 'contact' | 'strategy' | 'privacy';
   enHref: string;
   frHref: string;
 }
@@ -29,7 +29,7 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
   const planHref = fr ? '/fr/strategy' : '/strategy';
 
   const activeStyle = { color: 'rgba(255,255,255,0.9)' };
-  const dimStyle = { color: 'rgba(255,255,255,0.45)' };
+  const dimStyle = { color: 'rgba(255,255,255,0.66)' };
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
         {/* Desktop nav */}
         <div
           className="page-nav-desktop"
-          style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 14, fontWeight: 500 }}
+          style={{ display: 'flex', alignItems: 'center', gap: 24, fontSize: 15, fontWeight: 500 }}
         >
           <Link href={homeHref} style={dimStyle} className="hover:text-white transition-colors">{fr ? 'Bureau' : 'Desktop'}</Link>
           <Link href={beliefsHref} style={active === 'beliefs' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'Nos croyances' : 'Our Beliefs'}</Link>
@@ -55,9 +55,9 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
           <Link href={planHref} style={active === 'strategy' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'La Stratégie' : 'The Strategy'}</Link>
           <Link href={contactHref} style={active === 'contact' ? activeStyle : dimStyle} className="hover:text-white transition-colors">{fr ? 'Contact' : 'Contact'}</Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingLeft: 16, borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link href={enHref} style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11 }}>|</span>
-            <Link href={frHref} style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)' }} className="hover:text-white transition-colors">FR</Link>
+            <Link href={enHref} style={{ fontSize: 13, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.57)' : 'rgba(255,255,255,0.9)' }} className="hover:text-white transition-colors">EN</Link>
+            <span style={{ color: 'rgba(255,255,255,0.50)', fontSize: 12.5 }}>|</span>
+            <Link href={frHref} style={{ fontSize: 13, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.57)' }} className="hover:text-white transition-colors">FR</Link>
           </div>
         </div>
 
@@ -65,9 +65,9 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
         <div className="page-nav-mobile" style={{ display: 'none', alignItems: 'center', gap: 12 }}>
           {/* EN/FR visible in top bar */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            <Link href={enHref} style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>EN</Link>
-            <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: 11 }}>|</span>
-            <Link href={frHref} style={{ fontSize: 12, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.3)', textDecoration: 'none' }}>FR</Link>
+            <Link href={enHref} style={{ fontSize: 13, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.57)' : 'rgba(255,255,255,0.9)', textDecoration: 'none' }}>EN</Link>
+            <span style={{ color: 'rgba(255,255,255,0.50)', fontSize: 12.5 }}>|</span>
+            <Link href={frHref} style={{ fontSize: 13, fontWeight: 700, color: fr ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.57)', textDecoration: 'none' }}>FR</Link>
           </div>
           {/* Hamburger */}
           <button
@@ -122,7 +122,7 @@ export default function PageNav({ lang = 'en', active, enHref, frHref }: PageNav
                 onClick={() => setOpen(false)}
                 style={{
                   fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em',
-                  color: item.isActive ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.35)',
+                  color: item.isActive ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.60)',
                   textDecoration: 'none', padding: '10px 0',
                   borderBottom: '1px solid rgba(255,255,255,0.06)',
                 }}

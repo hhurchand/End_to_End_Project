@@ -31,13 +31,13 @@ function Field({
     <div>
       <label
         className="block mb-1.5"
-        style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(245,240,232,0.45)' }}
+        style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(245,240,232,0.66)' }}
       >
-        {label}{required && <span style={{ color: '#A78BFA' }}> *</span>}
+        {label}{required && <span style={{ color: '#C28DFF' }}> *</span>}
       </label>
       {children}
       {error && (
-        <p style={{ fontSize: 12, color: '#EF8C8C', marginTop: 5 }}>{error}</p>
+        <p style={{ fontSize: 13, color: '#EF8C8C', marginTop: 5 }}>{error}</p>
       )}
     </div>
   );
@@ -49,7 +49,7 @@ const inputStyle: React.CSSProperties = {
   border: '1.5px solid rgba(245,240,232,0.14)',
   borderRadius: 10,
   padding: '11px 14px',
-  fontSize: 14.5,
+  fontSize: 15.5,
   color: '#F5F0E8',
   fontFamily: 'inherit',
   outline: 'none',
@@ -57,7 +57,7 @@ const inputStyle: React.CSSProperties = {
 };
 
 const inputFocusStyle: React.CSSProperties = {
-  borderColor: 'rgba(139,92,246,0.55)',
+  borderColor: 'rgba(162,75,255,0.55)',
 };
 
 export default function ContactForm({ answers, onChange, errors, direction }: ContactFormProps) {
@@ -178,8 +178,8 @@ export default function ContactForm({ answers, onChange, errors, direction }: Co
                 style={{
                   width: 20,
                   height: 20,
-                  background: answers.consent ? '#8B5CF6' : 'rgba(245,240,252,0.07)',
-                  border: `1.5px solid ${answers.consent ? '#8B5CF6' : 'rgba(245,240,252,0.2)'}`,
+                  background: answers.consent ? '#A24BFF' : 'rgba(245,240,252,0.07)',
+                  border: `1.5px solid ${answers.consent ? '#A24BFF' : 'rgba(245,240,252,0.2)'}`,
                   transition: 'all 0.2s',
                 }}
               >
@@ -190,12 +190,12 @@ export default function ContactForm({ answers, onChange, errors, direction }: Co
                 )}
               </div>
             </div>
-            <span style={{ fontSize: 13, color: 'rgba(245,240,232,0.5)', lineHeight: 1.55 }}>
+            <span style={{ fontSize: 14, color: 'rgba(245,240,232,0.69)', lineHeight: 1.55 }}>
               I agree to be contacted about my inquiry. I understand this is not a marketing list.
             </span>
           </label>
           {errors.consent && (
-            <p style={{ fontSize: 12, color: '#EF8C8C', marginTop: -8 }}>{errors.consent}</p>
+            <p style={{ fontSize: 13, color: '#EF8C8C', marginTop: -8 }}>{errors.consent}</p>
           )}
         </div>
       </motion.div>

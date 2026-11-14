@@ -50,10 +50,10 @@ const PROJECTS = [
     num: '04',
     name: 'La Cucina',
     category: 'Italian Restaurant',
-    location: 'Pointe-Claire, Montréal',
+    location: 'Montréal, QC',
     tagline: 'The taste of Italy, fresh every day.',
     description:
-      'A bilingual demo website for an Italian restaurant in Pointe-Claire. Fresh pasta, wood-fired pizza, and antipasti — presented with cinematic imagery and a full digital menu to drive reservations and delivery orders.',
+      'A bilingual demo website for an Italian restaurant. Fresh pasta, wood-fired pizza, and antipasti — presented with cinematic imagery and a full digital menu to drive reservations and delivery orders.',
     src: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80&fit=crop&crop=top',
     href: 'https://lacucina.agentedirect.ca/',
     url: 'lacucina.agentedirect.ca',
@@ -87,7 +87,7 @@ const DESCRIPTIONS_FR: Record<string, string> = {
   carworks: "Un site moderne pour un atelier de carrosserie complet à Saint-Laurent. Couvre les réclamations d'assurance, la réparation de châssis, l'enrobage vinyle, la personnalisation de jantes et plus — avec un chemin clair vers une estimation gratuite.",
   jakoa: "Un site à forte personnalité pour un DJ et une compagnie de divertissement montréalais spécialisés dans les mariages, bar et bat mitzvahs et événements corporatifs. Conçu pour capturer l'énergie de la marque et donner à chaque client potentiel tout ce qu'il faut pour commencer à planifier.",
   gagnonfils: "Un site bilingue pour un entrepreneur en pavage desservant Montréal et la région. Présente les services d'asphalte, de pavé uni, de béton décoratif et de scellant en français et en anglais, avec un accès facile à une estimation gratuite sur place.",
-  lacucina: "Un site démo bilingue pour un restaurant italien à Pointe-Claire. Pâtes fraîches, pizzas au four à bois et antipasti — présentés avec des images cinématographiques et un menu digital complet pour stimuler les réservations et les commandes en ligne.",
+  lacucina: "Un site démo bilingue pour un restaurant italien. Pâtes fraîches, pizzas au four à bois et antipasti — présentés avec des images cinématographiques et un menu digital complet pour stimuler les réservations et les commandes en ligne.",
   ciel: "Un site démo immobilier de luxe pour une marque montréalaise. Un héros en couches au crépuscule avec un logotype cinématographique, une navigation en verre réfractif, et une visite pièce par pièce de la Villa Lumière à Westmount — un défilement à la fois.",
 };
 
@@ -100,7 +100,7 @@ function BrowserFrame({ project, overlay = false }: { project: Project; overlay?
       overflow: 'hidden',
       background: '#0E0828',
       border: '1px solid rgba(255,255,255,0.09)',
-      boxShadow: '0 20px 70px rgba(0,0,0,0.60), 0 4px 20px rgba(80,20,200,0.22)',
+      boxShadow: '0 20px 70px rgba(0,0,0,0.60), 0 4px 20px rgba(110,30,235,0.22)',
       width: '100%',
       ...(overlay ? { display: 'flex', flexDirection: 'column' as const, height: '100%' } : {}),
     }}>
@@ -109,7 +109,7 @@ function BrowserFrame({ project, overlay = false }: { project: Project; overlay?
         display: 'flex', alignItems: 'center', gap: 6,
         padding: '11px 16px',
         background: '#160E34',
-        borderBottom: '1px solid rgba(139,92,246,0.07)',
+        borderBottom: '1px solid rgba(162,75,255,0.07)',
         flexShrink: 0,
       }}>
         {(['#FF5F57', '#FFBD2E', '#28C840'] as const).map(col => (
@@ -125,7 +125,7 @@ function BrowserFrame({ project, overlay = false }: { project: Project; overlay?
           border: '1px solid rgba(255,255,255,0.05)',
           overflow: 'hidden', whiteSpace: 'nowrap',
         }}>
-          <span style={{ fontSize: 11, color: 'rgba(220,210,245,0.36)', fontFamily: 'monospace' }}>
+          <span style={{ fontSize: 12.5, color: 'rgba(220,210,245,0.60)', fontFamily: 'monospace' }}>
             {project.url}
           </span>
         </div>
@@ -181,7 +181,7 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
           .sw-overlay-section .sw-info  { gap: 8px !important; }
           .sw-overlay-section .sw-nav   { width: 100% !important; justify-content: center !important; gap: 10px !important; }
           .sw-overlay-section .sw-nav-btn { width: 40px !important; height: 40px !important; display: flex !important; }
-          .sw-overlay-section .sw-info p[style] { font-size: 11px !important; line-height: 1.5 !important; }
+          .sw-overlay-section .sw-info p[style] { font-size: 12.5px !important; line-height: 1.5 !important; }
         }
       `}</style>
 
@@ -202,13 +202,13 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
         {/* Atmosphere */}
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 65% 40% at 50% 25%, rgba(109,40,217,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 65% 40% at 50% 25%, rgba(122,29,240,0.06) 0%, transparent 70%)',
         }} />
 
         {/* Top hairline */}
         <div aria-hidden style={{
           position: 'absolute', top: 0, left: '6%', right: '6%', height: 1,
-          background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.22) 25%, rgba(139,92,246,0.22) 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(162,75,255,0.22) 25%, rgba(162,75,255,0.22) 75%, transparent 100%)',
         }} />
 
         <div className="max-w-7xl mx-auto px-6 md:px-14">
@@ -223,8 +223,8 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
             >
               <p style={{
                 fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.24em',
-                textTransform: 'uppercase', color: '#8B5CF6', margin: '0 0 20px',
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.24em',
+                textTransform: 'uppercase', color: '#A24BFF', margin: '0 0 20px',
               }}>
                 {fr ? 'Travaux sélectionnés' : 'Selected Work'}
               </p>
@@ -237,12 +237,12 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                 margin: '0 0 16px', maxWidth: '20ch',
               }}>
                 {fr ? 'Les bonnes entreprises méritent' : 'Good businesses deserve'}{' '}
-                <span style={{ color: 'rgba(220,210,245,0.28)' }}>{fr ? 'd\'excellents sites web.' : 'great websites.'}</span>
+                <span style={{ color: 'rgba(220,210,245,0.55)' }}>{fr ? 'd\'excellents sites web.' : 'great websites.'}</span>
               </h2>
 
               <p style={{
-                fontSize: 'clamp(14px, 1.3vw, 16px)',
-                color: 'rgba(220,210,245,0.50)',
+                fontSize: 'clamp(15px, 1.3vw,17px)',
+                color: 'rgba(220,210,245,0.69)',
                 lineHeight: 1.78, maxWidth: 400, margin: 0,
               }}>
                 {fr ? 'Chaque entreprise est unique. Son site web aussi.' : 'Every business is different. Its website should be too.'}
@@ -287,8 +287,8 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                   {/* Info */}
                   <div className="sw-info" style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: overlay ? 18 : 20, ...(overlay ? { justifyContent: 'space-between' } : {}) }}>
                     <p style={{
-                      fontSize: 10, fontWeight: 700, letterSpacing: '0.20em',
-                      textTransform: 'uppercase', color: 'rgba(220,210,245,0.38)',
+                      fontSize: 12, fontWeight: 700, letterSpacing: '0.20em',
+                      textTransform: 'uppercase', color: 'rgba(220,210,245,0.62)',
                       margin: 0,
                     }}>
                       {fr ? (PROJECTS_FR_META[p.id]?.category ?? p.category) : p.category}
@@ -305,8 +305,8 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                         {p.name}
                       </h3>
                       <p style={{
-                        fontSize: 11, fontWeight: 600,
-                        color: 'rgba(220,210,245,0.28)',
+                        fontSize: 12.5, fontWeight: 600,
+                        color: 'rgba(220,210,245,0.55)',
                         letterSpacing: '0.08em', textTransform: 'uppercase', margin: 0,
                       }}>
                         {p.location}
@@ -317,15 +317,15 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                       fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
                       fontSize: 'clamp(16px, 1.55vw, 21px)',
                       fontWeight: 600, fontStyle: 'italic',
-                      color: 'rgba(167,139,250,0.82)',
+                      color: 'rgba(194,141,255,0.89)',
                       letterSpacing: '-0.015em', lineHeight: 1.3, margin: 0,
                     }}>
                       &ldquo;{fr ? (PROJECTS_FR_META[p.id]?.tagline ?? p.tagline) : p.tagline}&rdquo;
                     </p>}
 
                     <p style={{
-                      fontSize: 'clamp(13.5px, 1.1vw, 15px)',
-                      color: 'rgba(220,210,245,0.52)',
+                      fontSize: 'clamp(14.5px, 1.1vw,16px)',
+                      color: 'rgba(220,210,245,0.70)',
                       lineHeight: 1.80, margin: 0,
                     }}>
                       {fr ? (DESCRIPTIONS_FR[p.id] ?? p.description) : p.description}
@@ -333,13 +333,13 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
 
                     {(p.id === 'gagnonfils' || p.id === 'lacucina' || p.id === 'ciel') && (
                       <p style={{
-                        fontSize: 10, lineHeight: 1.6, margin: 0,
-                        color: 'rgba(220,210,245,0.22)',
+                        fontSize: 12, lineHeight: 1.6, margin: 0,
+                        color: 'rgba(220,210,245,0.52)',
                         letterSpacing: '0.01em',
                       }}>
                         {fr
-                          ? '* Conception uniquement. « Pavage Gagnon & Fils » est une entreprise fictive créée à titre illustratif. Aucun client réel, donnée de performance ou résultat commercial n\'est implicite ou garanti.'
-                          : '* Concept design only. "Pavage Gagnon & Fils" is a fictional business created for illustration purposes. No real client, performance data, or business results are implied or guaranteed.'}
+                          ? `* Conception uniquement. « ${p.name} » est une entreprise fictive créée à titre illustratif. Aucun client réel, donnée de performance ou résultat commercial n'est implicite ou garanti.`
+                          : `* Concept design only. "${p.name}" is a fictional business created for illustration purposes. No real client, performance data, or business results are implied or guaranteed.`}
                       </p>
                     )}
 
@@ -348,19 +348,19 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                       target="_blank"
                       rel="noopener noreferrer"
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(139,92,246,0.60)';
-                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(139,92,246,0.10)';
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(162,75,255,0.60)';
+                        (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(162,75,255,0.10)';
                       }}
                       onMouseLeave={e => {
-                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(139,92,246,0.30)';
+                        (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(162,75,255,0.30)';
                         (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                       }}
                       style={{
                         display: 'inline-flex', alignItems: 'center', gap: 7,
                         padding: '10px 22px', borderRadius: 50,
-                        border: '1px solid rgba(139,92,246,0.30)',
+                        border: '1px solid rgba(162,75,255,0.30)',
                         background: 'transparent',
-                        color: '#A78BFA', fontSize: 13, fontWeight: 600,
+                        color: '#C28DFF', fontSize: 14, fontWeight: 600,
                         textDecoration: 'none', letterSpacing: '0.01em',
                         transition: 'border-color 0.22s ease, background 0.22s ease',
                         alignSelf: 'flex-start', whiteSpace: 'nowrap',
@@ -395,14 +395,14 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                   width: 30, height: 30, borderRadius: '50%',
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(255,255,255,0.09)',
-                  color: 'rgba(220,210,245,0.55)',
+                  color: 'rgba(220,210,245,0.72)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer', flexShrink: 0,
                   transition: 'background 0.18s, border-color 0.18s',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(139,92,246,0.14)';
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(139,92,246,0.32)';
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(162,75,255,0.14)';
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(162,75,255,0.32)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)';
@@ -422,7 +422,7 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                   className={j === active ? 'sw-dot sw-dot-active' : 'sw-dot'}
                   style={{
                     width: j === active ? 20 : 7, height: 7, borderRadius: 4,
-                    background: j === active ? '#7C3AED' : 'rgba(139,92,246,0.22)',
+                    background: j === active ? '#8F2BFF' : 'rgba(162,75,255,0.22)',
                     border: 'none', cursor: 'pointer', padding: 0,
                     transition: 'all 0.28s ease', flexShrink: 0,
                   }}
@@ -436,14 +436,14 @@ export default function SelectedWork({ lang = 'en', overlay = false }: { lang?: 
                   width: 30, height: 30, borderRadius: '50%',
                   background: 'rgba(255,255,255,0.05)',
                   border: '1px solid rgba(255,255,255,0.09)',
-                  color: 'rgba(220,210,245,0.55)',
+                  color: 'rgba(220,210,245,0.72)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   cursor: 'pointer', flexShrink: 0,
                   transition: 'background 0.18s, border-color 0.18s',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(139,92,246,0.14)';
-                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(139,92,246,0.32)';
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(162,75,255,0.14)';
+                  (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(162,75,255,0.32)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.05)';

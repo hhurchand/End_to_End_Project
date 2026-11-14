@@ -743,12 +743,12 @@ function AfterPanel({ lang = 'en', isMobile = false }: { lang?: 'en' | 'fr'; isM
         justifyContent: 'space-between',
         alignItems: 'center',
       }}>
-        <span style={{ color: 'rgba(255,255,255,0.60)', fontSize: 9.5 }}>
+        <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 9.5 }}>
           {fr ? '© 2024 Tremblay Plomberie Inc. · Montréal, Québec' : '© 2024 Tremblay Plumbing Inc. · Montreal, Quebec'}
         </span>
         <div style={{ display: 'flex', gap: 14 }}>
           {(fr ? ['Confidentialité', 'Conditions', 'Plan du site'] : ['Privacy', 'Terms', 'Sitemap']).map(l => (
-            <span key={l} style={{ color: 'rgba(255,255,255,0.40)', fontSize: 9, cursor: 'default' }}>{l}</span>
+            <span key={l} style={{ color: 'rgba(255,255,255,0.63)', fontSize: 9, cursor: 'default' }}>{l}</span>
           ))}
         </div>
       </div>
@@ -842,8 +842,8 @@ function ComparisonSlider({ reduced, lang = 'en' }: { reduced: boolean; lang?: '
         cursor: dragging ? 'col-resize' : 'ew-resize',
         userSelect: 'none',
         WebkitUserSelect: 'none',
-        border: '1px solid rgba(139,92,246,0.22)',
-        boxShadow: '0 32px 80px rgba(0,0,0,0.70), 0 8px 24px rgba(80,20,200,0.22)',
+        border: '1px solid rgba(162,75,255,0.22)',
+        boxShadow: '0 32px 80px rgba(0,0,0,0.70), 0 8px 24px rgba(110,30,235,0.22)',
       }}
     >
       {/* ── AFTER panel: full-width base (right side) ── */}
@@ -979,7 +979,7 @@ function ComparisonSlider({ reduced, lang = 'en' }: { reduced: boolean; lang?: '
             transform: 'translate(-50%, calc(-50% + 30px))',
             display: 'flex', alignItems: 'center', gap: 5,
             fontSize: 9, fontWeight: 600,
-            color: 'rgba(255,255,255,0.50)',
+            color: 'rgba(255,255,255,0.69)',
             letterSpacing: '0.16em', textTransform: 'uppercase',
             pointerEvents: 'none', whiteSpace: 'nowrap',
           }}
@@ -1024,7 +1024,7 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
             padding-right: 0 !important;
           }
           .wim-point + .wim-point {
-            border-top: 1px solid rgba(139,92,246,0.12);
+            border-top: 1px solid rgba(162,75,255,0.12);
             padding-top: 28px !important;
           }
           .wim-num-bg { display: none; }
@@ -1046,14 +1046,14 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
         {/* Atmosphere */}
         <div aria-hidden style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 75% 55% at 50% 20%, rgba(109,40,217,0.07) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse 75% 55% at 50% 20%, rgba(122,29,240,0.07) 0%, transparent 70%)',
         }} />
 
         {/* Top hairline */}
         <div aria-hidden style={{
           position: 'absolute', top: 0, left: '6%', right: '6%',
           height: 1,
-          background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.22) 25%, rgba(139,92,246,0.22) 75%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, rgba(162,75,255,0.22) 25%, rgba(162,75,255,0.22) 75%, transparent 100%)',
         }} />
 
         <div className="max-w-7xl mx-auto px-6 md:px-14">
@@ -1063,8 +1063,8 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
 
             <motion.p {...vis(0)} style={{
               fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.24em',
-              textTransform: 'uppercase', color: '#8B5CF6', margin: overlay ? '0 0 10px' : '0 0 22px',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.24em',
+              textTransform: 'uppercase', color: '#A24BFF', margin: overlay ? '0 0 10px' : '0 0 22px',
             }}>
               {fr ? 'L\'opportunité' : 'The Opportunity'}
             </motion.p>
@@ -1077,12 +1077,12 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
               margin: overlay ? '0 0 10px' : '0 0 18px', maxWidth: '16ch',
             }}>
               {fr ? 'Votre entreprise a grandi.' : 'Your business has grown.'}{' '}
-              <span style={{ color: 'rgba(220,210,245,0.30)' }}>{fr ? 'Et votre site web\u00a0?' : 'Has your website?'}</span>
+              <span style={{ color: 'rgba(220,210,245,0.57)' }}>{fr ? 'Et votre site web\u00a0?' : 'Has your website?'}</span>
             </motion.h2>
 
             <motion.p {...vis(0.16)} style={{
-              fontSize: 'clamp(14px, 1.3vw, 16.5px)',
-              color: 'rgba(220,210,245,0.50)',
+              fontSize: 'clamp(15px, 1.3vw,17.5px)',
+              color: 'rgba(220,210,245,0.69)',
               lineHeight: 1.78, maxWidth: 500, margin: overlay ? '0 0 24px' : '0 0 68px',
             }}>
               {fr
@@ -1102,13 +1102,13 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
                     paddingBottom: overlay ? 0 : 32,
                     paddingLeft: i > 0 ? (overlay ? 24 : 44) : 0,
                     paddingRight: i < 2 ? (overlay ? 24 : 44) : 0,
-                    borderRight: i < 2 ? '1px solid rgba(139,92,246,0.11)' : 'none',
+                    borderRight: i < 2 ? '1px solid rgba(162,75,255,0.11)' : 'none',
                   }}
                 >
                   <div aria-hidden className="wim-num-bg" style={{
                     position: 'absolute', top: -8, left: i > 0 ? 32 : -6,
                     fontSize: 88, fontWeight: 900,
-                    color: 'rgba(109,40,217,0.065)',
+                    color: 'rgba(122,29,240,0.065)',
                     fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
                     letterSpacing: '-0.06em', lineHeight: 1,
                     userSelect: 'none', pointerEvents: 'none',
@@ -1117,7 +1117,7 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
                   </div>
                   <div style={{
                     width: 26, height: 2,
-                    background: 'linear-gradient(90deg, #8B5CF6, rgba(139,92,246,0.15))',
+                    background: 'linear-gradient(90deg, #A24BFF, rgba(162,75,255,0.15))',
                     borderRadius: 1, marginBottom: overlay ? 10 : 18,
                   }} />
                   <p style={{
@@ -1129,8 +1129,8 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
                     {pt.heading}
                   </p>
                   <p style={{
-                    fontSize: 'clamp(13px, 1vw, 14.5px)',
-                    color: 'rgba(220,210,245,0.44)',
+                    fontSize: 'clamp(14px, 1vw,15.5px)',
+                    color: 'rgba(220,210,245,0.65)',
                     lineHeight: 1.72, margin: 0,
                   }}>
                     {pt.body}
@@ -1144,8 +1144,8 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
           {!overlay && <div>
             <motion.p {...vis(0.52)} style={{
               fontFamily: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.24em',
-              textTransform: 'uppercase', color: '#8B5CF6', margin: '0 0 14px',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.24em',
+              textTransform: 'uppercase', color: '#A24BFF', margin: '0 0 14px',
             }}>
               {fr ? 'Voyez la différence' : 'See the Difference'}
             </motion.p>
@@ -1158,11 +1158,11 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
               margin: '0 0 10px', maxWidth: '24ch',
             }}>
               {fr ? 'Du démodé au distinctif.' : 'From dated to distinctive.'}{' '}
-              <span style={{ color: 'rgba(220,210,245,0.28)' }}>{fr ? 'Glissez pour voir.' : 'Drag to see it live.'}</span>
+              <span style={{ color: 'rgba(220,210,245,0.55)' }}>{fr ? 'Glissez pour voir.' : 'Drag to see it live.'}</span>
             </motion.h3>
 
             <motion.p {...vis(0.66)} style={{
-              fontSize: 14, color: 'rgba(220,210,245,0.36)',
+              fontSize: 15, color: 'rgba(220,210,245,0.60)',
               margin: '0 0 28px', lineHeight: 1.65,
             }}>
               {fr ? 'Même entreprise fictive. Glissez à fond à gauche ou à droite pour voir chaque version en entier.' : 'Same fictional business. Drag all the way left or right to see either version in full.'}
@@ -1177,7 +1177,7 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
             </motion.div>
 
             <motion.p {...vis(0.90)} style={{
-              fontSize: 11, color: 'rgba(220,210,245,0.42)',
+              fontSize: 12.5, color: 'rgba(220,210,245,0.64)',
               marginTop: 14, letterSpacing: '0.01em', lineHeight: 1.6,
             }}>
               {fr
@@ -1204,8 +1204,8 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
           gap: 7, zIndex: 5, pointerEvents: 'none',
         }}>
           <span style={{
-            fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
-            textTransform: 'uppercase', color: 'rgba(139,92,246,0.40)',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+            textTransform: 'uppercase', color: 'rgba(162,75,255,0.63)',
           }}>
             {fr ? 'Nos réalisations' : 'Our Work'}
           </span>
@@ -1215,7 +1215,7 @@ export default function WhyItMatters({ lang = 'en', overlay = false }: { lang?: 
               transition={{ duration: 1.9, repeat: Infinity, ease: 'easeInOut' }}
             >
               <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden>
-                <path d="M1 1L7 7.5L13 1" stroke="rgba(139,92,246,0.40)"
+                <path d="M1 1L7 7.5L13 1" stroke="rgba(162,75,255,0.40)"
                   strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </motion.div>
