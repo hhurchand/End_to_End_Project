@@ -1,7 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { clientIp, rateLimited } from '@/lib/rateLimit';
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const SYSTEM = `You are the website assistant for AgenteDirect, a web design agency based in Montréal, Québec. You answer questions from potential clients in English or French, whichever language the user writes in. Keep answers honest, warm, and to the point. Never be salesy.
 
@@ -82,6 +81,12 @@ export async function POST(req: Request) {
     if (messages[messages.length - 1].role !== 'user') {
       return new Response('Invalid request.', { status: 400 });
     }
+
+    if (!process.env.ANTHROPIC_API_KEY) {
+      console.error('ANTHROPIC_API_KEY is not set');
+      return new Response('Something went wrong.', { status: 500 });
+    }
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const response = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',

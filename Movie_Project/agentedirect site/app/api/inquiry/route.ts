@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { clientIp, rateLimited } from '@/lib/rateLimit';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const esc = (v: unknown) =>
   String(v ?? '')
@@ -103,6 +102,12 @@ export async function POST(req: NextRequest) {
       <p style="margin-top:24px;font-size:12px;color:#999">Reply directly to this email to reach ${esc(body.name)}.</p>
     </div>
   `;
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not set');
+    return NextResponse.json({ error: 'Failed to send. Please email us directly.' }, { status: 500 });
+  }
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
     from: process.env.FROM_EMAIL ?? 'AgenteDirect <onboarding@resend.dev>',
